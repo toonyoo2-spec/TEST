@@ -17,7 +17,7 @@ TEACHERS = {
             ("13:00 – 15:00", "마케팅 촬영", "Julie & David 선생님"),
             ("15:00 – 16:00", "Q&A 촬영", "Julie 선생님"),
         ],
-        "viewer": "초3 무렵 영어를 처음 시작하는 아이를 둔 부모님. 대치동 학원에 보내기 어려운 환경에서 ‘우리 아이만 늦은 건 아닐까’ 고민하는 분들이에요.",
+        "viewer": "초3 무렵 영어를 처음 시작하는 아이를 둔 부모님들이에요.\n대치동 학원에 보내기 어려운 환경에서, ‘우리 아이만 늦은 건 아닐까’ 고민하는 분들이에요.",
         "parts": [
             {
                 "label": "본편",
@@ -48,7 +48,7 @@ TEACHERS = {
             ("16:00 – 17:00", "Q&A 촬영", "Annie 선생님"),
             ("17:00 – 19:00", "마케팅 촬영", "Annie 선생님"),
         ],
-        "viewer": "AI가 번역도 요약도 다 해주는 시대에, 아이 영어 공부를 어디까지 어떻게 시켜야 할지 고민하는 초등 부모님들이에요.",
+        "viewer": "AI가 번역도 요약도 다 해주는 시대에,\n아이 영어 공부를 어디까지, 어떻게 시켜야 할지 고민하는 초등 부모님들이에요.",
         "parts": [
                         {
                 "label": "본편",
@@ -73,7 +73,7 @@ TEACHERS = {
             ("마무리 한 문장", "영상 마지막에 ‘AI 시대에도 아이에게 영어가 필요한 이유’를 한 문장으로 여쭤봐요. 미리 생각해 두시면 편해요."),
         ],
         "restate": "“AI가 대신할 수 없는 건 이거예요.”",
-        "honest": "이번 영상은 ‘AI가 다 해주는데 영어 공부를 해야 하나요?’처럼 부모님들이 요즘 가장 궁금해하는 질문들이에요. 질문이 날카롭게 느껴질 수 있지만, 선생님을 곤란하게 하려는 게 아니라 부모님들의 실제 고민을 대신 여쭤보는 거예요.",
+        "honest": "이번 영상은 ‘AI가 다 해주는데 영어 공부를 해야 하나요?’처럼\n부모님들이 요즘 가장 궁금해하는 질문들로 구성했어요.\n질문이 날카롭게 느껴질 수 있지만, 선생님을 곤란하게 하려는 게 아니라\n부모님들의 실제 고민을 대신 여쭤보는 거예요.",
     },
 }
 
@@ -93,7 +93,7 @@ CSS = """
 :root{--ink:#191c2b;--sub:#6b7080;--line:#e3e7ec;--paper:#ffffff;--yellow:#e6f9ed;--yellow-soft:#e6f9ed;--orange:#00c170;--orange-soft:#e6f9ed;--blue:#c2eed3;--blue-soft:#f3f5f8;--green-text:#0aa865;--green-deep:#0e955c}
 @page{size:A4;margin:0}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:P,sans-serif;color:var(--ink);background:var(--paper);font-size:10.5pt;line-height:1.55;word-break:keep-all}
+body{text-wrap:pretty;font-family:P,sans-serif;color:var(--ink);background:var(--paper);font-size:10.5pt;line-height:1.55;word-break:keep-all}
 .page{width:210mm;height:297mm;padding:16mm 16mm 14mm;position:relative;page-break-after:always;overflow:hidden}
 .page:last-child{page-break-after:auto}
 .foot{position:absolute;left:16mm;right:16mm;bottom:9mm;font-size:8pt;color:var(--sub);display:flex;justify-content:space-between}
@@ -102,7 +102,7 @@ body{font-family:P,sans-serif;color:var(--ink);background:var(--paper);font-size
 .hero:before{content:"";position:absolute;right:30mm;top:-14mm;width:30mm;height:30mm;border-radius:50%;background:#91e6b3;opacity:.7}
 .eyebrow img{height:7mm;display:block}
 .hero h1{font-size:25pt;font-weight:800;line-height:1.25;margin-top:4mm;position:relative;z-index:1}
-.hero p{margin-top:4mm;font-size:10.5pt;max-width:120mm;position:relative;z-index:1;color:#3a3f4b}
+.hero p{margin-top:4mm;font-size:10.5pt;max-width:135mm;position:relative;z-index:1;color:#3a3f4b}
 h2{font-size:14pt;font-weight:800;margin:7mm 0 3mm;display:flex;align-items:center;gap:2.5mm}
 h2 .num{display:inline-flex;width:7mm;height:7mm;border-radius:50%;background:var(--orange);color:#fff;font-size:9.5pt;align-items:center;justify-content:center}
 .cards{display:grid;grid-template-columns:1fr 1fr;gap:3.5mm}
@@ -172,7 +172,7 @@ td.time{font-weight:800;width:34mm}
 
 
 def esc(s):
-    return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace("\n", "<br>")
 
 
 def flow_html(part, cls):
@@ -200,7 +200,7 @@ def build(name, t):
       <div><b>②</b>“다만 이건 달라요”</div>
       <div><b>③</b>“그래서 이렇게 해보세요”</div>
     </div>
-    <p style="margin-top:2.5mm">이 순서로 답해 주시면 편해요. 부담되는 질문이 있으면 촬영 전에 미리 말씀해 주세요.</p>
+    <p style="margin-top:2.5mm">이 순서로 답해 주시면 편해요.<br>부담되는 질문이 있으면 촬영 전에 미리 말씀해 주세요.</p>
   </div>''' if t.get("honest") else ""
     honest_sec = f'<h2 style="margin-top:0"><span class="num">4</span>솔직한 질문에 대해</h2>\n  {honest}' if t.get("honest") else ""
     foot = f'<div class="foot"><span>리얼아카데미 · Q&amp;A 영상 촬영 안내</span><span>{name} 선생님</span></div>'
@@ -210,30 +210,26 @@ def build(name, t):
   <div class="hero">
     <div class="eyebrow"><img src="assets/logo_navy.png" alt="REAL ACADEMY"></div>
     <h1>{name} 선생님,<br>Q&amp;A 영상 촬영 안내드려요</h1>
-    <p>부모님들께 미리 받은 질문에 선생님이 직접 답해 주시는 영상이에요. 촬영 정보와 촬영 순서, 오시는 길을 정리했어요.</p>
+    <p>부모님들께 미리 받은 질문에 선생님이 직접 답해 주시는 영상이에요.<br>촬영 정보와 촬영 순서, 오시는 길을 정리했어요.</p>
   </div>
 
   <h2><span class="num">1</span>촬영 정보</h2>
   <div class="cards">
     <div class="card"><div class="k">날짜</div><div class="v">{SHOOT['date']}</div></div>
     <div class="card"><div class="k">장소</div><div class="v">{SHOOT['place']}</div><div class="s">{SHOOT['address']}<br>{SHOOT['parking']}</div></div>
-    <div class="card wide"><div class="k">타임테이블 · {name} 선생님 촬영 시간</div><div class="sched">{sched}</div><div class="s" style="margin-top:2mm">※ 이 문서는 Q&amp;A 촬영 안내예요. 마케팅 촬영 내용은 별도로 정리해 전달드릴게요.</div></div>
+    <div class="card wide"><div class="k">타임테이블 · {name} 선생님 촬영 시간</div><div class="sched">{sched}</div><div class="s" style="margin-top:2mm">※ 이 문서는 Q&amp;A 촬영 안내예요. 마케팅 촬영은 별도로 정리해 전달드릴게요.</div></div>
   </div>
 
   <h2><span class="num">2</span>어떤 영상인가요?</h2>
-  <p class="lead"><b>이 영상을 볼 분들</b> — {esc(t['viewer'])}</p>
+  <p class="lead"><b>이 영상을 볼 분들</b><br>{esc(t['viewer'])}</p>
   <div class="parts{one}" style="margin-top:4mm">{part_boxes}</div>
-  <div class="note" style="margin-top:5mm">
-    <b>영상에는 선생님만 나와요</b>
-    대본을 외우실 필요는 없어요. O/X 문장과 부모님 질문은 <strong>카메라 바로 아래 태블릿</strong>에 띄워 드리고, 이어지는 질문은 현장에서 말로 여쭤봐요. 질문하는 목소리는 편집에서 빠지고 화면에는 질문 자막이 들어가요. 그래서 <strong>답의 첫 문장은 질문 없이도 뜻이 통하게</strong> 말씀해 주시면 좋아요.
-    <div class="tips"><div>예) {esc(t['restate'])}</div></div>
-  </div>
+
   {foot}
 </section>
 
 <section class="page">
   <h2 style="margin-top:0"><span class="num">3</span>촬영 흐름</h2>
-  <p class="lead">위에서 아래로 이 순서대로 진행돼요. 의자에 앉아 이야기하시는 형식이에요.</p>
+  <p class="lead">위에서 아래로, 이 순서대로 진행돼요. 의자에 앉아 이야기하시는 형식이에요.</p>
   {ab}
   <div class="flowcols{one}" style="margin-top:5mm">{flows}</div>
 
@@ -243,10 +239,16 @@ def build(name, t):
       <div><b style="color:var(--orange)">O</b>맞다고 생각하실 때</div>
       <div><b style="color:#c8442a">X</b>아니라고 생각하실 때</div>
     </div>
-    <p style="font-size:9.5pt;margin-top:2.5mm;color:#3a3f4b">태블릿에 문장이 뜨면 보자마자 O 또는 X로 답하고, <strong>한 줄 이유</strong>만 덧붙여 주세요. 짧고 분명할수록 좋아요.</p>
+    <p style="font-size:9.5pt;margin-top:2.5mm;color:#3a3f4b">태블릿에 문장이 뜨면 보자마자 O 또는 X로 답하고, <strong>한 줄 이유</strong>만 덧붙여 주세요.<br>짧고 분명할수록 좋아요.</p>
   </div>
 
-  <p class="lead" style="margin-top:5mm">본편이 끝나면 같은 자리에서 <b>짧은 추가 질문</b>을 몇 개 더 여쭤봐요. 한두 문장으로 편하게 답해 주시면 됩니다.</p>
+  <div class="note" style="margin-top:5mm">
+    <b>영상에는 선생님만 나와요</b>
+    대본을 외우실 필요는 없어요.<br>O/X 문장과 부모님 질문은 <strong>카메라 바로 아래 태블릿</strong>에 띄워 드리고, 이어지는 질문은 현장에서 말로 여쭤봐요.<br>질문하는 목소리는 편집에서 빠지고, 화면에는 질문 자막이 들어가요.<br>그래서 <strong>답의 첫 문장은 질문 없이도 뜻이 통하게</strong> 말씀해 주시면 좋아요.
+    <div class="tips"><div>예) {esc(t['restate'])}</div></div>
+  </div>
+
+  <p class="lead" style="margin-top:5mm">본편이 끝나면 같은 자리에서 <b>짧은 추가 질문</b>을 몇 개 더 여쭤봐요.<br>한두 문장으로 편하게 답해 주시면 됩니다.</p>
   {foot}
 </section>
 

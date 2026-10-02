@@ -7,7 +7,7 @@
 :root{--ink:#191c2b;--sub:#6b7080;--line:#e3e7ec;--paper:#ffffff;--yellow:#e6f9ed;--yellow-soft:#e6f9ed;--orange:#00c170;--orange-soft:#e6f9ed;--blue:#c2eed3;--blue-soft:#f3f5f8;--green-text:#0aa865;--green-deep:#0e955c}
 @page{size:A4;margin:0}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:P,sans-serif;color:var(--ink);background:var(--paper);font-size:10.5pt;line-height:1.55;word-break:keep-all}
+body{text-wrap:pretty;font-family:P,sans-serif;color:var(--ink);background:var(--paper);font-size:10.5pt;line-height:1.55;word-break:keep-all}
 .page{width:210mm;height:297mm;padding:16mm 16mm 14mm;position:relative;page-break-after:always;overflow:hidden}
 .page:last-child{page-break-after:auto}
 .foot{position:absolute;left:16mm;right:16mm;bottom:9mm;font-size:8pt;color:var(--sub);display:flex;justify-content:space-between}
@@ -16,7 +16,7 @@ body{font-family:P,sans-serif;color:var(--ink);background:var(--paper);font-size
 .hero:before{content:"";position:absolute;right:30mm;top:-14mm;width:30mm;height:30mm;border-radius:50%;background:#91e6b3;opacity:.7}
 .eyebrow img{height:7mm;display:block}
 .hero h1{font-size:25pt;font-weight:800;line-height:1.25;margin-top:4mm;position:relative;z-index:1}
-.hero p{margin-top:4mm;font-size:10.5pt;max-width:120mm;position:relative;z-index:1;color:#3a3f4b}
+.hero p{margin-top:4mm;font-size:10.5pt;max-width:135mm;position:relative;z-index:1;color:#3a3f4b}
 h2{font-size:14pt;font-weight:800;margin:7mm 0 3mm;display:flex;align-items:center;gap:2.5mm}
 h2 .num{display:inline-flex;width:7mm;height:7mm;border-radius:50%;background:var(--orange);color:#fff;font-size:9.5pt;align-items:center;justify-content:center}
 .cards{display:grid;grid-template-columns:1fr 1fr;gap:3.5mm}
@@ -88,30 +88,26 @@ td.time{font-weight:800;width:34mm}
   <div class="hero">
     <div class="eyebrow"><img src="assets/logo_navy.png" alt="REAL ACADEMY"></div>
     <h1>애니 선생님,<br>Q&amp;A 영상 촬영 안내드려요</h1>
-    <p>부모님들께 미리 받은 질문에 선생님이 직접 답해 주시는 영상이에요. 촬영 정보와 촬영 순서, 오시는 길을 정리했어요.</p>
+    <p>부모님들께 미리 받은 질문에 선생님이 직접 답해 주시는 영상이에요.<br>촬영 정보와 촬영 순서, 오시는 길을 정리했어요.</p>
   </div>
 
   <h2><span class="num">1</span>촬영 정보</h2>
   <div class="cards">
     <div class="card"><div class="k">날짜</div><div class="v">2026년 10월 10일 (토)</div></div>
     <div class="card"><div class="k">장소</div><div class="v">1028studio</div><div class="s">서울 서초구 강남대로109길 73-21 지하 1층<br>선생님 차량은 스튜디오에 주차할 수 있어요.</div></div>
-    <div class="card wide"><div class="k">타임테이블 · 애니 선생님 촬영 시간</div><div class="sched"><div><b>16:00 – 17:00</b><span>Q&amp;A 촬영</span><span class='tag'>Annie 선생님</span></div><div><b>17:00 – 19:00</b><span>마케팅 촬영</span><span class='tag'>Annie 선생님</span></div></div><div class="s" style="margin-top:2mm">※ 이 문서는 Q&amp;A 촬영 안내예요. 마케팅 촬영 내용은 별도로 정리해 전달드릴게요.</div></div>
+    <div class="card wide"><div class="k">타임테이블 · 애니 선생님 촬영 시간</div><div class="sched"><div><b>16:00 – 17:00</b><span>Q&amp;A 촬영</span><span class='tag'>Annie 선생님</span></div><div><b>17:00 – 19:00</b><span>마케팅 촬영</span><span class='tag'>Annie 선생님</span></div></div><div class="s" style="margin-top:2mm">※ 이 문서는 Q&amp;A 촬영 안내예요. 마케팅 촬영은 별도로 정리해 전달드릴게요.</div></div>
   </div>
 
   <h2><span class="num">2</span>어떤 영상인가요?</h2>
-  <p class="lead"><b>이 영상을 볼 분들</b> — AI가 번역도 요약도 다 해주는 시대에, 아이 영어 공부를 어디까지 어떻게 시켜야 할지 고민하는 초등 부모님들이에요.</p>
+  <p class="lead"><b>이 영상을 볼 분들</b><br>AI가 번역도 요약도 다 해주는 시대에,<br>아이 영어 공부를 어디까지, 어떻게 시켜야 할지 고민하는 초등 부모님들이에요.</p>
   <div class="parts one" style="margin-top:4mm"><div class="part"><div class="lb">본편</div><div class="tt">AI가 다 해주는데, 영어 공부 꼭 해야 하나요?</div><div class="story"><span class="ch">AI 시대 원서</span><i>→</i><span class="ch">ChatGPT 숙제</span><i>→</i><span class="ch">레벨테스트</span></div></div></div>
-  <div class="note" style="margin-top:5mm">
-    <b>영상에는 선생님만 나와요</b>
-    대본을 외우실 필요는 없어요. O/X 문장과 부모님 질문은 <strong>카메라 바로 아래 태블릿</strong>에 띄워 드리고, 이어지는 질문은 현장에서 말로 여쭤봐요. 질문하는 목소리는 편집에서 빠지고 화면에는 질문 자막이 들어가요. 그래서 <strong>답의 첫 문장은 질문 없이도 뜻이 통하게</strong> 말씀해 주시면 좋아요.
-    <div class="tips"><div>예) “AI가 대신할 수 없는 건 이거예요.”</div></div>
-  </div>
+
   <div class="foot"><span>리얼아카데미 · Q&amp;A 영상 촬영 안내</span><span>애니 선생님</span></div>
 </section>
 
 <section class="page">
   <h2 style="margin-top:0"><span class="num">3</span>촬영 흐름</h2>
-  <p class="lead">위에서 아래로 이 순서대로 진행돼요. 의자에 앉아 이야기하시는 형식이에요.</p>
+  <p class="lead">위에서 아래로, 이 순서대로 진행돼요. 의자에 앉아 이야기하시는 형식이에요.</p>
   
   <div class="flowcols one" style="margin-top:5mm"><div><h3>본편 · AI가 다 해주는데, 영어 공부 꼭 해야 하나요?</h3><div class="flow "><div class="step"><div class="dot">1</div><div><div class="t">인사</div><div class="d">짧은 자기소개와 오늘 다룰 질문 소개</div></div></div><div class="step"><div class="dot">2</div><div><div class="t">O/X 10문항</div><div class="d">짧은 질문들에 O 또는 X와 한 줄 이유로 답하기</div></div></div><div class="step q"><div class="dot">3</div><div><div class="t">솔직한 질문 ①</div><div class="d">AI가 다 해주는데, 원서 같은 걸 굳이 읽어야 할까</div></div></div><div class="step q"><div class="dot">4</div><div><div class="t">솔직한 질문 ②</div><div class="d">숙제를 ChatGPT로 해오는 아이, 막아야 할까</div></div></div><div class="step q"><div class="dot">5</div><div><div class="t">솔직한 질문 ③</div><div class="d">레벨테스트 점수, 믿어도 될까</div></div></div><div class="step"><div class="dot">6</div><div><div class="t">선생님의 솔직한 답</div><div class="d">AI가 언젠가 영어 선생님을 대체할까</div></div></div><div class="step"><div class="dot">7</div><div><div class="t">마무리 한 문장</div><div class="d">AI 시대에도 아이에게 영어가 필요한 이유</div></div></div></div></div></div>
 
@@ -121,10 +117,16 @@ td.time{font-weight:800;width:34mm}
       <div><b style="color:var(--orange)">O</b>맞다고 생각하실 때</div>
       <div><b style="color:#c8442a">X</b>아니라고 생각하실 때</div>
     </div>
-    <p style="font-size:9.5pt;margin-top:2.5mm;color:#3a3f4b">태블릿에 문장이 뜨면 보자마자 O 또는 X로 답하고, <strong>한 줄 이유</strong>만 덧붙여 주세요. 짧고 분명할수록 좋아요.</p>
+    <p style="font-size:9.5pt;margin-top:2.5mm;color:#3a3f4b">태블릿에 문장이 뜨면 보자마자 O 또는 X로 답하고, <strong>한 줄 이유</strong>만 덧붙여 주세요.<br>짧고 분명할수록 좋아요.</p>
   </div>
 
-  <p class="lead" style="margin-top:5mm">본편이 끝나면 같은 자리에서 <b>짧은 추가 질문</b>을 몇 개 더 여쭤봐요. 한두 문장으로 편하게 답해 주시면 됩니다.</p>
+  <div class="note" style="margin-top:5mm">
+    <b>영상에는 선생님만 나와요</b>
+    대본을 외우실 필요는 없어요.<br>O/X 문장과 부모님 질문은 <strong>카메라 바로 아래 태블릿</strong>에 띄워 드리고, 이어지는 질문은 현장에서 말로 여쭤봐요.<br>질문하는 목소리는 편집에서 빠지고, 화면에는 질문 자막이 들어가요.<br>그래서 <strong>답의 첫 문장은 질문 없이도 뜻이 통하게</strong> 말씀해 주시면 좋아요.
+    <div class="tips"><div>예) “AI가 대신할 수 없는 건 이거예요.”</div></div>
+  </div>
+
+  <p class="lead" style="margin-top:5mm">본편이 끝나면 같은 자리에서 <b>짧은 추가 질문</b>을 몇 개 더 여쭤봐요.<br>한두 문장으로 편하게 답해 주시면 됩니다.</p>
   <div class="foot"><span>리얼아카데미 · Q&amp;A 영상 촬영 안내</span><span>애니 선생님</span></div>
 </section>
 
@@ -132,13 +134,13 @@ td.time{font-weight:800;width:34mm}
 
   <h2 style="margin-top:0"><span class="num">4</span>솔직한 질문에 대해</h2>
   <div class="note">
-    이번 영상은 ‘AI가 다 해주는데 영어 공부를 해야 하나요?’처럼 부모님들이 요즘 가장 궁금해하는 질문들이에요. 질문이 날카롭게 느껴질 수 있지만, 선생님을 곤란하게 하려는 게 아니라 부모님들의 실제 고민을 대신 여쭤보는 거예요.
+    이번 영상은 ‘AI가 다 해주는데 영어 공부를 해야 하나요?’처럼<br>부모님들이 요즘 가장 궁금해하는 질문들로 구성했어요.<br>질문이 날카롭게 느껴질 수 있지만, 선생님을 곤란하게 하려는 게 아니라<br>부모님들의 실제 고민을 대신 여쭤보는 거예요.
     <div class="tips">
       <div><b>①</b>“그런 면도 있어요”</div>
       <div><b>②</b>“다만 이건 달라요”</div>
       <div><b>③</b>“그래서 이렇게 해보세요”</div>
     </div>
-    <p style="margin-top:2.5mm">이 순서로 답해 주시면 편해요. 부담되는 질문이 있으면 촬영 전에 미리 말씀해 주세요.</p>
+    <p style="margin-top:2.5mm">이 순서로 답해 주시면 편해요.<br>부담되는 질문이 있으면 촬영 전에 미리 말씀해 주세요.</p>
   </div>
 
   <h2><span class="num">5</span>오시는 길</h2>
