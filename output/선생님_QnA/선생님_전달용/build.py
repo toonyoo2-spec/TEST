@@ -134,7 +134,7 @@ h2 .num{display:inline-flex;width:7mm;height:7mm;border-radius:50%;background:va
 .p2f .dot{border-color:#5f8bc0;color:#3e6a9e}
 .step .t{font-weight:700;font-size:10.5pt}
 .step .d{font-size:9.5pt;color:var(--sub)}
-.step.q .t:after{content:"4단계";font-size:7.5pt;font-weight:700;color:#a6461a;background:var(--orange-soft);border-radius:20px;padding:.3mm 1.8mm;margin-left:2mm;vertical-align:1px}
+.step.q .t:after{content:"꼬리질문 있음";font-size:7.5pt;font-weight:700;color:#a6461a;background:var(--orange-soft);border-radius:20px;padding:.3mm 1.8mm;margin-left:2mm;vertical-align:1px}
 .flowcols{display:grid;grid-template-columns:1fr 1fr;gap:6mm}
 .flowcols.one,.parts.one{grid-template-columns:1fr}
 .flowcols h3{font-size:11.5pt;font-weight:800;margin-bottom:3mm}
@@ -237,11 +237,6 @@ def build(name, t):
   <p class="lead">위에서 아래로 이 순서대로 진행돼요. 의자에 앉아 이야기하시는 형식이에요.</p>
   {ab}
   <div class="flowcols{one}" style="margin-top:5mm">{flows}</div>
-
-  <div class="qbox">
-    <div class="h">‘질문’은 모두 같은 4단계로 진행돼요<small>흐름 안의 <b style="color:#a6461a">4단계</b> 표시</small></div>
-    <div class="qsteps">{qsteps}</div>
-  </div>
 
   <div class="qbox" style="border-color:var(--blue)">
     <div class="h">O/X는 이렇게 답해 주세요<small>정답 맞히기가 아니라 선생님의 생각이에요</small></div>
