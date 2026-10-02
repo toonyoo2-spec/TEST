@@ -8,7 +8,7 @@ SHOOT = {
     "place": "1028studio",
     "address": "서울 서초구 강남대로109길 73-21 지하 1층",
     "near": "3호선·신분당선 신사역 인근",
-    "parking": "선생님 차량은 스튜디오에 2대까지 주차할 수 있어요.",
+    "parking": "선생님 차량은 스튜디오에 주차할 수 있어요.",
 }
 
 TEACHERS = {
@@ -262,7 +262,7 @@ def build(name, t):
   {honest_sec}
 
   <h2{' style="margin-top:0"' if not t.get("honest") else ''}><span class="num">{5 if t.get("honest") else 4}</span>오시는 길</h2>
-  <div class="addr"><div><b>{SHOOT['place']}</b><br>{SHOOT['address']}</div><div style="text-align:right;color:var(--sub)">{SHOOT['near']}<br>선생님 차량 2대 주차 가능</div></div>
+  <div class="addr"><div><b>{SHOOT['place']}</b><br>{SHOOT['address']}</div><div style="text-align:right;color:var(--sub)">{SHOOT['near']}<br>선생님 차량 스튜디오 주차 가능</div></div>
   <div class="map"><img src="assets/map.png" alt="1028studio 위치 지도"></div>
   {foot}
 </section>
