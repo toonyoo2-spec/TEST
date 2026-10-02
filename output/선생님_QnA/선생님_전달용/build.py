@@ -16,7 +16,7 @@ TEACHERS = {
         "file": "줄리_선생님_촬영안내",
         "schedule": [
             ("13:00 – 15:00", "마케팅 촬영", "Julie & David 선생님"),
-            ("15:00 – 16:00", "Q&A 촬영", "Julie & David 선생님"),
+            ("15:00 – 16:00", "Q&A 촬영", "Julie 선생님"),
         ],
         "viewer": "초3 무렵 영어를 처음 시작하는 아이를 둔 부모님. 대치동 학원에 보내기 어려운 환경에서 ‘우리 아이만 늦은 건 아닐까’ 고민하는 분들이에요.",
         "parts": [
@@ -167,7 +167,7 @@ th,td{text-align:left;padding:2.6mm 3mm;border-bottom:1px solid var(--line)}
 th{font-size:8.5pt;color:var(--sub);font-weight:700}
 td.time{font-weight:800;width:34mm}
 .map{margin-top:3mm;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
-.map img{width:100%;height:50mm;object-fit:cover;object-position:52% 45%;display:block}
+.map img{width:100%;height:120mm;object-fit:cover;object-position:52% 45%;display:block}
 .addr{margin-top:0;display:flex;justify-content:space-between;gap:4mm;font-size:10pt}
 .addr b{font-size:11pt}
 """
@@ -196,7 +196,6 @@ def build(name, t):
     flows = "".join(f'<div><h3>{p["label"]} · {esc(p["title"])}</h3>{flow_html(p, "p2f" if i else "")}</div>' for i, p in enumerate(parts))
     ab = f'<p class="lead" style="margin-top:3mm;color:var(--sub)">{esc(t["ab"])}</p>' if t.get("ab") else ""
     honest = f'''<div class="note">
-    <b>솔직한 질문에 대해</b>
     {esc(t['honest'])}
     <div class="tips">
       <div><b>①</b>“그런 면도 있어요”</div>
@@ -205,6 +204,7 @@ def build(name, t):
     </div>
     <p style="margin-top:2.5mm">이 순서로 답해 주시면 편해요. 부담되는 질문이 있으면 촬영 전에 미리 말씀해 주세요.</p>
   </div>''' if t.get("honest") else ""
+    honest_sec = f'<h2 style="margin-top:0"><span class="num">4</span>솔직한 질문에 대해</h2>\n  {honest}' if t.get("honest") else ""
     foot = f'<div class="foot"><span>리얼아카데미 · Q&amp;A 영상 촬영 안내</span><span>{name} 선생님</span></div>'
     return f"""<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>{name} 선생님 촬영 안내</title><style>{CSS}</style></head><body>
 
@@ -212,7 +212,7 @@ def build(name, t):
   <div class="hero">
     <div class="eyebrow">REAL ACADEMY · Q&amp;A VIDEO</div>
     <h1>{name} 선생님,<br>Q&amp;A 영상 촬영 안내드려요</h1>
-    <p>부모님들께 미리 받은 질문에 선생님이 직접 답해 주시는 영상이에요. 촬영 순서와 미리 준비해 주실 내용을 한 장씩 정리했어요.</p>
+    <p>부모님들께 미리 받은 질문에 선생님이 직접 답해 주시는 영상이에요. 촬영 정보와 촬영 순서, 오시는 길을 정리했어요.</p>
   </div>
 
   <h2><span class="num">1</span>촬영 정보</h2>
@@ -258,12 +258,10 @@ def build(name, t):
 </section>
 
 <section class="page">
-  <h2 style="margin-top:0"><span class="num">4</span>미리 준비해 주세요</h2>
-  <ul class="prep">{prep}</ul>
 
-  {honest}
+  {honest_sec}
 
-  <h2><span class="num">5</span>오시는 길</h2>
+  <h2{' style="margin-top:0"' if not t.get("honest") else ''}><span class="num">{5 if t.get("honest") else 4}</span>오시는 길</h2>
   <div class="addr"><div><b>{SHOOT['place']}</b><br>{SHOOT['address']}</div><div style="text-align:right;color:var(--sub)">{SHOOT['near']}<br>선생님 차량 2대 주차 가능</div></div>
   <div class="map"><img src="assets/map.png" alt="1028studio 위치 지도"></div>
   {foot}
