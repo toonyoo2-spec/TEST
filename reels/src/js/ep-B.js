@@ -1,7 +1,7 @@
 /* B편: 수업이 집으로 오는 순간 — scene layer (the copy layer comes from data/B.json) */
 (function () {
   const { mk, svg, place, op, tf, P, E, lerp, lerpRect } = window.ENG;
-  const { C, Tablet, tabletRect, UI, icon, sub, tag, strokePath, drawPath, bez } = window.COMMON;
+  const { C, Tablet, tabletRect, UI, icon, sub, tag, strokePath, drawPath, bez, back } = window.COMMON;
 
   const LIVE_SRC = "../assets/derived/live_card_masked.png";   // 579 x 428, coins + time condition removed
   const LIVE_AR = 428 / 579;
@@ -55,14 +55,14 @@
       R.svg.style.zIndex = 2;
       // B01~B03: two places and a route
       R.daechi = mk("div", "abs", root);
-      R.daechi.style.cssText += `border:5px solid ${C.ink2};border-radius:32px;background:#fff`;
+      R.daechi.style.cssText += `border:6px solid ${C.ink};border-radius:32px;background:${C.bg}`;
       R.daechiLabel = sub("대치동", root);
       const defs = svg("defs", {}, R.svg);
       const mask = svg("mask", { id: "routeMask", maskUnits: "userSpaceOnUse", x: 0, y: 0, width: 1080, height: 1920 }, defs);
       const qd = `M${Q[0].x} ${Q[0].y} C ${Q[1].x} ${Q[1].y}, ${Q[2].x} ${Q[2].y}, ${Q[3].x} ${Q[3].y}`;
       R.routeReveal = strokePath(mask, qd, "#fff", 30);
       R.route = svg("path", { d: qd, fill: "none", stroke: C.line2, "stroke-width": 6, "stroke-dasharray": "4 18", "stroke-linecap": "round", mask: "url(#routeMask)" }, R.svg);
-      R.house1 = svg("path", { d: houseOutline(H1), fill: "#fff", stroke: C.ink2, "stroke-width": 5, "stroke-linejoin": "round", "stroke-linecap": "round" }, R.svg);
+      R.house1 = svg("path", { d: houseOutline(H1), fill: C.bg, stroke: C.ink, "stroke-width": 5, "stroke-linejoin": "round", "stroke-linecap": "round" }, R.svg);
       R.homeLabel = sub("우리 집", root); R.homeLabel.style.zIndex = 6;   // above the house outline svg
       R.pin = icon("pin", root); R.pin.style.zIndex = 6;
       R.lesson = lessonFrame(root);
@@ -82,7 +82,7 @@
       // B07: 커리큘럼 marker + equal-size concept cards, one highlighted (static)
       R.chip = tag("커리큘럼", root, true);
       R.frame7 = mk("div", "abs", root);
-      R.frame7.style.cssText += `border:5px solid ${C.line};border-radius:36px;background:#fff`;
+      R.frame7.style.cssText += `border:5px solid ${C.line};border-radius:36px;background:${C.bg}`;
       R.cards7 = [0, 1, 2].map((i) => {
         const c = mk("div", "card", root);
         const hi = i === 1;
@@ -91,7 +91,7 @@
         dot.style.cssText += `left:50%;top:56px;width:72px;height:72px;margin-left:-36px;border-radius:36px;background:${hi ? C.accent : C.line}`;
         [0, 1].forEach((k) => {
           const bar = mk("div", "abs", c);
-          bar.style.cssText += `left:36px;right:${k ? 70 : 36}px;top:${172 + k * 44}px;height:18px;border-radius:9px;background:${hi ? "#b9e2cb" : "#e2e7ec"}`;
+          bar.style.cssText += `left:36px;right:${k ? 70 : 36}px;top:${172 + k * 44}px;height:18px;border-radius:9px;background:${hi ? "#7c9a3a" : "#2f363f"}`;
         });
         return c;
       });
@@ -139,16 +139,16 @@
 
       if (f >= 186 && f < 351) {
         // 6.4~6.8s: the card grows out of its place on the home anchor, then holds 4.7s
-        const t = P(f, 192, 204, E.out);
+        const t = back(P(f, 192, 204, E.lin), 1.3);
         const from = R.tab.map(...UI.liveCard);
         place(R.live, lerpRect(from, LIVE_BIG, t));
-        op(R.live, (f < 192 ? 0 : Math.min(1, t * 2)) * (1 - P(f, 345, 351, E.lin)));
+        op(R.live, (f < 192 ? 0 : Math.min(1, Math.max(0, t) * 2)) * (1 - P(f, 345, 351, E.lin)));
       } else if (f >= 684) {
         place(R.live, LIVE_HOUSE); op(R.live, P(f, 684, 690, E.out));
       } else op(R.live, 0);
 
       if (f >= 348 && f < 417) {
-        const out = 1 - P(f, 411, 417, E.lin), a = P(f, 348, 354, E.out);
+        const out = 1 - P(f, 411, 417, E.lin), a = back(P(f, 348, 354, E.lin), 2.2);
         const rr = R.tab.map(...UI.timetableBtn);
         const ring = { x: rr.x - 5, y: rr.y - 5, w: rr.w + 10, h: rr.h + 10 };
         place(R.ring, ring); op(R.ring, a * out);
@@ -168,7 +168,7 @@
       if (f >= 414 && f < 552) {
         const a = P(f, 414, 420, E.out), out = 1 - P(f, 528, 534, E.lin), rise = (1 - a) * 18;
         place(R.chip, { x: 90, y: 720 + rise }); op(R.chip, a * out);
-        R.cards7.forEach((c, i) => { place(c, { x: 120 + i * 260, y: 886 + rise, w: 230, h: 360 }); op(c, a * out); });
+        R.cards7.forEach((c, i) => { const k = back(P(f, 414 + i, 420 + i, E.lin), 2); c.style.transformOrigin = "50% 100%"; tf(c, f < 422 ? `scale(${Math.max(0.01, k).toFixed(4)})` : ""); place(c, { x: 120 + i * 260, y: 886, w: 230, h: 360 }); op(c, Math.min(1, Math.max(0, k) * 2) * out); });
         const g = lerpRect(FRAME7, TAB_BIG, P(f, 528, 546));
         place(R.frame7, { x: g.x, y: g.y + rise, w: g.w, h: g.h });
         R.frame7.style.borderRadius = lerp(36, TAB_BIG.w * 0.045, P(f, 528, 546)) + "px";

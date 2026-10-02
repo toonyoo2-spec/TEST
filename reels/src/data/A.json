@@ -317,7 +317,8 @@
     "hold": 129,
     "out": 3,
     "rise": 0,
-    "layout": "slot"
+    "layout": "slot",
+    "maxSize": 112
    },
    "sub": [
     "학습 방식 예시"

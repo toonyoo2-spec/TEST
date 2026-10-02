@@ -1,7 +1,7 @@
 /* A편: 단어에서 내 문장으로 — scene layer (the copy layer comes from data/A.json) */
 (function () {
   const { mk, svg, place, op, tf, P, E, lerp, lerpRect } = window.ENG;
-  const { C, Tablet, tabletRect, UI, icon, placePencil, sub, tag, crop, setCrop, strokePath, drawPath } = window.COMMON;
+  const { C, Tablet, tabletRect, UI, icon, placePencil, sub, tag, crop, setCrop, strokePath, drawPath, back } = window.COMMON;
 
   const SLOT = { x: 90, y: 1080, w: 810, h: 190 };       // the empty sentence slot (A01) = the slot filled in A09
   const BLOCK0 = { x: 90, y: 760, w: 340, h: 156 };
@@ -25,7 +25,7 @@
       R.cursor = mk("div", "cursor", root);
       R.block = mk("div", "block", root);
       R.blockText = sub("apple", R.block, "");
-      R.blockText.style.cssText = "font-size:66px;font-weight:700;color:#fff;letter-spacing:-0.01em;line-height:1";
+      R.blockText.style.cssText = "font-size:66px;font-weight:700;color:#0e1013;letter-spacing:-0.01em;line-height:1";
       // A04~A05: tablet holding the sanitized real home capture
       R.tab = new Tablet(root, true);
       R.ring = mk("div", "ring", root);
@@ -105,8 +105,8 @@
         const rr = R.tab.map(...UI.gvWritingTab);
         const ring = { x: rr.x - 5, y: rr.y - 5, w: rr.w + 10, h: rr.h + 6 };
         place(R.ring, ring); op(R.ring, P(f, 196, 202, E.lin) * out);
-        const tz = P(f, 196, 206, E.out);
-        setCrop(R.crop, lerpRect(ring, CROP, tz), Math.min(1, tz * 1.6) * out);
+        const tz = back(P(f, 196, 206, E.lin), 1.4);
+        setCrop(R.crop, lerpRect(ring, CROP, tz), Math.min(1, Math.max(0, tz) * 1.6) * out);
         const x0 = ring.x + ring.w, y0 = ring.y + ring.h / 2;
         R.link.setAttribute("d", `M${x0} ${y0} C ${x0 + 70} ${y0}, ${CROP.x - 70} ${CROP.y + 50}, ${CROP.x} ${CROP.y + 50}`);
         drawPath(R.link, P(f, 198, 206), out);
@@ -129,7 +129,7 @@
         tf(R.sent, tm > 0 ? `scale(${lerp(1, sc, tm).toFixed(4)})` : "");
         // 10.8s (frame 324): only an "s" is added to the last word, underlined. Nothing else moves.
         const changed = f >= 324;
-        const k = changed ? Math.min(1, (f - 324 + 1) / 6) : 0;   // 324..329 transition, 330 = final
+        const k = changed ? Math.min(1, (f - 324 + 1) / 7) : 0;   // 324..329 transition (1/7..6/7), 330 = first still frame
         R.sS.style.display = changed ? "inline" : "none";
         op(R.sS, k);
         R.uline.style.width = R.m.uWidth + R.m.sWidth + "px";
@@ -142,7 +142,7 @@
         const out = 1 - P(f, 675, 681, E.lin);
         place(R.slotFilled, SLOT); op(R.slotFilled, out);
         place(R.tag, TAG9); op(R.tag, out);
-        op(R.sent, f < 546 ? 1 - P(f, 540, 546, E.lin) : 0);
+        op(R.sent, 0);                                     // handed over to the A09 copy line at the same place
         op(R.card, 0); op(R.uline, 0);
       } else { op(R.card, 0); op(R.slotFilled, 0); op(R.tag, 0); op(R.sent, 0); }
 
@@ -175,7 +175,7 @@
 
       // ---------------- A10: product (module icon in tablet silhouette) -> action (sentence slot)
       if (f >= 678) {
-        const a = P(f, 678, 684, E.out), b = P(f, 684, 690, E.out);
+        const a = back(P(f, 678, 684, E.lin)), b = back(P(f, 684, 690, E.lin));
         place(R.sil10, { x: SIL10.x, y: SIL10.y + (1 - a) * 18, w: SIL10.w, h: SIL10.h });
         R.sil10.style.borderRadius = SIL10.w * 0.045 + "px";
         op(R.sil10, a);

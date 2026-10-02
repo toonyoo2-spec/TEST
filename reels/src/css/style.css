@@ -1,5 +1,6 @@
 /* 임시 스타일 (TEMPORARY STYLE) — 브랜드 규정 미제공.
-   흰 배경 / 짙은 글자 / 강조색 1개의 중립 검토본. 브랜드 가이드 수령 시 아래 토큰만 교체. */
+   v2 타이포 중심: 짙은 배경 / 흰 글자 / 강조색 1개(라임: 앱 '오늘의 대치 라이브' 카드의 초록 계열).
+   브랜드 가이드 수령 시 아래 토큰만 교체. */
 @font-face {
   font-family: "Noto Sans KR VF";
   src: url("../../fonts/NotoSansKR-VF.ttf") format("truetype");
@@ -8,15 +9,15 @@
 }
 
 :root {
-  --bg: #ffffff;
-  --ink: #15181d;        /* 본문 */
-  --ink2: #565e69;       /* 보조 */
-  --line: #d6dce3;       /* 얇은 선 */
-  --line2: #aeb7c2;      /* 점선/빈 칸 */
-  --paper: #f3f5f7;      /* 카드 면 */
-  --accent: #0a8a58;     /* 강조색 1개 (앱 캡처의 초록 계열에서 명도만 낮춤) */
-  --accent-soft: #e3f4eb;
-  --copy-size: 80px;
+  --bg: #0e1013;         /* 배경 */
+  --ink: #ffffff;        /* 본문 */
+  --ink2: #9aa3ae;       /* 보조 */
+  --line: #2b3139;       /* 얇은 선 / 카드 테두리 */
+  --line2: #5d6672;      /* 점선 / 빈 칸 */
+  --paper: #191d23;      /* 카드 면 */
+  --accent: #c6f25e;     /* 강조색 1개 */
+  --accent-ink: #0e1013; /* 강조색 면 위 글자 */
+  --accent-soft: #252f17;
   --sub-size: 48px;
 }
 
@@ -25,102 +26,74 @@ html, body { margin: 0; padding: 0; background: var(--bg); }
 body { width: 1080px; height: 1920px; overflow: hidden; }
 
 #stage {
-  position: relative;
-  width: 1080px;
-  height: 1920px;
-  overflow: hidden;
+  position: relative; width: 1080px; height: 1920px; overflow: hidden;
   background: var(--bg);
-  font-family: "Noto Sans KR VF", sans-serif;
-  color: var(--ink);
-  -webkit-font-smoothing: antialiased;
-  font-kerning: normal;
+  font-family: "Noto Sans KR VF", sans-serif; color: var(--ink);
+  -webkit-font-smoothing: antialiased; font-kerning: normal;
 }
+/* keep every scene element on its own compositor layer: no late re-raster after an opacity change */
+#stage div, #stage svg, #stage img { will-change: opacity; }
 
 .abs { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
 .layer { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
 svg.layer { overflow: visible; }
 
-/* ---------- brand mark (fixed from frame 0) ---------- */
-#brand {
-  position: absolute; left: 90px; top: 250px;
-  height: 72px; padding: 0 30px;
-  display: flex; align-items: center;
-  background: var(--ink); border-radius: 36px;
-  z-index: 50;
-}
-#brand img { height: 42px; width: auto; display: block; }
+/* ---------- brand mark (fixed from frame 0, original white logo) ---------- */
+#brand { position: absolute; left: 80px; top: 252px; height: 48px; display: flex; align-items: center; z-index: 50; }
+#brand img { height: 40px; width: auto; display: block; }
 
-/* ---------- main copy ---------- */
+/* ---------- kinetic main copy ---------- */
 .copy { position: absolute; z-index: 40; white-space: nowrap; }
-.copy .line {
-  position: absolute; left: 0; white-space: nowrap;
-  font-size: var(--copy-size); line-height: 1.3; font-weight: 500;
-  letter-spacing: -0.02em; color: var(--ink);
+.copy .line { position: absolute; left: 0; overflow: hidden; white-space: nowrap; letter-spacing: -0.035em; }
+.copy .line .in { display: inline-block; font-weight: 500; color: var(--ink); will-change: transform; padding-right: 0.06em; }
+.copy .em, .cover .em {
+  display: inline-block; line-height: 1.16; vertical-align: baseline;
+  font-weight: 900; color: var(--accent-ink); background: var(--accent); letter-spacing: -0.045em;
+  padding: 0 0.07em; margin: 0 0.03em 0 -0.02em; border-radius: 0.08em;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
 }
-.copy .em, .cover .em { font-weight: 800; color: var(--accent); }
 
 /* ---------- 보조/장면 문자열 ---------- */
 .sub {
   position: absolute; white-space: nowrap;
-  font-size: var(--sub-size); line-height: 1.25; font-weight: 600;
-  letter-spacing: -0.01em; color: var(--ink2);
+  font-size: var(--sub-size); line-height: 1.25; font-weight: 600; letter-spacing: -0.01em; color: var(--ink2);
 }
 .tag {
-  position: absolute; white-space: nowrap;
-  height: 76px; padding: 0 28px; border-radius: 38px;
+  position: absolute; white-space: nowrap; height: 76px; padding: 0 28px; border-radius: 38px;
   display: flex; align-items: center;
-  font-size: var(--sub-size); font-weight: 600; letter-spacing: -0.01em;
-  color: var(--ink2); background: var(--paper); border: 3px solid var(--line);
+  font-size: var(--sub-size); font-weight: 700; letter-spacing: -0.01em;
+  color: var(--ink); background: transparent; border: 3px solid var(--line2);
 }
-.tag.accent { color: var(--accent); background: var(--accent-soft); border-color: transparent; font-weight: 700; }
+.tag.accent { color: var(--accent-ink); background: var(--accent); border-color: transparent; font-weight: 800; }
 
 /* ---------- shapes ---------- */
-.card {
-  position: absolute; background: var(--paper);
-  border: 3px solid var(--line); border-radius: 32px;
-}
-.slot {
-  position: absolute; background: #fff;
-  border: 5px dashed var(--line2); border-radius: 28px;
-}
-.slot.filled { border-style: solid; border-color: var(--accent); }
+.card { position: absolute; background: var(--paper); border: 3px solid var(--line); border-radius: 32px; }
+.slot { position: absolute; background: transparent; border: 6px dashed var(--line2); border-radius: 28px; }
+.slot.filled { border-style: solid; border-color: var(--accent); background: #13171c; }
 .block {
   position: absolute; background: var(--accent); border-radius: 28px;
   display: flex; align-items: center; justify-content: center;
-  color: #fff; font-weight: 700; letter-spacing: -0.01em;
+  color: var(--accent-ink); font-weight: 800; letter-spacing: -0.02em;
 }
-.cursor { position: absolute; width: 7px; background: var(--accent); border-radius: 3px; }
+.cursor { position: absolute; width: 8px; background: var(--accent); border-radius: 3px; }
 
-.tablet {
-  position: absolute; background: var(--ink); overflow: hidden;
-}
+.tablet { position: absolute; background: #2c323b; overflow: hidden; box-shadow: 0 0 0 3px #3d444f; }
 .tablet .screen { position: absolute; overflow: hidden; background: #fff; }
 .tablet .screen img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: block; }
-.silhouette {
-  position: absolute; border: 6px solid var(--ink2); background: transparent;
-}
+.silhouette { position: absolute; border: 7px solid var(--ink); background: transparent; }
 
 .crop {
   position: absolute; background: #fff; overflow: hidden;
-  border-radius: 28px; border: 3px solid var(--line);
-  box-shadow: 0 18px 40px rgba(21, 24, 29, 0.12);
+  border-radius: 28px; border: 3px solid #fff;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
 }
 .crop img { position: absolute; display: block; }
-.ring {
-  position: absolute; border: 5px solid var(--accent); border-radius: 14px;
-}
+.ring { position: absolute; border: 6px solid var(--accent); border-radius: 14px; }
 
 /* ---------- example sentence (A) ---------- */
-.sentence {
-  position: absolute; white-space: nowrap;
-  font-size: 72px; line-height: 1.3; font-weight: 600; letter-spacing: -0.01em; color: var(--ink);
-}
+.sentence { position: absolute; white-space: nowrap; line-height: 1.3; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
 .sentence .u { position: relative; display: inline-block; }
-.sentence .uline {
-  position: absolute; left: 0; bottom: 4px; height: 7px; border-radius: 4px;
-  background: var(--accent); transform-origin: 0 50%;
-}
+.sentence .uline { position: absolute; left: 0; bottom: 4px; height: 8px; border-radius: 4px; background: var(--accent); transform-origin: 0 50%; }
 
 /* ---------- cover ---------- */
 .cover { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
-#stage div, #stage svg, #stage img { will-change: opacity; }

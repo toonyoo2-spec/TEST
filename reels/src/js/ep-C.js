@@ -1,7 +1,7 @@
 /* C편: 공부 끝, 그다음의 확인 — scene layer (the copy layer comes from data/C.json) */
 (function () {
   const { mk, svg, place, op, tf, P, E, lerp, lerpRect } = window.ENG;
-  const { C, Tablet, tabletRect, UI, icon, sub, tag, strokePath, drawPath } = window.COMMON;
+  const { C, Tablet, tabletRect, UI, icon, sub, tag, strokePath, drawPath, back } = window.COMMON;
 
   const BOX = { x: 90, y: 740, w: 120, h: 120 };
   const EMPTY = { x: 90, y: 930, w: 810, h: 480 };          // the empty result card of C01
@@ -44,7 +44,7 @@
       // C01: 공부 끝 check + empty result card
       R.empty = mk("div", "slot", root); R.empty.style.borderRadius = "36px";
       R.box = mk("div", "abs", root);
-      R.box.style.cssText += `border:6px solid ${C.ink2};border-radius:28px;background:#fff`;
+      R.box.style.cssText += `border:7px solid ${C.ink};border-radius:28px;background:${C.bg}`;
       R.label = sub("공부 끝", root); R.label.style.color = C.ink; R.label.style.fontWeight = 700;
       R.checkA = strokePath(R.svg, pl(checkPts), C.accent, 13);
       R.checkB = svg("path", { d: pl(checkPts), fill: "none", stroke: C.accent, "stroke-width": 13, "stroke-linecap": "round", "stroke-linejoin": "round" }, R.svg);
@@ -67,12 +67,12 @@
       R.dots = [0, 1, 2, 3, 4, 5, 6].map(() => { const d = mk("div", "abs", root); d.style.cssText += `width:20px;height:20px;border-radius:10px;background:${C.line2}`; return d; });
       R.box9 = mk("div", "abs", root);
       R.box9.style.zIndex = 1;
-      R.box9.style.cssText += `border:4px solid ${C.line2};border-radius:36px;background:#fff`;
+      R.box9.style.cssText += `border:4px solid ${C.line2};border-radius:36px;background:${C.bg}`;
       R.doc9 = icon("doc", root); R.doc9.style.zIndex = 4;
       // C10
       R.tab10 = new Tablet(root, true);
       R.res10 = mk("div", "abs", root);
-      R.res10.style.cssText += `border:4px solid ${C.line2};border-radius:32px;background:#fff`;
+      R.res10.style.cssText += `border:4px solid ${C.line2};border-radius:32px;background:${C.bg}`;
       R.mw = resultCard(root, "w", null); R.ms = resultCard(root, "s", null);
       R.doc10 = icon("doc", root); R.doc10.style.zIndex = 4;
     },
@@ -113,7 +113,7 @@
       // C03: pencil stroke, then speech bubble, each appears once
       if (f >= 114 && f < 180) {
         const out = 1 - P(f, 174, 180, E.lin);
-        const a = P(f, 114, 120, E.out), b = P(f, 122, 128, E.out);
+        const a = back(P(f, 114, 120, E.lin), 2.2), b = back(P(f, 122, 128, E.lin), 2.2);
         place(R.pen, { x: CL.x + (CL.w - 170) / 2, y: CL.y + (CL.h - 170) / 2 + (1 - a) * 16, w: 170, h: 170 }); op(R.pen, a * out);
         place(R.bub, { x: CR.x + (CR.w - 170) / 2, y: CR.y + (CR.h - 170) / 2 + (1 - b) * 16, w: 170, h: 170 }); op(R.bub, b * out);
       } else { op(R.pen, 0); op(R.bub, 0); }
@@ -138,7 +138,7 @@
 
       // ---------------- C06~C09: result cards (explanatory) + 결과 확인 예시
       if (f >= 294 && f < 705) {
-        const a = P(f, 294, 300, E.out), out = 1 - P(f, 699, 705, E.lin), rise = (1 - a) * 14;
+        const a = back(P(f, 294, 300, E.lin), 1.6), out = 1 - P(f, 699, 705, E.lin), rise = (1 - a) * 60;
         const tg = P(f, 546, 566);
         place(R.tag, { x: lerp(TAG6.x, TAG9.x, tg), y: lerp(TAG6.y, TAG9.y, tg) + rise }); op(R.tag, a * out);
         const w = lerpRect(W6, W9, tg), s = lerpRect(S6, S9, tg);

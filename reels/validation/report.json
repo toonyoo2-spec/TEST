@@ -17,7 +17,7 @@
      "channels": 2,
      "duration": 30.0
     },
-    "size_bytes": 1851293,
+    "size_bytes": 2994779,
     "decode_errors": "none"
    },
    "file_silent": {
@@ -31,7 +31,7 @@
     "pix_fmt": "yuv420p",
     "codec": "h264",
     "audio": null,
-    "size_bytes": 1077813,
+    "size_bytes": 2180111,
     "decode_errors": "none"
    },
    "cover": {
@@ -42,8 +42,8 @@
     "audit": [
      {
       "text": "초등 영어",
-      "x": 438,
-      "y": 605,
+      "x": 114,
+      "y": 567,
       "w": 203,
       "h": 75,
       "fontSize": 52,
@@ -51,31 +51,31 @@
      },
      {
       "text": "단어는 아는데,",
-      "x": 257,
-      "y": 772,
-      "w": 566,
-      "h": 139,
-      "fontSize": 96,
+      "x": 80,
+      "y": 685,
+      "w": 647,
+      "h": 162,
+      "fontSize": 112,
       "ems": []
      },
      {
       "text": "문장은 왜 막힐까?",
-      "x": 192,
-      "y": 897,
-      "w": 695,
-      "h": 139,
-      "fontSize": 96,
+      "x": 78,
+      "y": 817,
+      "w": 812,
+      "h": 162,
+      "fontSize": 112,
       "ems": [
        "문장"
       ]
      },
      {
       "text": "리얼 아카데미",
-      "x": 385,
-      "y": 1270,
-      "w": 309,
-      "h": 79,
-      "fontSize": 54,
+      "x": 80,
+      "y": 1078,
+      "w": 340,
+      "h": 87,
+      "fontSize": 60,
       "ems": []
      }
     ]
@@ -348,9 +348,9 @@
       "문장은 왜 막힐까?"
      ],
      "issues": [],
-     "copy_size_px": 80,
-     "copy_size_at_360px": 26.7,
-     "copy_max_line_width": 583.5
+     "copy_size_px": "150/125",
+     "copy_size_at_360px": "50.0/41.7",
+     "copy_max_line_width": 916.6
     },
     {
      "cut": "A01",
@@ -409,9 +409,9 @@
       "직접 써보면?"
      ],
      "issues": [],
-     "copy_size_px": 80,
-     "copy_size_at_360px": 26.7,
-     "copy_max_line_width": 418.6
+     "copy_size_px": "150",
+     "copy_size_at_360px": "50.0",
+     "copy_max_line_width": 797.7
     },
     {
      "cut": "A03",
@@ -463,9 +463,9 @@
       "리얼 아카데미"
      ],
      "issues": [],
-     "copy_size_px": 80,
-     "copy_size_at_360px": 26.7,
-     "copy_max_line_width": 452.8
+     "copy_size_px": "150/150",
+     "copy_size_at_360px": "50.0/50.0",
+     "copy_max_line_width": 842.3
     },
     {
      "cut": "A05",
@@ -499,9 +499,9 @@
       "학습 방식 예시"
      ],
      "issues": [],
-     "copy_size_px": 80,
-     "copy_size_at_360px": 26.7,
-     "copy_max_line_width": 456.9
+     "copy_size_px": "150/150",
+     "copy_size_at_360px": "50.0/50.0",
+     "copy_max_line_width": 864
     },
     {
      "cut": "A06",
@@ -538,9 +538,9 @@
       "학습 방식 예시"
      ],
      "issues": [],
-     "copy_size_px": 80,
-     "copy_size_at_360px": 26.7,
-     "copy_max_line_width": 545.6
+     "copy_size_px": "150/134",
+     "copy_size_at_360px": "50.0/44.7",
+     "copy_max_line_width": 915.9
     },
     {
      "cut": "A07",
@@ -605,9 +605,9 @@
       "학습 방식 예시"
      ],
      "issues": [],
-     "copy_size_px": 80,
-     "copy_size_at_360px": 26.7,
-     "copy_max_line_width": 545.6
+     "copy_size_px": "112/112",
+     "copy_size_at_360px": "37.3/37.3",
+     "copy_max_line_width": 755.5
     },
     {
      "cut": "A09",
@@ -640,9 +640,9 @@
       "직접 써보세요"
      ],
      "issues": [],
-     "copy_size_px": 80,
-     "copy_size_at_360px": 26.7,
-     "copy_max_line_width": 596.8
+     "copy_size_px": "124/150",
+     "copy_size_at_360px": "41.3/50.0",
+     "copy_max_line_width": 915.8
     },
     {
      "cut": "A10",
@@ -673,9 +673,9 @@
       "프로필 링크에서 신청"
      ],
      "issues": [],
-     "copy_size_px": 80,
-     "copy_size_at_360px": 26.7,
-     "copy_max_line_width": 761.6
+     "copy_size_px": "96/108",
+     "copy_size_at_360px": "32.0/36.0",
+     "copy_max_line_width": 919.6
     },
     {
      "cut": "A11",
@@ -698,7 +698,7 @@
      "seconds": 0.4,
      "identical": true,
      "decoded_distinct_md5": 1,
-     "decoded_last_psnr": 51.19
+     "decoded_last_psnr": 47.59
     },
     {
      "cut": "A06",
@@ -708,7 +708,7 @@
      "seconds": 2.2,
      "identical": true,
      "decoded_distinct_md5": 1,
-     "decoded_last_psnr": 49.15
+     "decoded_last_psnr": 44.5
     },
     {
      "cut": "A06",
@@ -718,7 +718,7 @@
      "seconds": 2.5,
      "identical": true,
      "decoded_distinct_md5": 1,
-     "decoded_last_psnr": 41.86
+     "decoded_last_psnr": 38.48
     },
     {
      "cut": "A11",
@@ -728,7 +728,7 @@
      "seconds": 4.0,
      "identical": true,
      "decoded_distinct_md5": 1,
-     "decoded_last_psnr": 46.02
+     "decoded_last_psnr": 43.73
     }
    ],
    "decoded_frames": 900,
@@ -740,44 +740,44 @@
    "decoded_alignment": [
     {
      "frame": 42,
-     "psnr_vs_source": 48.74
+     "psnr_vs_source": 45.26
     },
     {
      "frame": 132,
-     "psnr_vs_source": 48.72
+     "psnr_vs_source": 44.87
     },
     {
      "frame": 219,
-     "psnr_vs_source": 45.8
+     "psnr_vs_source": 43.06
     },
     {
      "frame": 462,
-     "psnr_vs_source": 47.05
+     "psnr_vs_source": 44.65
     },
     {
      "frame": 609,
-     "psnr_vs_source": 44.55
+     "psnr_vs_source": 45.88
     },
     {
      "frame": 840,
-     "psnr_vs_source": 46.02
+     "psnr_vs_source": 43.73
     },
     {
      "frame": 324,
-     "psnr_vs_source": 48.85
+     "psnr_vs_source": 44.47
     },
     {
      "frame": 330,
-     "psnr_vs_source": 41.86
+     "psnr_vs_source": 38.48
     }
    ],
    "audio": {
     "loudness": {
-     "raw_I_LUFS": -23.5,
-     "raw_peak_dBFS": -6.4,
-     "gain_dB": 7.5,
-     "final_I_LUFS": -16.0,
-     "final_true_peak_dBTP": -1.4
+     "raw_I_LUFS": -22.3,
+     "raw_peak_dBFS": -5.4,
+     "gain_dB": 6.3,
+     "final_I_LUFS": -16.1,
+     "final_true_peak_dBTP": -1.9
     },
     "duck": [
      {
@@ -789,7 +789,7 @@
       "measured_dB": -6.0
      }
     ],
-    "fade_last_50ms_vs_29.0-29.4s_dB": -27.7,
+    "fade_last_50ms_vs_29.0-29.4s_dB": -29.9,
     "sfx_cues": [
      {
       "cut": "A01",
@@ -870,7 +870,7 @@
      }
     ],
     "sfx_starting_after_26s": [],
-    "bpm": 100
+    "bpm": 116
    }
   },
   "B": {
@@ -890,7 +890,7 @@
      "channels": 2,
      "duration": 30.0
     },
-    "size_bytes": 2315603,
+    "size_bytes": 3353997,
     "decode_errors": "none"
    },
    "file_silent": {
@@ -904,7 +904,7 @@
     "pix_fmt": "yuv420p",
     "codec": "h264",
     "audio": null,
-    "size_bytes": 1535470,
+    "size_bytes": 2545137,
     "decode_errors": "none"
    },
    "cover": {
@@ -915,8 +915,8 @@
     "audit": [
      {
       "text": "초등 영어",
-      "x": 438,
-      "y": 605,
+      "x": 114,
+      "y": 567,
       "w": 203,
       "h": 75,
       "fontSize": 52,
@@ -924,31 +924,31 @@
      },
      {
       "text": "대치동 영어 수업을",
-      "x": 172,
-      "y": 772,
-      "w": 736,
-      "h": 139,
-      "fontSize": 96,
+      "x": 80,
+      "y": 685,
+      "w": 842,
+      "h": 162,
+      "fontSize": 112,
       "ems": []
      },
      {
       "text": "우리 집에서?",
-      "x": 290,
-      "y": 897,
-      "w": 499,
-      "h": 139,
-      "fontSize": 96,
+      "x": 78,
+      "y": 817,
+      "w": 587,
+      "h": 162,
+      "fontSize": 112,
       "ems": [
        "우리 집"
       ]
      },
      {
       "text": "리얼 아카데미",
-      "x": 385,
-      "y": 1270,
-      "w": 309,
-      "h": 79,
-      "fontSize": 54,
+      "x": 80,
+      "y": 1078,
+      "w": 340,
+      "h": 87,
+      "fontSize": 60,
       "ems": []
      }
     ]
@@ -1223,9 +1223,9 @@
       "우리 집에서?"
      ],
      "issues": [],
-     "copy_size_px": 80,
-     "copy_size_at_360px": 26.7,
-     "copy_max_line_width": 617.6
+     "copy_size_px": "120/150",
+     "copy_size_at_360px": "40.0/50.0",
+     "copy_max_line_width": 915.6
     },
     {
      "cut": "B01",
@@ -1291,9 +1291,9 @@
       "우리 집"
      ],
      "issues": [],
-     "copy_size_px": 80,
-     "copy_size_at_360px": 26.7,
-     "copy_max_line_width": 452.8
+     "copy_size_px": "150/150",
+     "copy_size_at_360px": "50.0/50.0",
+     "copy_max_line_width": 861.8
     },
     {
      "cut": "B03",
@@ -1349,9 +1349,9 @@
       "오늘의 대치 라이브"
      ],
      "issues": [],
-     "copy_size_px": 80,
-     "copy_size_at_360px": 26.7,
-     "copy_max_line_width": 689.6
+     "copy_size_px": "108/150",
+     "copy_size_at_360px": "36.0/50.0",
+     "copy_max_line_width": 919.6
     },
     {
      "cut": "B05",
@@ -1383,9 +1383,9 @@
       "시간표를 확인하고"
      ],
      "issues": [],
-     "copy_size_px": 80,
-     "copy_size_at_360px": 26.7,
-     "copy_max_line_width": 596.8
+     "copy_size_px": "122",
+     "copy_size_at_360px": "40.7",
+     "copy_max_line_width": 915.6
     },
     {
      "cut": "B06",
@@ -1418,9 +1418,9 @@
       "커리큘럼"
      ],
      "issues": [],
-     "copy_size_px": 80,
-     "copy_size_at_360px": 26.7,
-     "copy_max_line_width": 617.6
+     "copy_size_px": "119/150",
+     "copy_size_at_360px": "39.7/50.0",
+     "copy_max_line_width": 917.5
     },
     {
      "cut": "B07",
@@ -1475,9 +1475,9 @@
       "집에서 듣는"
      ],
      "issues": [],
-     "copy_size_px": 80,
-     "copy_size_at_360px": 26.7,
-     "copy_max_line_width": 452.8
+     "copy_size_px": "150/150",
+     "copy_size_at_360px": "50.0/50.0",
+     "copy_max_line_width": 842.3
     },
     {
      "cut": "B09",
@@ -1509,9 +1509,9 @@
       "우리 집에서"
      ],
      "issues": [],
-     "copy_size_px": 77,
-     "copy_size_at_360px": 25.7,
-     "copy_max_line_width": 802.4
+     "copy_size_px": "150/88",
+     "copy_size_at_360px": "50.0/29.3",
+     "copy_max_line_width": 913
     },
     {
      "cut": "B10",
@@ -1543,9 +1543,9 @@
       "프로필 링크에서 신청"
      ],
      "issues": [],
-     "copy_size_px": 80,
-     "copy_size_at_360px": 26.7,
-     "copy_max_line_width": 761.6
+     "copy_size_px": "96/108",
+     "copy_size_at_360px": "32.0/36.0",
+     "copy_max_line_width": 919.6
     },
     {
      "cut": "B11",
@@ -1568,7 +1568,7 @@
      "seconds": 4.7,
      "identical": true,
      "decoded_distinct_md5": 1,
-     "decoded_last_psnr": 44.18
+     "decoded_last_psnr": 41.61
     },
     {
      "cut": "B06",
@@ -1578,7 +1578,7 @@
      "seconds": 1.9,
      "identical": true,
      "decoded_distinct_md5": 1,
-     "decoded_last_psnr": 42.83
+     "decoded_last_psnr": 38.47
     },
     {
      "cut": "B11",
@@ -1588,7 +1588,7 @@
      "seconds": 4.0,
      "identical": true,
      "decoded_distinct_md5": 1,
-     "decoded_last_psnr": 46.02
+     "decoded_last_psnr": 43.73
     }
    ],
    "decoded_frames": 900,
@@ -1600,36 +1600,36 @@
    "decoded_alignment": [
     {
      "frame": 39,
-     "psnr_vs_source": 49.13
+     "psnr_vs_source": 44.2
     },
     {
      "frame": 132,
-     "psnr_vs_source": 49.23
+     "psnr_vs_source": 45.2
     },
     {
      "frame": 267,
-     "psnr_vs_source": 44.18
+     "psnr_vs_source": 41.61
     },
     {
      "frame": 471,
-     "psnr_vs_source": 45.59
+     "psnr_vs_source": 42.14
     },
     {
      "frame": 618,
-     "psnr_vs_source": 45.97
+     "psnr_vs_source": 43.72
     },
     {
      "frame": 840,
-     "psnr_vs_source": 46.02
+     "psnr_vs_source": 43.73
     }
    ],
    "audio": {
     "loudness": {
-     "raw_I_LUFS": -23.4,
-     "raw_peak_dBFS": -8.2,
-     "gain_dB": 7.4,
-     "final_I_LUFS": -16.0,
-     "final_true_peak_dBTP": -1.5
+     "raw_I_LUFS": -22.1,
+     "raw_peak_dBFS": -6.1,
+     "gain_dB": 6.1,
+     "final_I_LUFS": -16.2,
+     "final_true_peak_dBTP": -1.7
     },
     "duck": [
      {
@@ -1641,7 +1641,7 @@
       "measured_dB": -6.0
      }
     ],
-    "fade_last_50ms_vs_29.0-29.4s_dB": -26.1,
+    "fade_last_50ms_vs_29.0-29.4s_dB": -29.2,
     "sfx_cues": [
      {
       "cut": "B01",
@@ -1715,7 +1715,7 @@
      }
     ],
     "sfx_starting_after_26s": [],
-    "bpm": 92
+    "bpm": 108
    }
   },
   "C": {
@@ -1735,7 +1735,7 @@
      "channels": 2,
      "duration": 30.0
     },
-    "size_bytes": 1981725,
+    "size_bytes": 3037574,
     "decode_errors": "none"
    },
    "file_silent": {
@@ -1749,7 +1749,7 @@
     "pix_fmt": "yuv420p",
     "codec": "h264",
     "audio": null,
-    "size_bytes": 1230740,
+    "size_bytes": 2259585,
     "decode_errors": "none"
    },
    "cover": {
@@ -1760,8 +1760,8 @@
     "audit": [
      {
       "text": "초등 영어",
-      "x": 438,
-      "y": 605,
+      "x": 114,
+      "y": 567,
       "w": 203,
       "h": 75,
       "fontSize": 52,
@@ -1769,31 +1769,31 @@
      },
      {
       "text": "공부는 끝났는데,",
-      "x": 214,
-      "y": 772,
-      "w": 652,
-      "h": 139,
-      "fontSize": 96,
+      "x": 80,
+      "y": 685,
+      "w": 746,
+      "h": 162,
+      "fontSize": 112,
       "ems": []
      },
      {
       "text": "오늘 남은 영어는?",
-      "x": 192,
-      "y": 897,
-      "w": 695,
-      "h": 139,
-      "fontSize": 96,
+      "x": 80,
+      "y": 817,
+      "w": 808,
+      "h": 162,
+      "fontSize": 112,
       "ems": [
        "남은 영어"
       ]
      },
      {
       "text": "리얼 아카데미",
-      "x": 385,
-      "y": 1270,
-      "w": 309,
-      "h": 79,
-      "fontSize": 54,
+      "x": 80,
+      "y": 1078,
+      "w": 340,
+      "h": 87,
+      "fontSize": 60,
       "ems": []
      }
     ]
@@ -2066,9 +2066,9 @@
       "오늘 남은 영어는?"
      ],
      "issues": [],
-     "copy_size_px": 80,
-     "copy_size_at_360px": 26.7,
-     "copy_max_line_width": 583.5
+     "copy_size_px": "136/125",
+     "copy_size_at_360px": "45.3/41.7",
+     "copy_max_line_width": 919.9
     },
     {
      "cut": "C01",
@@ -2123,9 +2123,9 @@
       "오늘 써보고"
      ],
      "issues": [],
-     "copy_size_px": 80,
-     "copy_size_at_360px": 26.7,
-     "copy_max_line_width": 418.6
+     "copy_size_px": "150/150",
+     "copy_size_at_360px": "50.0/50.0",
+     "copy_max_line_width": 797.7
     },
     {
      "cut": "C03",
@@ -2178,9 +2178,9 @@
       "학습 리포트"
      ],
      "issues": [],
-     "copy_size_px": 80,
-     "copy_size_at_360px": 26.7,
-     "copy_max_line_width": 452.8
+     "copy_size_px": "150/150",
+     "copy_size_at_360px": "50.0/50.0",
+     "copy_max_line_width": 842.3
     },
     {
      "cut": "C05",
@@ -2216,9 +2216,9 @@
       "아이의 쓰기·말하기"
      ],
      "issues": [],
-     "copy_size_px": 80,
-     "copy_size_at_360px": 26.7,
-     "copy_max_line_width": 619.1
+     "copy_size_px": "120/138",
+     "copy_size_at_360px": "40.0/46.0",
+     "copy_max_line_width": 917.9
     },
     {
      "cut": "C06",
@@ -2258,9 +2258,9 @@
       "얼마나 했는지,"
      ],
      "issues": [],
-     "copy_size_px": 80,
-     "copy_size_at_360px": 26.7,
-     "copy_max_line_width": 596.8
+     "copy_size_px": "150/123",
+     "copy_size_at_360px": "50.0/41.0",
+     "copy_max_line_width": 915.7
     },
     {
      "cut": "C07",
@@ -2333,9 +2333,9 @@
       "확인하는 방법"
      ],
      "issues": [],
-     "copy_size_px": 80,
-     "copy_size_at_360px": 26.7,
-     "copy_max_line_width": 452.8
+     "copy_size_px": "150/150",
+     "copy_size_at_360px": "50.0/50.0",
+     "copy_max_line_width": 861.8
     },
     {
      "cut": "C09",
@@ -2373,9 +2373,9 @@
       "함께 시작해요"
      ],
      "issues": [],
-     "copy_size_px": 80,
-     "copy_size_at_360px": 26.7,
-     "copy_max_line_width": 524.8
+     "copy_size_px": "139/150",
+     "copy_size_at_360px": "46.3/50.0",
+     "copy_max_line_width": 914.6
     },
     {
      "cut": "C10",
@@ -2407,9 +2407,9 @@
       "프로필 링크에서 신청"
      ],
      "issues": [],
-     "copy_size_px": 80,
-     "copy_size_at_360px": 26.7,
-     "copy_max_line_width": 761.6
+     "copy_size_px": "96/108",
+     "copy_size_at_360px": "32.0/36.0",
+     "copy_max_line_width": 919.6
     },
     {
      "cut": "C11",
@@ -2432,7 +2432,7 @@
      "seconds": 4.7,
      "identical": true,
      "decoded_distinct_md5": 1,
-     "decoded_last_psnr": 47.88
+     "decoded_last_psnr": 45.65
     },
     {
      "cut": "C11",
@@ -2442,7 +2442,7 @@
      "seconds": 4.0,
      "identical": true,
      "decoded_distinct_md5": 1,
-     "decoded_last_psnr": 46.02
+     "decoded_last_psnr": 43.73
     }
    ],
    "decoded_frames": 900,
@@ -2454,36 +2454,36 @@
    "decoded_alignment": [
     {
      "frame": 42,
-     "psnr_vs_source": 48.4
+     "psnr_vs_source": 43.96
     },
     {
      "frame": 141,
-     "psnr_vs_source": 45.92
+     "psnr_vs_source": 42.95
     },
     {
      "frame": 243,
-     "psnr_vs_source": 44.94
+     "psnr_vs_source": 42.28
     },
     {
      "frame": 495,
-     "psnr_vs_source": 45.1
+     "psnr_vs_source": 41.8
     },
     {
      "frame": 636,
-     "psnr_vs_source": 48.18
+     "psnr_vs_source": 45.86
     },
     {
      "frame": 840,
-     "psnr_vs_source": 46.02
+     "psnr_vs_source": 43.73
     }
    ],
    "audio": {
     "loudness": {
-     "raw_I_LUFS": -23.8,
-     "raw_peak_dBFS": -9.9,
-     "gain_dB": 7.8,
+     "raw_I_LUFS": -22.9,
+     "raw_peak_dBFS": -8.6,
+     "gain_dB": 6.9,
      "final_I_LUFS": -16.0,
-     "final_true_peak_dBTP": -2.1
+     "final_true_peak_dBTP": -2.2
     },
     "duck": [
      {
@@ -2495,7 +2495,7 @@
       "measured_dB": -6.0
      }
     ],
-    "fade_last_50ms_vs_29.0-29.4s_dB": -27.0,
+    "fade_last_50ms_vs_29.0-29.4s_dB": -27.1,
     "sfx_cues": [
      {
       "cut": "C01",
@@ -2562,7 +2562,7 @@
      }
     ],
     "sfx_starting_after_26s": [],
-    "bpm": 84
+    "bpm": 100
    }
   }
  },

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Loudness-normalise each synthesized mix (static gain to -16 LUFS, limiter ceiling -1.5 dBFS)
+"""Loudness-normalise each synthesized mix (static gain to -16 LUFS, limiter ceiling -2.5 dBFS)
 and mux it with the rendered video.  Also writes the silent master (video stream only).
 
   python3 scripts/mux.py    -> out/{A,B,C}.mp4 (with audio), out/{A,B,C}-silent.mp4, build/audio/loudness.json
@@ -28,7 +28,7 @@ for ep in "ABC":
     gain = TARGET - i0
     final_wav = ROOT / f"build/audio/{ep}-mix.wav"
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(raw), "-af",
-                    f"volume={gain:.2f}dB,alimiter=limit=0.8414:attack=3:release=60:level=false",
+                    f"volume={gain:.2f}dB,alimiter=limit=0.7499:attack=3:release=60:level=false",
                     "-c:a", "pcm_s16le", str(final_wav)], check=True)
     i1, p1 = ebur(final_wav)
     video = ROOT / f"build/{ep}-video.mp4"

@@ -96,7 +96,7 @@ async function renderVideo(browser, base, ep) {
     "-frames:v", String(N),
     "-vf", "scale=in_range=pc:out_range=tv:out_color_matrix=bt709,format=yuv420p",
     "-c:v", "libx264", "-preset", "slow", "-crf", "14", "-profile:v", "high", "-r", String(FPS),
-    "-force_key_frames", `expr:${keys}`, "-x264-params", `keyint=300:min-keyint=30:bframes=0:zones=${zones}`,
+    "-force_key_frames", `expr:${keys}`, "-x264-params", `keyint=300:min-keyint=30:bframes=0:weightp=0:no-mbtree=1:aq-mode=0:psy=0:zones=${zones}`,
     "-color_primaries", "bt709", "-color_trc", "bt709", "-colorspace", "bt709", "-color_range", "tv",
     "-movflags", "+faststart", outFile], { stdio: ["pipe", "inherit", "inherit"] });
   const hashes = [];

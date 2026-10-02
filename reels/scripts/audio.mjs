@@ -91,12 +91,12 @@ function noiseHit(b, t, amp, len, pan, seed, hp = 0.6) {
 
 // ------------------------------------------------------------------ BGM per episode
 const STYLE = {
-  // A: playful wooden mallets, 100 BPM, F major — "writing desk"
-  A: { bpm: 100, chords: [[53, 57, 60, 65], [50, 53, 57, 62], [46, 50, 53, 58], [48, 52, 55, 60]], lead: "mallet", padAmp: 0.05, seed: 11 },
-  // B: warm e-piano + pulse bass, 92 BPM, G major — "journey home"
-  B: { bpm: 92, chords: [[55, 59, 62, 67], [52, 55, 59, 64], [48, 52, 55, 60], [50, 54, 57, 62]], lead: "epiano", padAmp: 0.09, seed: 23 },
-  // C: glassy bells, 84 BPM, D major — "calm check"
-  C: { bpm: 84, chords: [[50, 54, 57, 62], [47, 50, 54, 59], [43, 47, 50, 55], [45, 49, 52, 57]], lead: "bell", padAmp: 0.07, seed: 37 },
+  // A: punchy wooden mallets, 116 BPM, F major — "writing desk"
+  A: { bpm: 116, chords: [[53, 57, 60, 65], [50, 53, 57, 62], [46, 50, 53, 58], [48, 52, 55, 60]], lead: "mallet", padAmp: 0.05, seed: 11 },
+  // B: e-piano + pulse bass, 108 BPM, G major — "journey home"
+  B: { bpm: 108, chords: [[55, 59, 62, 67], [52, 55, 59, 64], [48, 52, 55, 60], [50, 54, 57, 62]], lead: "epiano", padAmp: 0.09, seed: 23 },
+  // C: glassy bells, half-time groove, 100 BPM, D major — "calm check"
+  C: { bpm: 100, chords: [[50, 54, 57, 62], [47, 50, 54, 59], [43, 47, 50, 55], [45, 49, 52, 57]], lead: "bell", padAmp: 0.07, seed: 37 },
 };
 
 function makeBGM(ep, music) {
@@ -125,9 +125,10 @@ function makeBGM(ep, music) {
       if (ep !== "B" && s === 0) bass(b, t, mtof(root - 12), 0.13, bar * 0.9);
       // drums (absent during the duck .. rhythm return section)
       if (drums(t)) {
-        if (ep === "A") { if (s % 4 === 0) kick(b, t, 0.22); noiseHit(b, t + 0.004, s % 2 ? 0.02 : 0.035, 0.05, 0.3, 1000 + barI * 8 + s, 0.9); }
-        if (ep === "B") { if (s === 0 || s === 5) kick(b, t, 0.24); if (s === 4) noiseHit(b, t, 0.07, 0.16, 0, 2000 + barI, 0.4); noiseHit(b, t, 0.018, 0.04, -0.2, 3000 + barI * 8 + s, 0.95); }
-        if (ep === "C") { if (s === 0) kick(b, t, 0.16); if (s === 4) noiseHit(b, t, 0.03, 0.06, 0.25, 4000 + barI, 0.98); }
+        const clap = (amp) => { noiseHit(b, t, amp, 0.14, 0.05, 5000 + barI * 8 + s, 0.35); noiseHit(b, t + 0.011, amp * 0.7, 0.1, -0.05, 6000 + barI * 8 + s, 0.35); };
+        if (ep === "A") { if (s % 2 === 0) kick(b, t, 0.34); if (s === 2 || s === 6) clap(0.11); noiseHit(b, t + beat / 4, 0.03, 0.035, 0.3, 1000 + barI * 8 + s, 0.95); noiseHit(b, t, s % 2 ? 0.035 : 0.05, 0.05, -0.3, 1500 + barI * 8 + s, 0.95); }
+        if (ep === "B") { if (s % 2 === 0) kick(b, t, 0.36); if (s === 3) kick(b, t, 0.2); if (s === 2 || s === 6) clap(0.12); noiseHit(b, t, 0.035, 0.04, -0.2, 3000 + barI * 8 + s, 0.95); noiseHit(b, t + beat / 4, 0.025, 0.03, 0.2, 3500 + barI * 8 + s, 0.95); }
+        if (ep === "C") { if (s === 0 || s === 3) kick(b, t, 0.3); if (s === 4) clap(0.12); noiseHit(b, t, 0.03, 0.05, 0.25, 4000 + barI * 8 + s, 0.98); }
       }
     }
     void r;

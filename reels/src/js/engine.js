@@ -4,10 +4,11 @@
  * renderFrame(f) is the exact frame f. */
 (function () {
   const FPS = 30, W = 1080, H = 1920;
-  const X0 = 90, X1 = 900;               // core copy zone x (from the brief)
-  const COPY_TOP = 360;                  // main copy block top (below the brand mark)
-  const COPY_MAX = 80, COPY_MIN = 72;    // body copy size range used (brief: 72~84)
-  const LINE_H = 1.3;
+  const X0 = 80, X1 = 1000;              // kinetic copy measure (wider than the brief's 90~900 suggestion; above the Reels side buttons)
+  const COPY_TOP = 340;                  // main copy block top (below the brand mark)
+  const TYPE_MAX = 150, TYPE_MIN = 72;   // kinetic type: each line fills the 810px copy width within this range
+  const MASK_H = 1.36, LINE_ADV = 1.14;   // mask box height / line advance (x font size)
+  const LINE_H = LINE_ADV;
 
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
   const lerp = (a, b, t) => a + (b - a) * t;
@@ -82,53 +83,71 @@
   }
 
   // ---------------------------------------------------------------- copy layer
+  // Kinetic type: every line is sized to fill the copy width (TYPE_MIN..TYPE_MAX px),
+  // sits in its own mask and snaps up into place inside the 0.2s entry; it is fixed
+  // (position + size) for the whole hold and leaves upward through the mask in 0.1s.
   const copies = [];
   function buildCopy(cut) {
     const wrap = mk("div", "copy");
     wrap.dataset.cut = cut.id;
     const lines = cut.copy.lines.map((t, i) => {
-      const d = mk("div", "line", wrap, emphasize(t, cut.copy.emph));
+      const d = mk("div", "line", wrap);
+      const inner = mk("span", "in", d, emphasize(t, cut.copy.emph));
+      d.inner = inner;
       d.dataset.text = t; d.dataset.role = "copy"; d.dataset.cut = cut.id; d.dataset.line = i;
       return d;
     });
-    const c = { cut, wrap, lines, size: COPY_MAX, rise: cut.copy.rise != null ? cut.copy.rise : 18 };
+    const c = { cut, wrap, lines, sizes: [], size: TYPE_MAX };
     copies.push(c);
     return c;
   }
   function layoutCopy(c) {
-    // measure at max size, shrink uniformly (never below COPY_MIN) until every line fits X0..X1
-    let size = COPY_MAX;
-    const fit = () => Math.max(...c.lines.map((l) => l.getBoundingClientRect().width));
-    c.lines.forEach((l) => (l.style.fontSize = size + "px"));
-    let w = fit();
-    while (w > X1 - X0 && size > COPY_MIN) {
-      size -= 1;
-      c.lines.forEach((l) => (l.style.fontSize = size + "px"));
-      w = fit();
-    }
-    c.size = size;
-    c.maxWidth = w;
-    const lh = size * LINE_H;
-    const custom = window.EPISODE && EPISODE.copyLayout && EPISODE.copyLayout(c, lh);
+    const room = (c.cut.copy.maxWidth || X1 - X0);
+    c.sizes = c.lines.map((l) => {
+      l.style.fontSize = "100px";
+      const w = l.inner.getBoundingClientRect().width;
+      let s = Math.max(TYPE_MIN, Math.min(c.cut.copy.maxSize || TYPE_MAX, Math.floor((100 * room) / w)));
+      l.style.fontSize = s + "px";
+      while (l.inner.getBoundingClientRect().width > room && s > TYPE_MIN) { s -= 1; l.style.fontSize = s + "px"; }
+      return s;
+    });
+    c.size = c.sizes[0];
+    c.maxWidth = Math.max(...c.lines.map((l) => l.inner.getBoundingClientRect().width));
+    c.lines.forEach((l, i) => { l.style.height = c.sizes[i] * MASK_H + "px"; l.inner.style.lineHeight = c.sizes[i] * MASK_H + "px"; });
+    const custom = window.EPISODE && EPISODE.copyLayout && EPISODE.copyLayout(c, c.sizes[0] * MASK_H);
     if (!custom) {
       place(c.wrap, { x: X0, y: COPY_TOP });
-      c.lines.forEach((l, i) => { l.style.left = "0px"; l.style.top = i * lh + "px"; });
+      let y = 0;
+      c.lines.forEach((l, i) => { l.style.left = "0px"; l.style.top = y + "px"; y += c.sizes[i] * LINE_ADV; });
     }
   }
   function copyState(cut, f) {
     if (!cut.copy || f < cut.start || f >= cut.end) return null;
     const k = f - cut.start, c = cut.copy;
-    if (k < c.in) return { o: (k + 1) / (c.in + 1), p: (k + 1) / (c.in + 1), phase: "in" };
-    if (k < c.in + c.hold) return { o: 1, p: 1, phase: "hold" };
-    const j = k - c.in - c.hold;
-    return { o: 1 - (j + 1) / (c.out + 1), p: 1, phase: "out" };
+    if (k < c.in) return { k, phase: "in" };
+    if (k < c.in + c.hold) return { k, phase: "hold" };
+    return { k, j: k - c.in - c.hold, phase: "out" };
   }
+  const expoOut = (t) => (t >= 1 ? 1 : 1 - Math.pow(2, -10 * t));
   function renderCopy(f) {
     for (const c of copies) {
       const st = copyState(c.cut, f);
       if (!st) { op(c.wrap, 0); continue; }
-      op(c.wrap, st.o);
-      tf(c.wrap, st.phase === "in" && c.rise ? `translateY(${(c.rise * (1 - E.out(st.p))).toFixed(2)}px)` : "");
+      op(c.wrap, 1);
+      const n = c.lines.length, cp = c.cut.copy;
+      c.lines.forEach((l, i) => {
+        let y = 0;                                         // % of the mask height
+        if (st.phase === "in" && cp.rise === 0 && i === 0) {
+          y = 0;                                           // A09: line 1 is the example sentence that already arrived in the slot
+        } else if (st.phase === "in") {
+          const t = clamp((st.k + 1 - i) / (cp.in + 1 - i)); // 1-frame stagger, all lines land by the first hold frame
+          y = 110 * (1 - expoOut(t));
+        } else if (st.phase === "out") {
+          y = -110 * Math.pow((st.j + 1) / (cp.out + 1), 2);
+        }
+        tf(l.inner, y ? `translateY(${y.toFixed(2)}%)` : "");
+      });
+      void n;
     }
   }
 
@@ -151,12 +170,13 @@
 
     const ep = window.EPISODES[EP_ID];
     window.EPISODE = ep;
+    window.COMMON.buildWipe(DATA);
     ep.build(DATA);
     window.COMMON.buildCTA(DATA);
     for (const cut of DATA.cuts) if (cut.copy) buildCopy(cut);
 
     await document.fonts.load('500 80px "Noto Sans KR VF"', "가");
-    await document.fonts.load('800 80px "Noto Sans KR VF"', "가");
+    await document.fonts.load('900 80px "Noto Sans KR VF"', "가");
     await document.fonts.ready;
     await Promise.all([...document.images].map((im) => (im.decode ? im.decode().catch(() => {}) : null)));
     copies.forEach(layoutCopy);
@@ -168,6 +188,7 @@
   window.renderFrame = function (f) {
     window.__f = f;
     renderCopy(f);
+    window.COMMON.frameWipe(f);
     window.EPISODE.frame(f);
     window.COMMON.frameCTA(f);
   };
@@ -216,10 +237,10 @@
     }
     return { f, cut: cutAt(f).id, items };
   };
-  window.copyLayoutReport = () => copies.map((c) => ({ cut: c.cut.id, size: c.size, maxWidth: +c.maxWidth.toFixed(1) }));
+  window.copyLayoutReport = () => copies.map((c) => ({ cut: c.cut.id, size: c.size, sizes: c.sizes, maxWidth: +c.maxWidth.toFixed(1) }));
   window.copyStateAt = (f) => { const c = cutAt(f); return { cut: c.id, state: copyState(c, f) }; };
 
-  window.ENG = { FPS, W, H, X0, X1, COPY_TOP, LINE_H, clamp, lerp, E, P, inOut, lerpRect, mk, svg, place, op, tf, esc, emphasize, stage, cutAt };
+  window.ENG = { FPS, W, H, X0, X1, COPY_TOP, LINE_H, MASK_H, LINE_ADV, clamp, lerp, E, P, inOut, lerpRect, mk, svg, place, op, tf, esc, emphasize, stage, cutAt };
   window.EPISODES = window.EPISODES || {};
   window.addEventListener("load", () => boot().catch((e) => { window.__error = String(e && e.stack || e); }));
 })();

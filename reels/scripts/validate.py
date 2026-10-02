@@ -14,7 +14,7 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parents[1]
 V = ROOT / "validation"; (V / "sheets").mkdir(parents=True, exist_ok=True)
 FPS, N = 30, 900
-ZONE = dict(x0=90, x1=900, y0=250, y1=1500)
+ZONE = dict(x0=80, x1=1000, y0=250, y1=1500)   # v2 kinetic measure (brief suggestion was 90~900)
 # approximate Reels overlay (1080x1920): top bar, bottom caption/nav, right action column
 UI_BOXES = {"top": (0, 0, 1080, 220), "bottom": (0, 1500, 1080, 1920), "right": (930, 1000, 1080, 1700)}
 R = {"episodes": {}, "fails": [], "notes": []}
@@ -92,7 +92,7 @@ for ep in "ABC":
     cl = [a for a in E["cover"]["audit"] if a["text"] in data["cover"]["lines"]]
     if [a["text"] for a in cl] != data["cover"]["lines"]: fail(ep, "cover lines")
     for a in E["cover"]["audit"]:
-        if a["x"] < 90 or a["x"] + a["w"] > 990: fail(ep, f"cover text out of bounds: {a['text']}")
+        if a["x"] < 76 or a["x"] + a["w"] > 1004: fail(ep, f"cover text out of bounds: {a['text']}")
 
     # ---- 2. cut continuity
     cont = []
@@ -148,11 +148,11 @@ for ep in "ABC":
                 ems = [e["text"] for it in cl for e in it["ems"]]
                 want = [e for line in c["copy"]["lines"] for e in c["copy"]["emph"] if e in line]
                 if sorted(ems) != sorted(want): row["issues"].append(f"emphasis {ems} != {want}")
-                if any(e["weight"] != "800" for it in cl for e in it["ems"]): row["issues"].append("emphasis not bold")
-                row["copy_size_px"] = layout[c["id"]]["size"]
-                row["copy_size_at_360px"] = round(layout[c["id"]]["size"] / 3, 1)
+                if any(e["weight"] != "900" for it in cl for e in it["ems"]): row["issues"].append("emphasis not bold")
+                row["copy_size_px"] = "/".join(str(x) for x in layout[c["id"]]["sizes"])
+                row["copy_size_at_360px"] = "/".join(str(round(x / 3, 1)) for x in layout[c["id"]]["sizes"])
                 row["copy_max_line_width"] = layout[c["id"]]["maxWidth"]
-                if not 72 <= layout[c["id"]]["size"] <= 84: row["issues"].append("copy size outside 72~84")
+                if not all(72 <= x <= 150 for x in layout[c["id"]]["sizes"]): row["issues"].append("copy size outside 72~150")
             if tag_ == "mid":
                 need = c["sub"]
                 if c.get("subTiming"):
