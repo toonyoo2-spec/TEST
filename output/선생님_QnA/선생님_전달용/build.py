@@ -91,7 +91,7 @@ CSS = """
 @font-face{font-family:P;src:url(assets/Pretendard-SemiBold.woff2);font-weight:600}
 @font-face{font-family:P;src:url(assets/Pretendard-Bold.woff2);font-weight:700}
 @font-face{font-family:P;src:url(assets/Pretendard-ExtraBold.woff2);font-weight:800}
-:root{--ink:#24211c;--sub:#6b655b;--line:#e6dfd2;--paper:#fffdf8;--yellow:#fbe7a1;--yellow-soft:#fff6d9;--orange:#e8692e;--orange-soft:#fde3d4;--blue:#8fb0d6;--blue-soft:#e6eef8}
+:root{--ink:#191c2b;--sub:#6b7080;--line:#e3e7ec;--paper:#ffffff;--yellow:#e6f9ed;--yellow-soft:#e6f9ed;--orange:#00c170;--orange-soft:#e6f9ed;--blue:#c2eed3;--blue-soft:#f3f5f8;--green-text:#0aa865;--green-deep:#0e955c}
 @page{size:A4;margin:0}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:P,sans-serif;color:var(--ink);background:var(--paper);font-size:10.5pt;line-height:1.55;word-break:keep-all}
@@ -99,11 +99,11 @@ body{font-family:P,sans-serif;color:var(--ink);background:var(--paper);font-size
 .page:last-child{page-break-after:auto}
 .foot{position:absolute;left:16mm;right:16mm;bottom:9mm;font-size:8pt;color:var(--sub);display:flex;justify-content:space-between}
 .hero{background:var(--yellow);border-radius:14px;padding:10mm 11mm 8mm;position:relative;overflow:hidden}
-.hero:after{content:"";position:absolute;right:-18mm;bottom:-22mm;width:62mm;height:62mm;border-radius:50%;background:var(--orange);opacity:.9}
-.hero:before{content:"";position:absolute;right:30mm;top:-14mm;width:30mm;height:30mm;border-radius:50%;background:var(--blue);opacity:.55}
-.eyebrow{font-size:9pt;font-weight:700;letter-spacing:.08em;color:#8a5a12}
+.hero:after{content:"";position:absolute;right:-18mm;bottom:-22mm;width:62mm;height:62mm;border-radius:50%;background:#00d37a;opacity:.9}
+.hero:before{content:"";position:absolute;right:30mm;top:-14mm;width:30mm;height:30mm;border-radius:50%;background:#91e6b3;opacity:.7}
+.eyebrow img{height:7mm;display:block}
 .hero h1{font-size:25pt;font-weight:800;line-height:1.25;margin-top:4mm;position:relative;z-index:1}
-.hero p{margin-top:4mm;font-size:10.5pt;max-width:120mm;position:relative;z-index:1;color:#4a4336}
+.hero p{margin-top:4mm;font-size:10.5pt;max-width:120mm;position:relative;z-index:1;color:#3a3f4b}
 h2{font-size:14pt;font-weight:800;margin:7mm 0 3mm;display:flex;align-items:center;gap:2.5mm}
 h2 .num{display:inline-flex;width:7mm;height:7mm;border-radius:50%;background:var(--orange);color:#fff;font-size:9.5pt;align-items:center;justify-content:center}
 .cards{display:grid;grid-template-columns:1fr 1fr;gap:3.5mm}
@@ -116,13 +116,13 @@ h2 .num{display:inline-flex;width:7mm;height:7mm;border-radius:50%;background:va
 .sched div{display:flex;gap:4mm;align-items:baseline;margin-top:1mm}
 .sched b{font-size:11pt;min-width:30mm}
 .sched span{font-size:10pt}
-.tag{display:inline-block;font-size:8pt;font-weight:700;padding:.6mm 2.2mm;border-radius:20px;background:var(--orange-soft);color:#a6461a;margin-left:1.5mm}
-.lead{font-size:10.5pt;color:#3d382f}
+.tag{display:inline-block;font-size:8pt;font-weight:700;padding:.6mm 2.2mm;border-radius:20px;background:var(--orange-soft);color:var(--green-deep);margin-left:1.5mm}
+.lead{font-size:10.5pt;color:#3a3f4b}
 .parts{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
 .part{border-radius:12px;padding:5mm;background:var(--yellow-soft)}
 .part.p2{background:var(--blue-soft)}
 .part .lb{font-size:8.5pt;font-weight:800;color:var(--orange)}
-.part.p2 .lb{color:#3e6a9e}
+.part.p2 .lb{color:var(--green-text)}
 .part .tt{font-size:12.5pt;font-weight:800;margin-top:1mm;line-height:1.35}
 .story{display:flex;flex-wrap:wrap;gap:1.5mm;margin-top:3mm;align-items:center;font-size:9pt;font-weight:600}
 .story span.ch{background:#fff;border-radius:20px;padding:.8mm 2.6mm}
@@ -131,10 +131,10 @@ h2 .num{display:inline-flex;width:7mm;height:7mm;border-radius:50%;background:va
 .step{display:flex;gap:4mm;align-items:flex-start;position:relative;padding-bottom:3.2mm}
 .step:not(:last-child):before{content:"";position:absolute;left:3.5mm;top:7mm;bottom:0;width:2px;background:var(--line)}
 .dot{flex:0 0 7mm;height:7mm;border-radius:50%;background:#fff;border:2px solid var(--orange);color:var(--orange);font-weight:800;font-size:9pt;display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
-.p2f .dot{border-color:#5f8bc0;color:#3e6a9e}
+.p2f .dot{border-color:var(--green-text);color:var(--green-text)}
 .step .t{font-weight:700;font-size:10.5pt}
 .step .d{font-size:9.5pt;color:var(--sub)}
-.step.q .t:after{content:"꼬리질문 있음";font-size:7.5pt;font-weight:700;color:#a6461a;background:var(--orange-soft);border-radius:20px;padding:.3mm 1.8mm;margin-left:2mm;vertical-align:1px}
+.step.q .t:after{content:"꼬리질문 있음";font-size:7.5pt;font-weight:700;color:var(--green-deep);background:var(--orange-soft);border-radius:20px;padding:.3mm 1.8mm;margin-left:2mm;vertical-align:1px}
 .flowcols{display:grid;grid-template-columns:1fr 1fr;gap:6mm}
 .flowcols.one,.parts.one{grid-template-columns:1fr}
 .flowcols h3{font-size:11.5pt;font-weight:800;margin-bottom:3mm}
@@ -145,7 +145,7 @@ h2 .num{display:inline-flex;width:7mm;height:7mm;border-radius:50%;background:va
 .qsteps{display:flex;align-items:stretch;gap:2mm;margin-top:3mm}
 .qs{flex:1;background:var(--orange-soft);border-radius:8px;padding:2.5mm 3mm}
 .qs b{display:block;font-size:9.5pt}
-.qs span{font-size:8.5pt;color:#6e4a35}
+.qs span{font-size:8.5pt;color:var(--green-deep)}
 .arrow{align-self:center;color:var(--orange);font-weight:800}
 .ox{display:grid;grid-template-columns:repeat(2,1fr);gap:2.5mm;margin-top:3mm}
 .ox div{border-radius:8px;background:#fff;border:1px solid var(--line);padding:2.5mm 3mm;font-size:9pt}
@@ -155,12 +155,12 @@ h2 .num{display:inline-flex;width:7mm;height:7mm;border-radius:50%;background:va
 .prep li:last-child{border-bottom:0}
 .chk{flex:0 0 5.5mm;height:5.5mm;border:2px solid var(--orange);border-radius:4px;margin-top:.6mm}
 .prep b{display:block;font-size:10.5pt}
-.prep span{font-size:9.5pt;color:#4a4336}
+.prep span{font-size:9.5pt;color:#3a3f4b}
 .note{background:var(--blue-soft);border-radius:12px;padding:4.5mm 5mm;font-size:9.5pt;margin-top:4mm}
 .note b{display:block;font-size:10.5pt;margin-bottom:1mm}
 .tips{display:flex;gap:2mm;margin-top:2.5mm}
 .tips div{flex:1;background:#fff;border-radius:8px;padding:2.2mm 3mm;font-size:9pt}
-.tips div b{display:inline;font-size:9pt;color:#3e6a9e;margin:0 1mm 0 0}
+.tips div b{display:inline;font-size:9pt;color:var(--green-text);margin:0 1mm 0 0}
 table{width:100%;border-collapse:collapse;font-size:10pt}
 th,td{text-align:left;padding:2.6mm 3mm;border-bottom:1px solid var(--line)}
 th{font-size:8.5pt;color:var(--sub);font-weight:700}
@@ -209,7 +209,7 @@ def build(name, t):
 
 <section class="page">
   <div class="hero">
-    <div class="eyebrow">REAL ACADEMY · Q&amp;A VIDEO</div>
+    <div class="eyebrow"><img src="assets/logo_navy.png" alt="REAL ACADEMY"></div>
     <h1>{name} 선생님,<br>Q&amp;A 영상 촬영 안내드려요</h1>
     <p>부모님들께 미리 받은 질문에 선생님이 직접 답해 주시는 영상이에요. 촬영 정보와 촬영 순서, 오시는 길을 정리했어요.</p>
   </div>
@@ -241,10 +241,10 @@ def build(name, t):
   <div class="qbox" style="border-color:var(--blue)">
     <div class="h">O/X는 이렇게 답해 주세요<small>정답 맞히기가 아니라 선생님의 생각이에요</small></div>
     <div class="ox">
-      <div><b style="color:#2f8f5b">O</b>맞다고 생각하실 때</div>
+      <div><b style="color:var(--orange)">O</b>맞다고 생각하실 때</div>
       <div><b style="color:#c8442a">X</b>아니라고 생각하실 때</div>
     </div>
-    <p style="font-size:9.5pt;margin-top:2.5mm;color:#4a4336">태블릿에 문장이 뜨면 보자마자 O 또는 X로 답하고, <strong>한 줄 이유</strong>만 덧붙여 주세요. 짧고 분명할수록 좋아요.</p>
+    <p style="font-size:9.5pt;margin-top:2.5mm;color:#3a3f4b">태블릿에 문장이 뜨면 보자마자 O 또는 X로 답하고, <strong>한 줄 이유</strong>만 덧붙여 주세요. 짧고 분명할수록 좋아요.</p>
   </div>
 
   <p class="lead" style="margin-top:5mm">본편이 끝나면 같은 자리에서 <b>짧은 추가 질문</b>을 몇 개 더 여쭤봐요. 한두 문장으로 편하게 답해 주시면 됩니다.</p>
