@@ -26,7 +26,7 @@ TEACHERS = {
                 "story": ["늦은 걸까?", "무엇부터?", "잘 가고 있을까?"],
                 "flow": [
                     ("인사", "짧은 자기소개와 오늘 다룰 고민 소개"),
-                    ("O/X 10문항", "카드 문장을 읽고 O/X/△와 한 줄 이유"),
+                    ("O/X 10문항", "카드 문장을 읽고 O 또는 X와 한 줄 이유"),
                     ("부모님 질문 ①", "시작 시기와 대치동 아이들과의 차이"),
                     ("부모님 질문 ②", "파닉스·단어·원서·문법, 무엇부터 시작할까"),
                     ("속마음 한마디", "아이가 영어를 재미있어한다고 느끼는 순간"),
@@ -50,12 +50,13 @@ TEACHERS = {
             },
         ],
         "prepare": [
-            ("소개 정보 확인", "자막에 들어갈 경력과 소속을 확인해 주세요. 현재 ‘대치동 15년차 · 리얼아카데미 대치 라이브’로 준비하고 있어요."),
+            ("소개 정보 확인", "자막에 들어갈 경력과 소속은 담당 팀에서 따로 여쭤보고 정리해 드려요."),
             ("가르친 아이들의 사례", "질문마다 “실제로 그런 아이가 있었나요?”를 여쭤봐요. 초3에 시작해 빠르게 따라온 아이, 원서와 문제집에서 차이가 났던 아이처럼 떠오르는 사례를 2~3개 생각해 와 주세요. 이름 등 개인정보는 빼고 말씀해 주시면 됩니다."),
             ("바로 해볼 수 있는 행동", "질문마다 마지막에 “부모님이 이번 주에 해볼 한 가지”를 여쭤봐요. 구체적인 행동일수록 좋아요."),
             ("짧은 시연", "1부 두 번째 질문에서 ‘첫 책을 읽는 10분’을 부모님 입장에서 실제로 말하듯 보여주시는 장면을 부탁드릴 예정이에요."),
             ("마무리 한 문장", "1부·2부 끝에 한 문장씩 여쭤봐요. 미리 생각해 두시면 편해요."),
         ],
+        "restate": "“그럼 늦었는지 아닌지는 나이 말고 뭘로 판단하느냐면요, …”",
         "honest": "2부는 부모님들이 속으로는 궁금하지만 선생님께 대놓고 묻기 어려웠던 질문들이에요. 질문이 날카롭게 느껴질 수 있지만, 선생님을 곤란하게 하려는 게 아니라 부모님들의 실제 고민을 대신 여쭤보는 거예요.",
     },
     "애니": {
@@ -72,7 +73,7 @@ TEACHERS = {
                 "story": ["부모의 역할", "책 읽기", "단어"],
                 "flow": [
                     ("인사", "짧은 자기소개와 오늘 다룰 고민 소개"),
-                    ("O/X 10문항", "카드 문장을 읽고 O/X/△와 한 줄 이유"),
+                    ("O/X 10문항", "카드 문장을 읽고 O 또는 X와 한 줄 이유"),
                     ("부모님 질문 ①", "부모가 영어를 잘 못해도 도와줄 수 있을까"),
                     ("부모님 질문 ②", "영어책만 펴면 도망가는 아이"),
                     ("번개 O/X 2문항", "책 읽기에 대한 빠른 판정"),
@@ -94,19 +95,20 @@ TEACHERS = {
             },
         ],
         "prepare": [
-            ("소개 정보 확인", "자막에 들어갈 경력 연차, 주로 가르치는 학년, 수업 특징을 미리 알려주세요."),
+            ("소개 정보 확인", "자막에 들어갈 경력과 소속은 담당 팀에서 따로 여쭤보고 정리해 드려요."),
             ("가르친 아이들·부모님 사례", "질문마다 “실제로 그런 경우가 있었나요?”를 여쭤봐요. 영어에 자신 없던 부모님이 잘 도와주신 사례, 책을 싫어하던 아이가 달라진 계기처럼 떠오르는 사례를 2~3개 생각해 와 주세요. 이름 등 개인정보는 빼고 말씀해 주시면 됩니다."),
             ("오늘 저녁 바로 해볼 행동", "질문마다 마지막에 “오늘 집에서 해볼 한 가지”를 여쭤봐요. 특히 ‘오늘 저녁 10분 함께 읽기’는 시작·중간·끝으로 나눠 말씀해 주시면 좋아요."),
             ("짧은 시연", "부모님이 아이에게 실제로 할 말을 선생님이 직접 말하듯 보여주시는 장면을 부탁드릴 예정이에요."),
             ("AI에 대한 생각", "2부에서는 AI 번역·요약·ChatGPT 숙제·AI 영어 대화 앱에 대해 여쭤봐요. 수업에서 본 아이들의 모습과 집에서 AI를 쓸 때의 규칙 한 가지를 생각해 와 주세요."),
             ("마무리 한 문장", "1부·2부 끝에 한 문장씩 여쭤봐요. 미리 생각해 두시면 편해요."),
         ],
+        "restate": "“부모가 영어를 잘 못해도 도와줄 수 있느냐고 물으신다면요, …”",
         "honest": "2부는 ‘AI가 다 해주는데 영어 공부를 해야 하나요?’처럼 부모님들이 요즘 가장 궁금해하는 질문들이에요. 질문이 날카롭게 느껴질 수 있지만, 선생님을 곤란하게 하려는 게 아니라 부모님들의 실제 고민을 대신 여쭤보는 거예요.",
     },
 }
 
 QUESTION_STEPS = [
-    ("부모님 사연", "실제 부모님 질문을 읽어드려요"),
+    ("질문 읽기", "선생님이 질문을 직접 소리 내어 읽어요"),
     ("판단 기준", "선생님은 무엇을 보고 판단하시는지"),
     ("실제 경험", "가르치며 만난 아이·부모님 이야기"),
     ("바로 해볼 한 가지", "부모님이 이번 주에 해볼 행동"),
@@ -125,7 +127,7 @@ body{font-family:P,sans-serif;color:var(--ink);background:var(--paper);font-size
 .page{width:210mm;height:297mm;padding:16mm 16mm 14mm;position:relative;page-break-after:always;overflow:hidden}
 .page:last-child{page-break-after:auto}
 .foot{position:absolute;left:16mm;right:16mm;bottom:9mm;font-size:8pt;color:var(--sub);display:flex;justify-content:space-between}
-.hero{background:var(--yellow);border-radius:14px;padding:13mm 11mm 10mm;position:relative;overflow:hidden}
+.hero{background:var(--yellow);border-radius:14px;padding:10mm 11mm 8mm;position:relative;overflow:hidden}
 .hero:after{content:"";position:absolute;right:-18mm;bottom:-22mm;width:62mm;height:62mm;border-radius:50%;background:var(--orange);opacity:.9}
 .hero:before{content:"";position:absolute;right:30mm;top:-14mm;width:30mm;height:30mm;border-radius:50%;background:var(--blue);opacity:.55}
 .eyebrow{font-size:9pt;font-weight:700;letter-spacing:.08em;color:#8a5a12}
@@ -173,7 +175,7 @@ h2 .num{display:inline-flex;width:7mm;height:7mm;border-radius:50%;background:va
 .qs b{display:block;font-size:9.5pt}
 .qs span{font-size:8.5pt;color:#6e4a35}
 .arrow{align-self:center;color:var(--orange);font-weight:800}
-.ox{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5mm;margin-top:3mm}
+.ox{display:grid;grid-template-columns:repeat(2,1fr);gap:2.5mm;margin-top:3mm}
 .ox div{border-radius:8px;background:#fff;border:1px solid var(--line);padding:2.5mm 3mm;font-size:9pt}
 .ox b{font-size:13pt;margin-right:1.5mm}
 .prep{counter-reset:p}
@@ -229,9 +231,8 @@ def build(name, t):
   <h2><span class="num">1</span>촬영 정보</h2>
   <div class="cards">
     <div class="card"><div class="k">날짜</div><div class="v">{SHOOT['date']}</div></div>
-    <div class="card"><div class="k">장소</div><div class="v">{SHOOT['place']}</div><div class="s">{SHOOT['address']}</div></div>
+    <div class="card"><div class="k">장소</div><div class="v">{SHOOT['place']}</div><div class="s">{SHOOT['address']}<br>{SHOOT['parking']}</div></div>
     <div class="card wide"><div class="k">타임테이블 · {name} 선생님 촬영 시간</div><div class="sched">{sched}</div></div>
-    <div class="card wide"><div class="k">주차</div><div class="v" style="font-size:10.5pt">{SHOOT['parking']}</div></div>
   </div>
 
   <h2><span class="num">2</span>어떤 영상인가요?</h2>
@@ -240,13 +241,17 @@ def build(name, t):
     <div class="part"><div class="lb">{p1['label']}</div><div class="tt">{esc(p1['title'])}</div><div class="story">{story(p1)}</div></div>
     <div class="part p2"><div class="lb">{p2['label']}</div><div class="tt">{esc(p2['title'])}</div><div class="story">{story(p2)}</div></div>
   </div>
-  <p class="lead" style="margin-top:4mm">대본을 외우실 필요는 없어요. 진행자가 순서대로 질문을 드리면, 평소 상담하시듯 편하게 말씀해 주시면 됩니다.</p>
+  <div class="note" style="margin-top:5mm">
+    <b>영상에는 선생님만 나와요</b>
+    대본을 외우실 필요는 없어요. 현장에서 순서대로 질문을 드리면 평소 상담하시듯 편하게 말씀해 주시면 됩니다. 다만 질문하는 목소리는 편집에서 빠지기 때문에, 질문을 받으시면 <strong>한 번 소리 내어 읽거나 되짚은 뒤</strong> 답해 주세요. 그 부분에 질문 자막이 들어가요.
+    <div class="tips"><div>예) {esc(t['restate'])}</div></div>
+  </div>
   {foot}
 </section>
 
 <section class="page">
   <h2 style="margin-top:0"><span class="num">3</span>촬영 흐름</h2>
-  <p class="lead">위에서 아래로 이 순서대로 진행돼요. 의자에 앉아 진행자와 대화하는 형식이에요.</p>
+  <p class="lead">위에서 아래로 이 순서대로 진행돼요. 의자에 앉아 이야기하시는 형식이에요.</p>
   <div class="flowcols" style="margin-top:5mm">
     <div><h3>{p1['label']} · {esc(p1['title'])}</h3>{flow_html(p1, '')}</div>
     <div><h3>{p2['label']} · {esc(p2['title'])}</h3>{flow_html(p2, 'p2f')}</div>
@@ -262,9 +267,8 @@ def build(name, t):
     <div class="ox">
       <div><b style="color:#2f8f5b">O</b>맞다고 생각하실 때</div>
       <div><b style="color:#c8442a">X</b>아니라고 생각하실 때</div>
-      <div><b style="color:#3e6a9e">△</b>“경우에 따라 달라요”</div>
     </div>
-    <p style="font-size:9.5pt;margin-top:2.5mm;color:#4a4336">판정 뒤에 <b>한 줄 이유</b>만 덧붙여 주세요. 짧고 분명할수록 좋아요.</p>
+    <p style="font-size:9.5pt;margin-top:2.5mm;color:#4a4336">카드 문장을 소리 내어 읽고, O 또는 X로 답한 뒤 <strong>한 줄 이유</strong>만 덧붙여 주세요. 짧고 분명할수록 좋아요.</p>
   </div>
 
   <p class="lead" style="margin-top:5mm">본편이 끝나면 같은 자리에서 <b>짧은 추가 질문</b>을 몇 개 더 여쭤봐요. 한두 문장으로 편하게 답해 주시면 됩니다.</p>

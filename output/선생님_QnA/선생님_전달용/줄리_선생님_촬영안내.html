@@ -11,7 +11,7 @@ body{font-family:P,sans-serif;color:var(--ink);background:var(--paper);font-size
 .page{width:210mm;height:297mm;padding:16mm 16mm 14mm;position:relative;page-break-after:always;overflow:hidden}
 .page:last-child{page-break-after:auto}
 .foot{position:absolute;left:16mm;right:16mm;bottom:9mm;font-size:8pt;color:var(--sub);display:flex;justify-content:space-between}
-.hero{background:var(--yellow);border-radius:14px;padding:13mm 11mm 10mm;position:relative;overflow:hidden}
+.hero{background:var(--yellow);border-radius:14px;padding:10mm 11mm 8mm;position:relative;overflow:hidden}
 .hero:after{content:"";position:absolute;right:-18mm;bottom:-22mm;width:62mm;height:62mm;border-radius:50%;background:var(--orange);opacity:.9}
 .hero:before{content:"";position:absolute;right:30mm;top:-14mm;width:30mm;height:30mm;border-radius:50%;background:var(--blue);opacity:.55}
 .eyebrow{font-size:9pt;font-weight:700;letter-spacing:.08em;color:#8a5a12}
@@ -59,7 +59,7 @@ h2 .num{display:inline-flex;width:7mm;height:7mm;border-radius:50%;background:va
 .qs b{display:block;font-size:9.5pt}
 .qs span{font-size:8.5pt;color:#6e4a35}
 .arrow{align-self:center;color:var(--orange);font-weight:800}
-.ox{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5mm;margin-top:3mm}
+.ox{display:grid;grid-template-columns:repeat(2,1fr);gap:2.5mm;margin-top:3mm}
 .ox div{border-radius:8px;background:#fff;border:1px solid var(--line);padding:2.5mm 3mm;font-size:9pt}
 .ox b{font-size:13pt;margin-right:1.5mm}
 .prep{counter-reset:p}
@@ -93,9 +93,8 @@ td.time{font-weight:800;width:34mm}
   <h2><span class="num">1</span>촬영 정보</h2>
   <div class="cards">
     <div class="card"><div class="k">날짜</div><div class="v">2026년 10월 10일 (토)</div></div>
-    <div class="card"><div class="k">장소</div><div class="v">1028studio</div><div class="s">서울 서초구 강남대로109길 73-21 지하 1층</div></div>
+    <div class="card"><div class="k">장소</div><div class="v">1028studio</div><div class="s">서울 서초구 강남대로109길 73-21 지하 1층<br>선생님 차량은 스튜디오에 2대까지 주차할 수 있어요.</div></div>
     <div class="card wide"><div class="k">타임테이블 · 줄리 선생님 촬영 시간</div><div class="sched"><div><b>13:00 – 15:00</b><span>마케팅 촬영</span><span class='tag'>Julie &amp; David 선생님</span></div><div><b>15:00 – 16:00</b><span>Q&amp;A 촬영</span><span class='tag'>Julie &amp; David 선생님</span></div></div></div>
-    <div class="card wide"><div class="k">주차</div><div class="v" style="font-size:10.5pt">선생님 차량은 스튜디오에 2대까지 주차할 수 있어요.</div></div>
   </div>
 
   <h2><span class="num">2</span>어떤 영상인가요?</h2>
@@ -104,21 +103,25 @@ td.time{font-weight:800;width:34mm}
     <div class="part"><div class="lb">1부</div><div class="tt">초3 영어, 지금 시작해도 늦지 않았을까요?</div><div class="story"><span class="ch">늦은 걸까?</span><i>→</i><span class="ch">무엇부터?</span><i>→</i><span class="ch">잘 가고 있을까?</span></div></div>
     <div class="part p2"><div class="lb">2부</div><div class="tt">조금 더 솔직한 이야기</div><div class="story"><span class="ch">원서</span><i>→</i><span class="ch">레벨테스트</span><i>→</i><span class="ch">대치동 방식</span></div></div>
   </div>
-  <p class="lead" style="margin-top:4mm">대본을 외우실 필요는 없어요. 진행자가 순서대로 질문을 드리면, 평소 상담하시듯 편하게 말씀해 주시면 됩니다.</p>
+  <div class="note" style="margin-top:5mm">
+    <b>영상에는 선생님만 나와요</b>
+    대본을 외우실 필요는 없어요. 현장에서 순서대로 질문을 드리면 평소 상담하시듯 편하게 말씀해 주시면 됩니다. 다만 질문하는 목소리는 편집에서 빠지기 때문에, 질문을 받으시면 <strong>한 번 소리 내어 읽거나 되짚은 뒤</strong> 답해 주세요. 그 부분에 질문 자막이 들어가요.
+    <div class="tips"><div>예) “그럼 늦었는지 아닌지는 나이 말고 뭘로 판단하느냐면요, …”</div></div>
+  </div>
   <div class="foot"><span>리얼아카데미 · Q&amp;A 영상 촬영 안내</span><span>줄리 선생님</span></div>
 </section>
 
 <section class="page">
   <h2 style="margin-top:0"><span class="num">3</span>촬영 흐름</h2>
-  <p class="lead">위에서 아래로 이 순서대로 진행돼요. 의자에 앉아 진행자와 대화하는 형식이에요.</p>
+  <p class="lead">위에서 아래로 이 순서대로 진행돼요. 의자에 앉아 이야기하시는 형식이에요.</p>
   <div class="flowcols" style="margin-top:5mm">
-    <div><h3>1부 · 초3 영어, 지금 시작해도 늦지 않았을까요?</h3><div class="flow "><div class="step"><div class="dot">1</div><div><div class="t">인사</div><div class="d">짧은 자기소개와 오늘 다룰 고민 소개</div></div></div><div class="step"><div class="dot">2</div><div><div class="t">O/X 10문항</div><div class="d">카드 문장을 읽고 O/X/△와 한 줄 이유</div></div></div><div class="step q"><div class="dot">3</div><div><div class="t">부모님 질문 ①</div><div class="d">시작 시기와 대치동 아이들과의 차이</div></div></div><div class="step q"><div class="dot">4</div><div><div class="t">부모님 질문 ②</div><div class="d">파닉스·단어·원서·문법, 무엇부터 시작할까</div></div></div><div class="step"><div class="dot">5</div><div><div class="t">속마음 한마디</div><div class="d">아이가 영어를 재미있어한다고 느끼는 순간</div></div></div><div class="step q"><div class="dot">6</div><div><div class="t">부모님 질문 ③</div><div class="d">시작하고 3개월, 잘 가고 있는지 확인하는 법</div></div></div><div class="step"><div class="dot">7</div><div><div class="t">마무리 한 문장</div><div class="d">흔들리는 초3 부모님께 드리는 한 문장</div></div></div></div></div>
+    <div><h3>1부 · 초3 영어, 지금 시작해도 늦지 않았을까요?</h3><div class="flow "><div class="step"><div class="dot">1</div><div><div class="t">인사</div><div class="d">짧은 자기소개와 오늘 다룰 고민 소개</div></div></div><div class="step"><div class="dot">2</div><div><div class="t">O/X 10문항</div><div class="d">카드 문장을 읽고 O 또는 X와 한 줄 이유</div></div></div><div class="step q"><div class="dot">3</div><div><div class="t">부모님 질문 ①</div><div class="d">시작 시기와 대치동 아이들과의 차이</div></div></div><div class="step q"><div class="dot">4</div><div><div class="t">부모님 질문 ②</div><div class="d">파닉스·단어·원서·문법, 무엇부터 시작할까</div></div></div><div class="step"><div class="dot">5</div><div><div class="t">속마음 한마디</div><div class="d">아이가 영어를 재미있어한다고 느끼는 순간</div></div></div><div class="step q"><div class="dot">6</div><div><div class="t">부모님 질문 ③</div><div class="d">시작하고 3개월, 잘 가고 있는지 확인하는 법</div></div></div><div class="step"><div class="dot">7</div><div><div class="t">마무리 한 문장</div><div class="d">흔들리는 초3 부모님께 드리는 한 문장</div></div></div></div></div>
     <div><h3>2부 · 조금 더 솔직한 이야기</h3><div class="flow p2f"><div class="step"><div class="dot">1</div><div><div class="t">O/X 10문항</div><div class="d">부모님들이 흔히 믿는 이야기에 대한 판정</div></div></div><div class="step q"><div class="dot">2</div><div><div class="t">솔직한 질문 ①</div><div class="d">원서, 꼭 읽어야 할까? (문제집과 비교)</div></div></div><div class="step q"><div class="dot">3</div><div><div class="t">솔직한 질문 ②</div><div class="d">레벨테스트 점수, 믿어도 될까?</div></div></div><div class="step"><div class="dot">4</div><div><div class="t">번개 O/X 2문항</div><div class="d">선행과 문법에 대한 빠른 판정</div></div></div><div class="step q"><div class="dot">5</div><div><div class="t">솔직한 질문 ③</div><div class="d">대치동 방식, 꼭 따라가야 할까?</div></div></div><div class="step"><div class="dot">6</div><div><div class="t">선생님께 되묻기</div><div class="d">선생님이 학부모라면 어떻게 하실지</div></div></div><div class="step"><div class="dot">7</div><div><div class="t">마무리 한 문장</div><div class="d">대치동 방식에서 딱 하나만 가져간다면</div></div></div></div></div>
   </div>
 
   <div class="qbox">
     <div class="h">‘질문’은 모두 같은 4단계로 진행돼요<small>흐름 안의 <b style="color:#a6461a">4단계</b> 표시</small></div>
-    <div class="qsteps"><div class="qs"><b>부모님 사연</b><span>실제 부모님 질문을 읽어드려요</span></div><span class="arrow">›</span><div class="qs"><b>판단 기준</b><span>선생님은 무엇을 보고 판단하시는지</span></div><span class="arrow">›</span><div class="qs"><b>실제 경험</b><span>가르치며 만난 아이·부모님 이야기</span></div><span class="arrow">›</span><div class="qs"><b>바로 해볼 한 가지</b><span>부모님이 이번 주에 해볼 행동</span></div></div>
+    <div class="qsteps"><div class="qs"><b>질문 읽기</b><span>선생님이 질문을 직접 소리 내어 읽어요</span></div><span class="arrow">›</span><div class="qs"><b>판단 기준</b><span>선생님은 무엇을 보고 판단하시는지</span></div><span class="arrow">›</span><div class="qs"><b>실제 경험</b><span>가르치며 만난 아이·부모님 이야기</span></div><span class="arrow">›</span><div class="qs"><b>바로 해볼 한 가지</b><span>부모님이 이번 주에 해볼 행동</span></div></div>
   </div>
 
   <div class="qbox" style="border-color:var(--blue)">
@@ -126,9 +129,8 @@ td.time{font-weight:800;width:34mm}
     <div class="ox">
       <div><b style="color:#2f8f5b">O</b>맞다고 생각하실 때</div>
       <div><b style="color:#c8442a">X</b>아니라고 생각하실 때</div>
-      <div><b style="color:#3e6a9e">△</b>“경우에 따라 달라요”</div>
     </div>
-    <p style="font-size:9.5pt;margin-top:2.5mm;color:#4a4336">판정 뒤에 <b>한 줄 이유</b>만 덧붙여 주세요. 짧고 분명할수록 좋아요.</p>
+    <p style="font-size:9.5pt;margin-top:2.5mm;color:#4a4336">카드 문장을 소리 내어 읽고, O 또는 X로 답한 뒤 <strong>한 줄 이유</strong>만 덧붙여 주세요. 짧고 분명할수록 좋아요.</p>
   </div>
 
   <p class="lead" style="margin-top:5mm">본편이 끝나면 같은 자리에서 <b>짧은 추가 질문</b>을 몇 개 더 여쭤봐요. 한두 문장으로 편하게 답해 주시면 됩니다.</p>
@@ -137,7 +139,7 @@ td.time{font-weight:800;width:34mm}
 
 <section class="page">
   <h2 style="margin-top:0"><span class="num">4</span>미리 준비해 주세요</h2>
-  <ul class="prep"><li><div class="chk"></div><div><b>소개 정보 확인</b><span>자막에 들어갈 경력과 소속을 확인해 주세요. 현재 ‘대치동 15년차 · 리얼아카데미 대치 라이브’로 준비하고 있어요.</span></div></li><li><div class="chk"></div><div><b>가르친 아이들의 사례</b><span>질문마다 “실제로 그런 아이가 있었나요?”를 여쭤봐요. 초3에 시작해 빠르게 따라온 아이, 원서와 문제집에서 차이가 났던 아이처럼 떠오르는 사례를 2~3개 생각해 와 주세요. 이름 등 개인정보는 빼고 말씀해 주시면 됩니다.</span></div></li><li><div class="chk"></div><div><b>바로 해볼 수 있는 행동</b><span>질문마다 마지막에 “부모님이 이번 주에 해볼 한 가지”를 여쭤봐요. 구체적인 행동일수록 좋아요.</span></div></li><li><div class="chk"></div><div><b>짧은 시연</b><span>1부 두 번째 질문에서 ‘첫 책을 읽는 10분’을 부모님 입장에서 실제로 말하듯 보여주시는 장면을 부탁드릴 예정이에요.</span></div></li><li><div class="chk"></div><div><b>마무리 한 문장</b><span>1부·2부 끝에 한 문장씩 여쭤봐요. 미리 생각해 두시면 편해요.</span></div></li></ul>
+  <ul class="prep"><li><div class="chk"></div><div><b>소개 정보 확인</b><span>자막에 들어갈 경력과 소속은 담당 팀에서 따로 여쭤보고 정리해 드려요.</span></div></li><li><div class="chk"></div><div><b>가르친 아이들의 사례</b><span>질문마다 “실제로 그런 아이가 있었나요?”를 여쭤봐요. 초3에 시작해 빠르게 따라온 아이, 원서와 문제집에서 차이가 났던 아이처럼 떠오르는 사례를 2~3개 생각해 와 주세요. 이름 등 개인정보는 빼고 말씀해 주시면 됩니다.</span></div></li><li><div class="chk"></div><div><b>바로 해볼 수 있는 행동</b><span>질문마다 마지막에 “부모님이 이번 주에 해볼 한 가지”를 여쭤봐요. 구체적인 행동일수록 좋아요.</span></div></li><li><div class="chk"></div><div><b>짧은 시연</b><span>1부 두 번째 질문에서 ‘첫 책을 읽는 10분’을 부모님 입장에서 실제로 말하듯 보여주시는 장면을 부탁드릴 예정이에요.</span></div></li><li><div class="chk"></div><div><b>마무리 한 문장</b><span>1부·2부 끝에 한 문장씩 여쭤봐요. 미리 생각해 두시면 편해요.</span></div></li></ul>
 
   <div class="note">
     <b>2부 솔직한 질문에 대해</b>
