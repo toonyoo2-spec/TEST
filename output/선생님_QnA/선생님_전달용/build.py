@@ -21,7 +21,7 @@ TEACHERS = {
         "viewer": "초3 무렵 영어를 처음 시작하는 아이를 둔 부모님. 대치동 학원에 보내기 어려운 환경에서 ‘우리 아이만 늦은 건 아닐까’ 고민하는 분들이에요.",
         "parts": [
             {
-                "label": "1부",
+                "label": "본편",
                 "title": "초3 영어, 지금 시작해도 늦지 않았을까요?",
                 "story": ["늦은 걸까?", "무엇부터?", "잘 가고 있을까?"],
                 "flow": [
@@ -34,30 +34,15 @@ TEACHERS = {
                     ("마무리 한 문장", "흔들리는 초3 부모님께 드리는 한 문장"),
                 ],
             },
-            {
-                "label": "2부",
-                "title": "조금 더 솔직한 이야기",
-                "story": ["원서", "레벨테스트", "대치동 방식"],
-                "flow": [
-                    ("O/X 10문항", "부모님들이 흔히 믿는 이야기에 대한 판정"),
-                    ("솔직한 질문 ①", "원서, 꼭 읽어야 할까? (문제집과 비교)"),
-                    ("솔직한 질문 ②", "레벨테스트 점수, 믿어도 될까?"),
-                    ("번개 O/X 2문항", "선행과 문법에 대한 빠른 판정"),
-                    ("솔직한 질문 ③", "대치동 방식, 꼭 따라가야 할까?"),
-                    ("선생님께 되묻기", "선생님이 학부모라면 어떻게 하실지"),
-                    ("마무리 한 문장", "대치동 방식에서 딱 하나만 가져간다면"),
-                ],
-            },
         ],
         "prepare": [
             ("소개 정보 확인", "자막에 들어갈 경력과 소속은 담당 팀에서 따로 여쭤보고 정리해 드려요."),
-            ("가르친 아이들의 사례", "질문마다 “실제로 그런 아이가 있었나요?”를 여쭤봐요. 초3에 시작해 빠르게 따라온 아이, 원서와 문제집에서 차이가 났던 아이처럼 떠오르는 사례를 2~3개 생각해 와 주세요. 이름 등 개인정보는 빼고 말씀해 주시면 됩니다."),
+            ("가르친 아이들의 사례", "질문마다 “실제로 그런 아이가 있었나요?”를 여쭤봐요. 초3에 시작해 빠르게 따라온 아이, 처음에 영어를 어려워하다 달라진 아이처럼 떠오르는 사례를 2~3개 생각해 와 주세요. 이름 등 개인정보는 빼고 말씀해 주시면 됩니다."),
             ("바로 해볼 수 있는 행동", "질문마다 마지막에 “부모님이 이번 주에 해볼 한 가지”를 여쭤봐요. 구체적인 행동일수록 좋아요."),
-            ("짧은 시연", "1부 두 번째 질문에서 ‘첫 책을 읽는 10분’을 부모님 입장에서 실제로 말하듯 보여주시는 장면을 부탁드릴 예정이에요."),
-            ("마무리 한 문장", "1부·2부 끝에 한 문장씩 여쭤봐요. 미리 생각해 두시면 편해요."),
+            ("짧은 시연", "두 번째 질문에서 ‘첫 책을 읽는 10분’을 부모님 입장에서 실제로 말하듯 보여주시는 장면을 부탁드릴 예정이에요."),
+            ("마무리 한 문장", "영상 마지막에 흔들리는 부모님께 드릴 한 문장을 여쭤봐요. 미리 생각해 두시면 편해요."),
         ],
         "restate": "“늦었는지는 나이보다 이걸로 봐요.”",
-        "honest": "2부는 부모님들이 속으로는 궁금하지만 선생님께 대놓고 묻기 어려웠던 질문들이에요. 질문이 날카롭게 느껴질 수 있지만, 선생님을 곤란하게 하려는 게 아니라 부모님들의 실제 고민을 대신 여쭤보는 거예요.",
     },
     "애니": {
         "file": "애니_선생님_촬영안내",
@@ -68,7 +53,7 @@ TEACHERS = {
         "viewer": "아이 영어를 집에서 어떻게 도와줘야 할지 막막한 초등 부모님. 특히 ‘내가 영어를 못하는데 도와줄 수 있을까’ 부담을 느끼는 분들이에요.",
         "parts": [
             {
-                "label": "1부",
+                "label": "A안",
                 "title": "집에서는 어떻게 도와줄까요?",
                 "story": ["부모의 역할", "책 읽기", "단어"],
                 "flow": [
@@ -83,14 +68,18 @@ TEACHERS = {
                 ],
             },
             {
-                "label": "2부",
-                "title": "AI 시대, 영어 공부 솔직 토크",
-                "story": ["AI가 다 해주는데?", "집에서 AI 쓰기"],
+                "label": "B안",
+                "title": "AI가 다 해주는데, 영어 공부 꼭 해야 하나요?",
+                "story": ["AI 시대 원서", "ChatGPT 숙제", "레벨테스트"],
                 "flow": [
-                    ("AI O/X 3문항", "AI 번역·첨삭·요약에 대한 빠른 판정"),
-                    ("솔직한 질문 ①", "AI가 다 해주는데, 원서 같은 걸 굳이 읽어야 할까?"),
-                    ("솔직한 질문 ②", "숙제를 ChatGPT로 해오는 아이, 막아야 할까?"),
-                    ("마무리 한 문장", "공부법과 AI 도구를 고를 때 가장 먼저 볼 기준"),
+                    ("인사", "짧은 자기소개와 오늘 다룰 질문 소개"),
+                    ("O/X 10문항", "짧은 질문들에 O 또는 X와 한 줄 이유로 답하기"),
+                    ("솔직한 질문 ①", "AI가 다 해주는데, 원서 같은 걸 굳이 읽어야 할까"),
+                    ("솔직한 질문 ②", "숙제를 ChatGPT로 해오는 아이, 막아야 할까"),
+                    ("번개 O/X 2문항", "학습량과 학원 레벨에 대한 빠른 판정"),
+                    ("솔직한 질문 ③", "레벨테스트 점수, 믿어도 될까"),
+                    ("선생님의 솔직한 답", "AI가 언젠가 영어 선생님을 대체할까"),
+                    ("마무리 한 문장", "AI 시대에도 아이에게 영어가 필요한 이유"),
                 ],
             },
         ],
@@ -99,11 +88,12 @@ TEACHERS = {
             ("가르친 아이들·부모님 사례", "질문마다 “실제로 그런 경우가 있었나요?”를 여쭤봐요. 영어에 자신 없던 부모님이 잘 도와주신 사례, 책을 싫어하던 아이가 달라진 계기처럼 떠오르는 사례를 2~3개 생각해 와 주세요. 이름 등 개인정보는 빼고 말씀해 주시면 됩니다."),
             ("오늘 저녁 바로 해볼 행동", "질문마다 마지막에 “오늘 집에서 해볼 한 가지”를 여쭤봐요. 특히 ‘오늘 저녁 10분 함께 읽기’는 시작·중간·끝으로 나눠 말씀해 주시면 좋아요."),
             ("짧은 시연", "부모님이 아이에게 실제로 할 말을 선생님이 직접 말하듯 보여주시는 장면을 부탁드릴 예정이에요."),
-            ("AI에 대한 생각", "2부에서는 AI 번역·요약·ChatGPT 숙제·AI 영어 대화 앱에 대해 여쭤봐요. 수업에서 본 아이들의 모습과 집에서 AI를 쓸 때의 규칙 한 가지를 생각해 와 주세요."),
-            ("마무리 한 문장", "1부·2부 끝에 한 문장씩 여쭤봐요. 미리 생각해 두시면 편해요."),
+            ("AI에 대한 생각", "B안에서는 AI 번역·요약·ChatGPT 숙제·AI 영어 대화 앱, 레벨테스트에 대해 여쭤봐요. 수업에서 본 아이들의 모습과 집에서 AI를 쓸 때의 규칙 한 가지를 생각해 와 주세요."),
+            ("마무리 한 문장", "영상 마지막에 한 문장을 여쭤봐요. 미리 생각해 두시면 편해요."),
         ],
+        "ab": "A안과 B안, 두 가지 구성을 준비했어요. 최종 촬영 구성은 확정되는 대로 다시 안내드릴게요.",
         "restate": "“부모님 영어 실력보다 먼저 필요한 건 이거예요.”",
-        "honest": "2부는 ‘AI가 다 해주는데 영어 공부를 해야 하나요?’처럼 부모님들이 요즘 가장 궁금해하는 질문들이에요. 질문이 날카롭게 느껴질 수 있지만, 선생님을 곤란하게 하려는 게 아니라 부모님들의 실제 고민을 대신 여쭤보는 거예요.",
+        "honest": "B안은 ‘AI가 다 해주는데 영어 공부를 해야 하나요?’처럼 부모님들이 요즘 가장 궁금해하는 질문들이에요. 질문이 날카롭게 느껴질 수 있지만, 선생님을 곤란하게 하려는 게 아니라 부모님들의 실제 고민을 대신 여쭤보는 거예요.",
     },
 }
 
@@ -165,6 +155,7 @@ h2 .num{display:inline-flex;width:7mm;height:7mm;border-radius:50%;background:va
 .step .d{font-size:9.5pt;color:var(--sub)}
 .step.q .t:after{content:"4단계";font-size:7.5pt;font-weight:700;color:#a6461a;background:var(--orange-soft);border-radius:20px;padding:.3mm 1.8mm;margin-left:2mm;vertical-align:1px}
 .flowcols{display:grid;grid-template-columns:1fr 1fr;gap:6mm}
+.flowcols.one,.parts.one{grid-template-columns:1fr}
 .flowcols h3{font-size:11.5pt;font-weight:800;margin-bottom:3mm}
 .flowcols h3 small{display:block;font-size:8.5pt;color:var(--sub);font-weight:600}
 .qbox{border:1.5px dashed var(--orange);border-radius:12px;padding:4.5mm 5mm;margin-top:5mm;background:#fff}
@@ -213,11 +204,25 @@ def flow_html(part, cls):
 
 
 def build(name, t):
-    p1, p2 = t["parts"]
+    parts = t["parts"]
+    one = " one" if len(parts) == 1 else ""
     sched = "".join(f"<div><b>{a}</b><span>{esc(b)}</span><span class='tag'>{esc(c)}</span></div>" for a, b, c in t["schedule"])
     story = lambda p: '<i>→</i>'.join(f'<span class="ch">{esc(x)}</span>' for x in p["story"])
     qsteps = '<span class="arrow">›</span>'.join(f'<div class="qs"><b>{a}</b><span>{b}</span></div>' for a, b in QUESTION_STEPS)
     prep = "".join(f'<li><div class="chk"></div><div><b>{esc(a)}</b><span>{esc(b)}</span></div></li>' for a, b in t["prepare"])
+    part_boxes = "".join(f'<div class="part{" p2" if i else ""}"><div class="lb">{p["label"]}</div><div class="tt">{esc(p["title"])}</div><div class="story">{story(p)}</div></div>' for i, p in enumerate(parts))
+    flows = "".join(f'<div><h3>{p["label"]} · {esc(p["title"])}</h3>{flow_html(p, "p2f" if i else "")}</div>' for i, p in enumerate(parts))
+    ab = f'<p class="lead" style="margin-top:3mm;color:var(--sub)">{esc(t["ab"])}</p>' if t.get("ab") else ""
+    honest = f'''<div class="note">
+    <b>B안 솔직한 질문에 대해</b>
+    {esc(t['honest'])}
+    <div class="tips">
+      <div><b>①</b>“그런 면도 있어요”</div>
+      <div><b>②</b>“다만 이건 달라요”</div>
+      <div><b>③</b>“그래서 이렇게 해보세요”</div>
+    </div>
+    <p style="margin-top:2.5mm">이 순서로 답해 주시면 편해요. 부담되는 질문이 있으면 촬영 전에 미리 말씀해 주세요.</p>
+  </div>''' if t.get("honest") else ""
     foot = f'<div class="foot"><span>리얼아카데미 · Q&amp;A 영상 촬영 안내</span><span>{name} 선생님</span></div>'
     return f"""<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>{name} 선생님 촬영 안내</title><style>{CSS}</style></head><body>
 
@@ -237,10 +242,7 @@ def build(name, t):
 
   <h2><span class="num">2</span>어떤 영상인가요?</h2>
   <p class="lead"><b>이 영상을 볼 분들</b> — {esc(t['viewer'])}</p>
-  <div class="parts" style="margin-top:4mm">
-    <div class="part"><div class="lb">{p1['label']}</div><div class="tt">{esc(p1['title'])}</div><div class="story">{story(p1)}</div></div>
-    <div class="part p2"><div class="lb">{p2['label']}</div><div class="tt">{esc(p2['title'])}</div><div class="story">{story(p2)}</div></div>
-  </div>
+  <div class="parts{one}" style="margin-top:4mm">{part_boxes}</div>
   <div class="note" style="margin-top:5mm">
     <b>영상에는 선생님만 나와요</b>
     대본을 외우실 필요는 없어요. O/X 문장과 부모님 질문은 <strong>카메라 바로 아래 태블릿</strong>에 띄워 드리고, 이어지는 질문은 현장에서 말로 여쭤봐요. 질문하는 목소리는 편집에서 빠지고 화면에는 질문 자막이 들어가요. 그래서 <strong>답의 첫 문장은 질문 없이도 뜻이 통하게</strong> 말씀해 주시면 좋아요.
@@ -252,10 +254,8 @@ def build(name, t):
 <section class="page">
   <h2 style="margin-top:0"><span class="num">3</span>촬영 흐름</h2>
   <p class="lead">위에서 아래로 이 순서대로 진행돼요. 의자에 앉아 이야기하시는 형식이에요.</p>
-  <div class="flowcols" style="margin-top:5mm">
-    <div><h3>{p1['label']} · {esc(p1['title'])}</h3>{flow_html(p1, '')}</div>
-    <div><h3>{p2['label']} · {esc(p2['title'])}</h3>{flow_html(p2, 'p2f')}</div>
-  </div>
+  {ab}
+  <div class="flowcols{one}" style="margin-top:5mm">{flows}</div>
 
   <div class="qbox">
     <div class="h">‘질문’은 모두 같은 4단계로 진행돼요<small>흐름 안의 <b style="color:#a6461a">4단계</b> 표시</small></div>
@@ -279,16 +279,7 @@ def build(name, t):
   <h2 style="margin-top:0"><span class="num">4</span>미리 준비해 주세요</h2>
   <ul class="prep">{prep}</ul>
 
-  <div class="note">
-    <b>2부 솔직한 질문에 대해</b>
-    {esc(t['honest'])}
-    <div class="tips">
-      <div><b>①</b>“그런 면도 있어요”</div>
-      <div><b>②</b>“다만 이건 달라요”</div>
-      <div><b>③</b>“그래서 이렇게 해보세요”</div>
-    </div>
-    <p style="margin-top:2.5mm">이 순서로 답해 주시면 편해요. 부담되는 질문이 있으면 촬영 전에 미리 말씀해 주세요.</p>
-  </div>
+  {honest}
 
   <h2><span class="num">5</span>오시는 길</h2>
   <div class="addr"><div><b>{SHOOT['place']}</b><br>{SHOOT['address']}</div><div style="text-align:right;color:var(--sub)">{SHOOT['near']}<br>선생님 차량 2대 주차 가능</div></div>
