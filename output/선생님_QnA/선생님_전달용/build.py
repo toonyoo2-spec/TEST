@@ -13,6 +13,7 @@ SHOOT = {
 TEACHERS = {
     "줄리": {
         "file": "줄리_선생님_촬영안내",
+        "photo": "assets/photo_julie.jpg",
         "schedule": [
             ("13:00 – 15:00", "마케팅 촬영", "Julie & David 선생님"),
             ("15:00 – 16:00", "Q&A 촬영", "Julie 선생님"),
@@ -44,6 +45,7 @@ TEACHERS = {
     },
     "애니": {
         "file": "애니_선생님_촬영안내",
+        "photo": "assets/photo_annie.jpg",
         "schedule": [
             ("16:00 – 17:00", "Q&A 촬영", "Annie 선생님"),
             ("17:00 – 19:00", "마케팅 촬영", "Annie 선생님"),
@@ -98,11 +100,13 @@ body{text-wrap:pretty;font-family:P,sans-serif;color:var(--ink);background:var(-
 .page:last-child{page-break-after:auto}
 .foot{position:absolute;left:16mm;right:16mm;bottom:9mm;font-size:8pt;color:var(--sub);display:flex;justify-content:space-between}
 .hero{background:var(--yellow);border-radius:14px;padding:10mm 11mm 8mm;position:relative;overflow:hidden}
-.hero:after{content:"";position:absolute;right:-18mm;bottom:-22mm;width:62mm;height:62mm;border-radius:50%;background:#00d37a;opacity:.9}
-.hero:before{content:"";position:absolute;right:30mm;top:-14mm;width:30mm;height:30mm;border-radius:50%;background:#91e6b3;opacity:.7}
 .eyebrow img{height:7mm;display:block}
 .hero h1{font-size:25pt;font-weight:800;line-height:1.25;margin-top:4mm;position:relative;z-index:1}
-.hero p{margin-top:4mm;font-size:10.5pt;max-width:135mm;position:relative;z-index:1;color:#3a3f4b}
+.hero{display:flex;gap:7mm;align-items:center}
+.hero .txt{flex:1}
+.hero .ph{flex:0 0 46mm;height:61mm;border-radius:10px;overflow:hidden;position:relative;z-index:1}
+.hero .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.hero p{margin-top:4mm;font-size:10.5pt;position:relative;z-index:1;color:#3a3f4b}
 h2{font-size:14pt;font-weight:800;margin:7mm 0 3mm;display:flex;align-items:center;gap:2.5mm}
 h2 .num{display:inline-flex;width:7mm;height:7mm;border-radius:50%;background:var(--orange);color:#fff;font-size:9.5pt;align-items:center;justify-content:center}
 .cards{display:grid;grid-template-columns:1fr 1fr;gap:3.5mm}
@@ -208,9 +212,12 @@ def build(name, t):
 
 <section class="page">
   <div class="hero">
+    <div class="txt">
     <div class="eyebrow"><img src="assets/logo_navy.png" alt="REAL ACADEMY"></div>
     <h1>{name} 선생님,<br>Q&amp;A 영상 촬영 안내드려요</h1>
-    <p>부모님들께 미리 받은 질문에 선생님이 직접 답해 주시는 영상이에요.<br>촬영 정보와 촬영 순서, 오시는 길을 정리했어요.</p>
+    <p>부모님들께 미리 받은 질문에<br>선생님이 직접 답해 주시는 영상이에요.<br>촬영 정보와 촬영 순서, 오시는 길을 정리했어요.</p>
+    </div>
+    <div class="ph"><img src="{t['photo']}" alt="{name} 선생님"></div>
   </div>
 
   <h2><span class="num">1</span>촬영 정보</h2>
