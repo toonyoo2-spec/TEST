@@ -1,0 +1,2677 @@
+{
+ "episodes": {
+  "A": {
+   "file_with_audio": {
+    "width": 1080,
+    "height": 1920,
+    "r_frame_rate": "30/1",
+    "avg_frame_rate": "30/1",
+    "nb_read_frames": 900,
+    "video_duration": 30.0,
+    "format_duration": 30.0,
+    "pix_fmt": "yuv420p",
+    "codec": "h264",
+    "audio": {
+     "codec": "aac",
+     "sample_rate": "48000",
+     "channels": 2,
+     "duration": 30.0
+    },
+    "size_bytes": 1851293,
+    "decode_errors": "none"
+   },
+   "file_silent": {
+    "width": 1080,
+    "height": 1920,
+    "r_frame_rate": "30/1",
+    "avg_frame_rate": "30/1",
+    "nb_read_frames": 900,
+    "video_duration": 30.0,
+    "format_duration": 30.0,
+    "pix_fmt": "yuv420p",
+    "codec": "h264",
+    "audio": null,
+    "size_bytes": 1077813,
+    "decode_errors": "none"
+   },
+   "cover": {
+    "size": [
+     1080,
+     1920
+    ],
+    "audit": [
+     {
+      "text": "초등 영어",
+      "x": 438,
+      "y": 605,
+      "w": 203,
+      "h": 75,
+      "fontSize": 52,
+      "ems": []
+     },
+     {
+      "text": "단어는 아는데,",
+      "x": 257,
+      "y": 772,
+      "w": 566,
+      "h": 139,
+      "fontSize": 96,
+      "ems": []
+     },
+     {
+      "text": "문장은 왜 막힐까?",
+      "x": 192,
+      "y": 897,
+      "w": 695,
+      "h": 139,
+      "fontSize": 96,
+      "ems": [
+       "문장"
+      ]
+     },
+     {
+      "text": "리얼 아카데미",
+      "x": 385,
+      "y": 1270,
+      "w": 309,
+      "h": 79,
+      "fontSize": 54,
+      "ems": []
+     }
+    ]
+   },
+   "cuts": {
+    "count": 11,
+    "total_frames": 900,
+    "gaps_or_overlaps": 0,
+    "list": [
+     {
+      "cut": "A01",
+      "start": 0,
+      "end": 84,
+      "frames": 84,
+      "sec": [
+       0.0,
+       2.8
+      ]
+     },
+     {
+      "cut": "A02",
+      "start": 84,
+      "end": 108,
+      "frames": 24,
+      "sec": [
+       2.8,
+       3.6
+      ]
+     },
+     {
+      "cut": "A03",
+      "start": 108,
+      "end": 156,
+      "frames": 48,
+      "sec": [
+       3.6,
+       5.2
+      ]
+     },
+     {
+      "cut": "A04",
+      "start": 156,
+      "end": 186,
+      "frames": 30,
+      "sec": [
+       5.2,
+       6.2
+      ]
+     },
+     {
+      "cut": "A05",
+      "start": 186,
+      "end": 252,
+      "frames": 66,
+      "sec": [
+       6.2,
+       8.4
+      ]
+     },
+     {
+      "cut": "A06",
+      "start": 252,
+      "end": 408,
+      "frames": 156,
+      "sec": [
+       8.4,
+       13.6
+      ]
+     },
+     {
+      "cut": "A07",
+      "start": 408,
+      "end": 516,
+      "frames": 108,
+      "sec": [
+       13.6,
+       17.2
+      ]
+     },
+     {
+      "cut": "A08",
+      "start": 516,
+      "end": 540,
+      "frames": 24,
+      "sec": [
+       17.2,
+       18.0
+      ]
+     },
+     {
+      "cut": "A09",
+      "start": 540,
+      "end": 678,
+      "frames": 138,
+      "sec": [
+       18.0,
+       22.6
+      ]
+     },
+     {
+      "cut": "A10",
+      "start": 678,
+      "end": 780,
+      "frames": 102,
+      "sec": [
+       22.6,
+       26.0
+      ]
+     },
+     {
+      "cut": "A11",
+      "start": 780,
+      "end": 900,
+      "frames": 120,
+      "sec": [
+       26.0,
+       30.0
+      ]
+     }
+    ]
+   },
+   "copy_timing": [
+    {
+     "cut": "A01",
+     "frames": {
+      "in": 6,
+      "hold": 75,
+      "out": 3
+     },
+     "seconds": {
+      "in": 0.2,
+      "hold": 2.5,
+      "out": 0.1
+     },
+     "ok": true
+    },
+    {
+     "cut": "A02",
+     "frames": "새 문구 없음",
+     "ok": true
+    },
+    {
+     "cut": "A03",
+     "frames": {
+      "in": 6,
+      "hold": 39,
+      "out": 3
+     },
+     "seconds": {
+      "in": 0.2,
+      "hold": 1.3,
+      "out": 0.1
+     },
+     "ok": true
+    },
+    {
+     "cut": "A04",
+     "frames": "새 문구 없음",
+     "ok": true
+    },
+    {
+     "cut": "A05",
+     "frames": {
+      "in": 6,
+      "hold": 57,
+      "out": 3
+     },
+     "seconds": {
+      "in": 0.2,
+      "hold": 1.9,
+      "out": 0.1
+     },
+     "ok": true
+    },
+    {
+     "cut": "A06",
+     "frames": {
+      "in": 6,
+      "hold": 147,
+      "out": 3
+     },
+     "seconds": {
+      "in": 0.2,
+      "hold": 4.9,
+      "out": 0.1
+     },
+     "ok": true
+    },
+    {
+     "cut": "A07",
+     "frames": {
+      "in": 6,
+      "hold": 99,
+      "out": 3
+     },
+     "seconds": {
+      "in": 0.2,
+      "hold": 3.3,
+      "out": 0.1
+     },
+     "ok": true
+    },
+    {
+     "cut": "A08",
+     "frames": "새 문구 없음",
+     "ok": true
+    },
+    {
+     "cut": "A09",
+     "frames": {
+      "in": 6,
+      "hold": 129,
+      "out": 3
+     },
+     "seconds": {
+      "in": 0.2,
+      "hold": 4.3,
+      "out": 0.1
+     },
+     "ok": true
+    },
+    {
+     "cut": "A10",
+     "frames": {
+      "in": 6,
+      "hold": 93,
+      "out": 3
+     },
+     "seconds": {
+      "in": 0.2,
+      "hold": 3.1,
+      "out": 0.1
+     },
+     "ok": true
+    },
+    {
+     "cut": "A11",
+     "frames": {
+      "in": 0,
+      "hold": 120,
+      "out": 0
+     },
+     "seconds": {
+      "in": 0.0,
+      "hold": 4.0,
+      "out": 0.0
+     },
+     "ok": true
+    }
+   ],
+   "text_checks": [
+    {
+     "cut": "A01",
+     "frame": 0,
+     "at": "start",
+     "visible_text": [
+      "apple",
+      "단어는 아는데,",
+      "문장은 왜 막힐까?"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "A01",
+     "frame": 42,
+     "at": "mid",
+     "visible_text": [
+      "apple",
+      "단어는 아는데,",
+      "문장은 왜 막힐까?"
+     ],
+     "issues": [],
+     "copy_size_px": 80,
+     "copy_size_at_360px": 26.7,
+     "copy_max_line_width": 583.5
+    },
+    {
+     "cut": "A01",
+     "frame": 83,
+     "at": "last",
+     "visible_text": [
+      "apple",
+      "단어는 아는데,",
+      "문장은 왜 막힐까?"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "A02",
+     "frame": 84,
+     "at": "start",
+     "visible_text": [
+      "apple"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "A02",
+     "frame": 96,
+     "at": "mid",
+     "visible_text": [
+      "apple"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "A02",
+     "frame": 107,
+     "at": "last",
+     "visible_text": [
+      "apple"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "A03",
+     "frame": 108,
+     "at": "start",
+     "visible_text": [
+      "apple",
+      "직접 써보면?"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "A03",
+     "frame": 132,
+     "at": "mid",
+     "visible_text": [
+      "apple",
+      "직접 써보면?"
+     ],
+     "issues": [],
+     "copy_size_px": 80,
+     "copy_size_at_360px": 26.7,
+     "copy_max_line_width": 418.6
+    },
+    {
+     "cut": "A03",
+     "frame": 155,
+     "at": "last",
+     "visible_text": [
+      "apple",
+      "직접 써보면?"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "A04",
+     "frame": 156,
+     "at": "start",
+     "visible_text": [],
+     "issues": []
+    },
+    {
+     "cut": "A04",
+     "frame": 171,
+     "at": "mid",
+     "visible_text": [],
+     "issues": []
+    },
+    {
+     "cut": "A04",
+     "frame": 185,
+     "at": "last",
+     "visible_text": [],
+     "issues": []
+    },
+    {
+     "cut": "A05",
+     "frame": 186,
+     "at": "start",
+     "visible_text": [
+      "GV 라이팅",
+      "리얼 아카데미"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "A05",
+     "frame": 219,
+     "at": "mid",
+     "visible_text": [
+      "GV 라이팅",
+      "리얼 아카데미"
+     ],
+     "issues": [],
+     "copy_size_px": 80,
+     "copy_size_at_360px": 26.7,
+     "copy_max_line_width": 452.8
+    },
+    {
+     "cut": "A05",
+     "frame": 251,
+     "at": "last",
+     "visible_text": [
+      "GV 라이팅",
+      "리얼 아카데미"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "A06",
+     "frame": 252,
+     "at": "start",
+     "visible_text": [
+      "AI 피드백받고",
+      "GV 라이팅",
+      "직접 쓰고,"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "A06",
+     "frame": 330,
+     "at": "mid",
+     "visible_text": [
+      "AI 피드백받고",
+      "I like apples.",
+      "직접 쓰고,",
+      "학습 방식 예시"
+     ],
+     "issues": [],
+     "copy_size_px": 80,
+     "copy_size_at_360px": 26.7,
+     "copy_max_line_width": 456.9
+    },
+    {
+     "cut": "A06",
+     "frame": 407,
+     "at": "last",
+     "visible_text": [
+      "AI 피드백받고",
+      "I like apples.",
+      "직접 쓰고,",
+      "학습 방식 예시"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "A07",
+     "frame": 408,
+     "at": "start",
+     "visible_text": [
+      "I like apples.",
+      "다시 써보는 연습",
+      "피드백 보고",
+      "학습 방식 예시"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "A07",
+     "frame": 462,
+     "at": "mid",
+     "visible_text": [
+      "I like apples.",
+      "다시 써보는 연습",
+      "피드백 보고",
+      "학습 방식 예시"
+     ],
+     "issues": [],
+     "copy_size_px": 80,
+     "copy_size_at_360px": 26.7,
+     "copy_max_line_width": 545.6
+    },
+    {
+     "cut": "A07",
+     "frame": 515,
+     "at": "last",
+     "visible_text": [
+      "I like apples.",
+      "다시 써보는 연습",
+      "피드백 보고",
+      "학습 방식 예시"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "A08",
+     "frame": 516,
+     "at": "start",
+     "visible_text": [
+      "I like apples.",
+      "학습 방식 예시"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "A08",
+     "frame": 528,
+     "at": "mid",
+     "visible_text": [
+      "I like apples.",
+      "학습 방식 예시"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "A08",
+     "frame": 539,
+     "at": "last",
+     "visible_text": [
+      "I like apples.",
+      "학습 방식 예시"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "A09",
+     "frame": 540,
+     "at": "start",
+     "visible_text": [
+      "I like apples.",
+      "내 생각을 영어로",
+      "학습 방식 예시"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "A09",
+     "frame": 609,
+     "at": "mid",
+     "visible_text": [
+      "I like apples.",
+      "내 생각을 영어로",
+      "학습 방식 예시"
+     ],
+     "issues": [],
+     "copy_size_px": 80,
+     "copy_size_at_360px": 26.7,
+     "copy_max_line_width": 545.6
+    },
+    {
+     "cut": "A09",
+     "frame": 677,
+     "at": "last",
+     "visible_text": [
+      "I like apples.",
+      "내 생각을 영어로",
+      "학습 방식 예시"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "A10",
+     "frame": 678,
+     "at": "start",
+     "visible_text": [
+      "리얼 아카데미에서",
+      "직접 써보세요",
+      "학습 방식 예시"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "A10",
+     "frame": 729,
+     "at": "mid",
+     "visible_text": [
+      "리얼 아카데미에서",
+      "직접 써보세요"
+     ],
+     "issues": [],
+     "copy_size_px": 80,
+     "copy_size_at_360px": 26.7,
+     "copy_max_line_width": 596.8
+    },
+    {
+     "cut": "A10",
+     "frame": 779,
+     "at": "last",
+     "visible_text": [
+      "리얼 아카데미에서",
+      "직접 써보세요"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "A11",
+     "frame": 780,
+     "at": "start",
+     "visible_text": [
+      "리얼 아카데미 무료체험",
+      "프로필 링크에서 신청"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "A11",
+     "frame": 840,
+     "at": "mid",
+     "visible_text": [
+      "리얼 아카데미 무료체험",
+      "프로필 링크에서 신청"
+     ],
+     "issues": [],
+     "copy_size_px": 80,
+     "copy_size_at_360px": 26.7,
+     "copy_max_line_width": 761.6
+    },
+    {
+     "cut": "A11",
+     "frame": 899,
+     "at": "last",
+     "visible_text": [
+      "리얼 아카데미 무료체험",
+      "프로필 링크에서 신청"
+     ],
+     "issues": []
+    }
+   ],
+   "glyph_missing": [],
+   "source_holds": [
+    {
+     "cut": "A02",
+     "what": "apple 블록 멈춤",
+     "frames": "96..107",
+     "count": 12,
+     "seconds": 0.4,
+     "identical": true,
+     "decoded_distinct_md5": 1,
+     "decoded_last_psnr": 51.19
+    },
+    {
+     "cut": "A06",
+     "what": "I like apple.",
+     "frames": "258..323",
+     "count": 66,
+     "seconds": 2.2,
+     "identical": true,
+     "decoded_distinct_md5": 1,
+     "decoded_last_psnr": 49.15
+    },
+    {
+     "cut": "A06",
+     "what": "I like apples.",
+     "frames": "330..404",
+     "count": 75,
+     "seconds": 2.5,
+     "identical": true,
+     "decoded_distinct_md5": 1,
+     "decoded_last_psnr": 41.86
+    },
+    {
+     "cut": "A11",
+     "what": "CTA 전체 화면",
+     "frames": "780..899",
+     "count": 120,
+     "seconds": 4.0,
+     "identical": true,
+     "decoded_distinct_md5": 1,
+     "decoded_last_psnr": 46.02
+    }
+   ],
+   "decoded_frames": 900,
+   "decoded_cta_still": {
+    "frames": "780..899",
+    "count": 120,
+    "distinct_decoded_md5": 1
+   },
+   "decoded_alignment": [
+    {
+     "frame": 42,
+     "psnr_vs_source": 48.74
+    },
+    {
+     "frame": 132,
+     "psnr_vs_source": 48.72
+    },
+    {
+     "frame": 219,
+     "psnr_vs_source": 45.8
+    },
+    {
+     "frame": 462,
+     "psnr_vs_source": 47.05
+    },
+    {
+     "frame": 609,
+     "psnr_vs_source": 44.55
+    },
+    {
+     "frame": 840,
+     "psnr_vs_source": 46.02
+    },
+    {
+     "frame": 324,
+     "psnr_vs_source": 48.85
+    },
+    {
+     "frame": 330,
+     "psnr_vs_source": 41.86
+    }
+   ],
+   "audio": {
+    "loudness": {
+     "raw_I_LUFS": -23.5,
+     "raw_peak_dBFS": -6.4,
+     "gain_dB": 7.5,
+     "final_I_LUFS": -16.0,
+     "final_true_peak_dBTP": -1.4
+    },
+    "duck": [
+     {
+      "window_s": [
+       8.4,
+       13.6
+      ],
+      "target_dB": -6.0,
+      "measured_dB": -6.0
+     }
+    ],
+    "fade_last_50ms_vs_29.0-29.4s_dB": -27.7,
+    "sfx_cues": [
+     {
+      "cut": "A01",
+      "t": 0,
+      "frame": 0,
+      "id": "tick_low",
+      "cue": "낮은 톡"
+     },
+     {
+      "cut": "A01",
+      "t": 0.5,
+      "frame": 15,
+      "id": "key_click",
+      "cue": "키 클릭"
+     },
+     {
+      "cut": "A02",
+      "t": 2.8,
+      "frame": 84,
+      "id": "move_short",
+      "cue": "짧은 이동음"
+     },
+     {
+      "cut": "A03",
+      "t": 3.6,
+      "frame": 108,
+      "id": "pen_light",
+      "cue": "가벼운 펜 소리"
+     },
+     {
+      "cut": "A04",
+      "t": 5.2,
+      "frame": 156,
+      "id": "zoom_short",
+      "cue": "짧은 확대음"
+     },
+     {
+      "cut": "A05",
+      "t": 6.2,
+      "frame": 186,
+      "id": "tap",
+      "cue": "탭음 1회"
+     },
+     {
+      "cut": "A06",
+      "t": 10.8,
+      "frame": 324,
+      "id": "pen_check",
+      "cue": "펜 체크음"
+     },
+     {
+      "cut": "A07",
+      "t": 13.6,
+      "frame": 408,
+      "id": "write_small",
+      "cue": "작은 필기음"
+     },
+     {
+      "cut": "A08",
+      "t": 17.2,
+      "frame": 516,
+      "id": "paper_move",
+      "cue": "짧은 종이 이동음"
+     },
+     {
+      "cut": "A09",
+      "t": 18,
+      "frame": 540,
+      "id": "complete_soft",
+      "cue": "부드러운 완료음 1회"
+     },
+     {
+      "cut": "A11",
+      "t": 26,
+      "frame": 780,
+      "id": "confirm",
+      "cue": "확인음 1회"
+     }
+    ],
+    "sfx_starting_after_26s": [],
+    "bpm": 100
+   }
+  },
+  "B": {
+   "file_with_audio": {
+    "width": 1080,
+    "height": 1920,
+    "r_frame_rate": "30/1",
+    "avg_frame_rate": "30/1",
+    "nb_read_frames": 900,
+    "video_duration": 30.0,
+    "format_duration": 30.0,
+    "pix_fmt": "yuv420p",
+    "codec": "h264",
+    "audio": {
+     "codec": "aac",
+     "sample_rate": "48000",
+     "channels": 2,
+     "duration": 30.0
+    },
+    "size_bytes": 2315603,
+    "decode_errors": "none"
+   },
+   "file_silent": {
+    "width": 1080,
+    "height": 1920,
+    "r_frame_rate": "30/1",
+    "avg_frame_rate": "30/1",
+    "nb_read_frames": 900,
+    "video_duration": 30.0,
+    "format_duration": 30.0,
+    "pix_fmt": "yuv420p",
+    "codec": "h264",
+    "audio": null,
+    "size_bytes": 1535470,
+    "decode_errors": "none"
+   },
+   "cover": {
+    "size": [
+     1080,
+     1920
+    ],
+    "audit": [
+     {
+      "text": "초등 영어",
+      "x": 438,
+      "y": 605,
+      "w": 203,
+      "h": 75,
+      "fontSize": 52,
+      "ems": []
+     },
+     {
+      "text": "대치동 영어 수업을",
+      "x": 172,
+      "y": 772,
+      "w": 736,
+      "h": 139,
+      "fontSize": 96,
+      "ems": []
+     },
+     {
+      "text": "우리 집에서?",
+      "x": 290,
+      "y": 897,
+      "w": 499,
+      "h": 139,
+      "fontSize": 96,
+      "ems": [
+       "우리 집"
+      ]
+     },
+     {
+      "text": "리얼 아카데미",
+      "x": 385,
+      "y": 1270,
+      "w": 309,
+      "h": 79,
+      "fontSize": 54,
+      "ems": []
+     }
+    ]
+   },
+   "cuts": {
+    "count": 11,
+    "total_frames": 900,
+    "gaps_or_overlaps": 0,
+    "list": [
+     {
+      "cut": "B01",
+      "start": 0,
+      "end": 78,
+      "frames": 78,
+      "sec": [
+       0.0,
+       2.6
+      ]
+     },
+     {
+      "cut": "B02",
+      "start": 78,
+      "end": 102,
+      "frames": 24,
+      "sec": [
+       2.6,
+       3.4
+      ]
+     },
+     {
+      "cut": "B03",
+      "start": 102,
+      "end": 162,
+      "frames": 60,
+      "sec": [
+       3.4,
+       5.4
+      ]
+     },
+     {
+      "cut": "B04",
+      "start": 162,
+      "end": 186,
+      "frames": 24,
+      "sec": [
+       5.4,
+       6.2
+      ]
+     },
+     {
+      "cut": "B05",
+      "start": 186,
+      "end": 348,
+      "frames": 162,
+      "sec": [
+       6.2,
+       11.6
+      ]
+     },
+     {
+      "cut": "B06",
+      "start": 348,
+      "end": 414,
+      "frames": 66,
+      "sec": [
+       11.6,
+       13.8
+      ]
+     },
+     {
+      "cut": "B07",
+      "start": 414,
+      "end": 528,
+      "frames": 114,
+      "sec": [
+       13.8,
+       17.6
+      ]
+     },
+     {
+      "cut": "B08",
+      "start": 528,
+      "end": 552,
+      "frames": 24,
+      "sec": [
+       17.6,
+       18.4
+      ]
+     },
+     {
+      "cut": "B09",
+      "start": 552,
+      "end": 684,
+      "frames": 132,
+      "sec": [
+       18.4,
+       22.8
+      ]
+     },
+     {
+      "cut": "B10",
+      "start": 684,
+      "end": 780,
+      "frames": 96,
+      "sec": [
+       22.8,
+       26.0
+      ]
+     },
+     {
+      "cut": "B11",
+      "start": 780,
+      "end": 900,
+      "frames": 120,
+      "sec": [
+       26.0,
+       30.0
+      ]
+     }
+    ]
+   },
+   "copy_timing": [
+    {
+     "cut": "B01",
+     "frames": {
+      "in": 6,
+      "hold": 69,
+      "out": 3
+     },
+     "seconds": {
+      "in": 0.2,
+      "hold": 2.3,
+      "out": 0.1
+     },
+     "ok": true
+    },
+    {
+     "cut": "B02",
+     "frames": "새 문구 없음",
+     "ok": true
+    },
+    {
+     "cut": "B03",
+     "frames": {
+      "in": 6,
+      "hold": 51,
+      "out": 3
+     },
+     "seconds": {
+      "in": 0.2,
+      "hold": 1.7,
+      "out": 0.1
+     },
+     "ok": true
+    },
+    {
+     "cut": "B04",
+     "frames": "새 문구 없음",
+     "ok": true
+    },
+    {
+     "cut": "B05",
+     "frames": {
+      "in": 6,
+      "hold": 153,
+      "out": 3
+     },
+     "seconds": {
+      "in": 0.2,
+      "hold": 5.1,
+      "out": 0.1
+     },
+     "ok": true
+    },
+    {
+     "cut": "B06",
+     "frames": {
+      "in": 6,
+      "hold": 57,
+      "out": 3
+     },
+     "seconds": {
+      "in": 0.2,
+      "hold": 1.9,
+      "out": 0.1
+     },
+     "ok": true
+    },
+    {
+     "cut": "B07",
+     "frames": {
+      "in": 6,
+      "hold": 105,
+      "out": 3
+     },
+     "seconds": {
+      "in": 0.2,
+      "hold": 3.5,
+      "out": 0.1
+     },
+     "ok": true
+    },
+    {
+     "cut": "B08",
+     "frames": "새 문구 없음",
+     "ok": true
+    },
+    {
+     "cut": "B09",
+     "frames": {
+      "in": 6,
+      "hold": 123,
+      "out": 3
+     },
+     "seconds": {
+      "in": 0.2,
+      "hold": 4.1,
+      "out": 0.1
+     },
+     "ok": true
+    },
+    {
+     "cut": "B10",
+     "frames": {
+      "in": 6,
+      "hold": 87,
+      "out": 3
+     },
+     "seconds": {
+      "in": 0.2,
+      "hold": 2.9,
+      "out": 0.1
+     },
+     "ok": true
+    },
+    {
+     "cut": "B11",
+     "frames": {
+      "in": 0,
+      "hold": 120,
+      "out": 0
+     },
+     "seconds": {
+      "in": 0.0,
+      "hold": 4.0,
+      "out": 0.0
+     },
+     "ok": true
+    }
+   ],
+   "text_checks": [
+    {
+     "cut": "B01",
+     "frame": 0,
+     "at": "start",
+     "visible_text": [
+      "대치동",
+      "대치동 영어 수업을",
+      "우리 집",
+      "우리 집에서?"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "B01",
+     "frame": 39,
+     "at": "mid",
+     "visible_text": [
+      "대치동",
+      "대치동 영어 수업을",
+      "우리 집",
+      "우리 집에서?"
+     ],
+     "issues": [],
+     "copy_size_px": 80,
+     "copy_size_at_360px": 26.7,
+     "copy_max_line_width": 617.6
+    },
+    {
+     "cut": "B01",
+     "frame": 77,
+     "at": "last",
+     "visible_text": [
+      "대치동",
+      "대치동 영어 수업을",
+      "우리 집",
+      "우리 집에서?"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "B02",
+     "frame": 78,
+     "at": "start",
+     "visible_text": [
+      "대치동",
+      "우리 집"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "B02",
+     "frame": 90,
+     "at": "mid",
+     "visible_text": [
+      "대치동",
+      "우리 집"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "B02",
+     "frame": 101,
+     "at": "last",
+     "visible_text": [
+      "대치동",
+      "우리 집"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "B03",
+     "frame": 102,
+     "at": "start",
+     "visible_text": [
+      "대치동",
+      "수업이 옵니다",
+      "아이 대신,",
+      "우리 집"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "B03",
+     "frame": 132,
+     "at": "mid",
+     "visible_text": [
+      "수업이 옵니다",
+      "아이 대신,",
+      "우리 집"
+     ],
+     "issues": [],
+     "copy_size_px": 80,
+     "copy_size_at_360px": 26.7,
+     "copy_max_line_width": 452.8
+    },
+    {
+     "cut": "B03",
+     "frame": 161,
+     "at": "last",
+     "visible_text": [
+      "수업이 옵니다",
+      "아이 대신,",
+      "우리 집"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "B04",
+     "frame": 162,
+     "at": "start",
+     "visible_text": [
+      "우리 집"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "B04",
+     "frame": 174,
+     "at": "mid",
+     "visible_text": [],
+     "issues": []
+    },
+    {
+     "cut": "B04",
+     "frame": 185,
+     "at": "last",
+     "visible_text": [],
+     "issues": []
+    },
+    {
+     "cut": "B05",
+     "frame": 186,
+     "at": "start",
+     "visible_text": [
+      "대치동 출신 강사진의",
+      "실시간 라이브"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "B05",
+     "frame": 267,
+     "at": "mid",
+     "visible_text": [
+      "대치동 출신 강사진의",
+      "실시간 라이브",
+      "오늘의 대치 라이브"
+     ],
+     "issues": [],
+     "copy_size_px": 80,
+     "copy_size_at_360px": 26.7,
+     "copy_max_line_width": 689.6
+    },
+    {
+     "cut": "B05",
+     "frame": 347,
+     "at": "last",
+     "visible_text": [
+      "대치동 출신 강사진의",
+      "실시간 라이브",
+      "오늘의 대치 라이브"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "B06",
+     "frame": 348,
+     "at": "start",
+     "visible_text": [
+      "시간표를 확인하고",
+      "오늘의 대치 라이브"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "B06",
+     "frame": 381,
+     "at": "mid",
+     "visible_text": [
+      "시간표",
+      "시간표를 확인하고"
+     ],
+     "issues": [],
+     "copy_size_px": 80,
+     "copy_size_at_360px": 26.7,
+     "copy_max_line_width": 596.8
+    },
+    {
+     "cut": "B06",
+     "frame": 413,
+     "at": "last",
+     "visible_text": [
+      "시간표",
+      "시간표를 확인하고"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "B07",
+     "frame": 414,
+     "at": "start",
+     "visible_text": [
+      "수업부터",
+      "시간표",
+      "우리 아이에게 맞는"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "B07",
+     "frame": 471,
+     "at": "mid",
+     "visible_text": [
+      "수업부터",
+      "우리 아이에게 맞는",
+      "커리큘럼"
+     ],
+     "issues": [],
+     "copy_size_px": 80,
+     "copy_size_at_360px": 26.7,
+     "copy_max_line_width": 617.6
+    },
+    {
+     "cut": "B07",
+     "frame": 527,
+     "at": "last",
+     "visible_text": [
+      "수업부터",
+      "우리 아이에게 맞는",
+      "커리큘럼"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "B08",
+     "frame": 528,
+     "at": "start",
+     "visible_text": [
+      "커리큘럼"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "B08",
+     "frame": 540,
+     "at": "mid",
+     "visible_text": [],
+     "issues": []
+    },
+    {
+     "cut": "B08",
+     "frame": 551,
+     "at": "last",
+     "visible_text": [],
+     "issues": []
+    },
+    {
+     "cut": "B09",
+     "frame": 552,
+     "at": "start",
+     "visible_text": [
+      "리얼 아카데미",
+      "집에서 듣는"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "B09",
+     "frame": 618,
+     "at": "mid",
+     "visible_text": [
+      "리얼 아카데미",
+      "집에서 듣는"
+     ],
+     "issues": [],
+     "copy_size_px": 80,
+     "copy_size_at_360px": 26.7,
+     "copy_max_line_width": 452.8
+    },
+    {
+     "cut": "B09",
+     "frame": 683,
+     "at": "last",
+     "visible_text": [
+      "리얼 아카데미",
+      "집에서 듣는"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "B10",
+     "frame": 684,
+     "at": "start",
+     "visible_text": [
+      "라이브 수업을 만나보세요",
+      "우리 집에서"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "B10",
+     "frame": 732,
+     "at": "mid",
+     "visible_text": [
+      "라이브 수업을 만나보세요",
+      "오늘의 대치 라이브",
+      "우리 집에서"
+     ],
+     "issues": [],
+     "copy_size_px": 77,
+     "copy_size_at_360px": 25.7,
+     "copy_max_line_width": 802.4
+    },
+    {
+     "cut": "B10",
+     "frame": 779,
+     "at": "last",
+     "visible_text": [
+      "라이브 수업을 만나보세요",
+      "오늘의 대치 라이브",
+      "우리 집에서"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "B11",
+     "frame": 780,
+     "at": "start",
+     "visible_text": [
+      "리얼 아카데미 무료체험",
+      "프로필 링크에서 신청"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "B11",
+     "frame": 840,
+     "at": "mid",
+     "visible_text": [
+      "리얼 아카데미 무료체험",
+      "프로필 링크에서 신청"
+     ],
+     "issues": [],
+     "copy_size_px": 80,
+     "copy_size_at_360px": 26.7,
+     "copy_max_line_width": 761.6
+    },
+    {
+     "cut": "B11",
+     "frame": 899,
+     "at": "last",
+     "visible_text": [
+      "리얼 아카데미 무료체험",
+      "프로필 링크에서 신청"
+     ],
+     "issues": []
+    }
+   ],
+   "glyph_missing": [],
+   "source_holds": [
+    {
+     "cut": "B05",
+     "what": "오늘의 대치 라이브 카드",
+     "frames": "204..344",
+     "count": 141,
+     "seconds": 4.7,
+     "identical": true,
+     "decoded_distinct_md5": 1,
+     "decoded_last_psnr": 44.18
+    },
+    {
+     "cut": "B06",
+     "what": "시간표 버튼 크롭",
+     "frames": "354..410",
+     "count": 57,
+     "seconds": 1.9,
+     "identical": true,
+     "decoded_distinct_md5": 1,
+     "decoded_last_psnr": 42.83
+    },
+    {
+     "cut": "B11",
+     "what": "CTA 전체 화면",
+     "frames": "780..899",
+     "count": 120,
+     "seconds": 4.0,
+     "identical": true,
+     "decoded_distinct_md5": 1,
+     "decoded_last_psnr": 46.02
+    }
+   ],
+   "decoded_frames": 900,
+   "decoded_cta_still": {
+    "frames": "780..899",
+    "count": 120,
+    "distinct_decoded_md5": 1
+   },
+   "decoded_alignment": [
+    {
+     "frame": 39,
+     "psnr_vs_source": 49.13
+    },
+    {
+     "frame": 132,
+     "psnr_vs_source": 49.23
+    },
+    {
+     "frame": 267,
+     "psnr_vs_source": 44.18
+    },
+    {
+     "frame": 471,
+     "psnr_vs_source": 45.59
+    },
+    {
+     "frame": 618,
+     "psnr_vs_source": 45.97
+    },
+    {
+     "frame": 840,
+     "psnr_vs_source": 46.02
+    }
+   ],
+   "audio": {
+    "loudness": {
+     "raw_I_LUFS": -23.4,
+     "raw_peak_dBFS": -8.2,
+     "gain_dB": 7.4,
+     "final_I_LUFS": -16.0,
+     "final_true_peak_dBTP": -1.5
+    },
+    "duck": [
+     {
+      "window_s": [
+       6.2,
+       11.6
+      ],
+      "target_dB": -6.0,
+      "measured_dB": -6.0
+     }
+    ],
+    "fade_last_50ms_vs_29.0-29.4s_dB": -26.1,
+    "sfx_cues": [
+     {
+      "cut": "B01",
+      "t": 0,
+      "frame": 0,
+      "id": "tick_double",
+      "cue": "낮은 톡 2회"
+     },
+     {
+      "cut": "B02",
+      "t": 2.6,
+      "frame": 78,
+      "id": "move_short",
+      "cue": "짧은 이동음"
+     },
+     {
+      "cut": "B03",
+      "t": 3.4,
+      "frame": 102,
+      "id": "settle",
+      "cue": "작은 안착음"
+     },
+     {
+      "cut": "B04",
+      "t": 5.4,
+      "frame": 162,
+      "id": "zoom_short",
+      "cue": "확대음"
+     },
+     {
+      "cut": "B05",
+      "t": 6.2,
+      "frame": 186,
+      "id": "live_blip",
+      "cue": "라이브 점등 1회"
+     },
+     {
+      "cut": "B06",
+      "t": 11.6,
+      "frame": 348,
+      "id": "tap_small",
+      "cue": "작은 탭음"
+     },
+     {
+      "cut": "B07",
+      "t": 13.8,
+      "frame": 414,
+      "id": "page_turn",
+      "cue": "종이 넘김"
+     },
+     {
+      "cut": "B08",
+      "t": 17.6,
+      "frame": 528,
+      "id": "move_short",
+      "cue": "이동음"
+     },
+     {
+      "cut": "B10",
+      "t": 22.8,
+      "frame": 684,
+      "id": "accent_soft",
+      "cue": "부드러운 강조음"
+     },
+     {
+      "cut": "B11",
+      "t": 26,
+      "frame": 780,
+      "id": "confirm",
+      "cue": "확인음 1회"
+     }
+    ],
+    "sfx_starting_after_26s": [],
+    "bpm": 92
+   }
+  },
+  "C": {
+   "file_with_audio": {
+    "width": 1080,
+    "height": 1920,
+    "r_frame_rate": "30/1",
+    "avg_frame_rate": "30/1",
+    "nb_read_frames": 900,
+    "video_duration": 30.0,
+    "format_duration": 30.0,
+    "pix_fmt": "yuv420p",
+    "codec": "h264",
+    "audio": {
+     "codec": "aac",
+     "sample_rate": "48000",
+     "channels": 2,
+     "duration": 30.0
+    },
+    "size_bytes": 1981725,
+    "decode_errors": "none"
+   },
+   "file_silent": {
+    "width": 1080,
+    "height": 1920,
+    "r_frame_rate": "30/1",
+    "avg_frame_rate": "30/1",
+    "nb_read_frames": 900,
+    "video_duration": 30.0,
+    "format_duration": 30.0,
+    "pix_fmt": "yuv420p",
+    "codec": "h264",
+    "audio": null,
+    "size_bytes": 1230740,
+    "decode_errors": "none"
+   },
+   "cover": {
+    "size": [
+     1080,
+     1920
+    ],
+    "audit": [
+     {
+      "text": "초등 영어",
+      "x": 438,
+      "y": 605,
+      "w": 203,
+      "h": 75,
+      "fontSize": 52,
+      "ems": []
+     },
+     {
+      "text": "공부는 끝났는데,",
+      "x": 214,
+      "y": 772,
+      "w": 652,
+      "h": 139,
+      "fontSize": 96,
+      "ems": []
+     },
+     {
+      "text": "오늘 남은 영어는?",
+      "x": 192,
+      "y": 897,
+      "w": 695,
+      "h": 139,
+      "fontSize": 96,
+      "ems": [
+       "남은 영어"
+      ]
+     },
+     {
+      "text": "리얼 아카데미",
+      "x": 385,
+      "y": 1270,
+      "w": 309,
+      "h": 79,
+      "fontSize": 54,
+      "ems": []
+     }
+    ]
+   },
+   "cuts": {
+    "count": 11,
+    "total_frames": 900,
+    "gaps_or_overlaps": 0,
+    "list": [
+     {
+      "cut": "C01",
+      "start": 0,
+      "end": 84,
+      "frames": 84,
+      "sec": [
+       0.0,
+       2.8
+      ]
+     },
+     {
+      "cut": "C02",
+      "start": 84,
+      "end": 108,
+      "frames": 24,
+      "sec": [
+       2.8,
+       3.6
+      ]
+     },
+     {
+      "cut": "C03",
+      "start": 108,
+      "end": 174,
+      "frames": 66,
+      "sec": [
+       3.6,
+       5.8
+      ]
+     },
+     {
+      "cut": "C04",
+      "start": 174,
+      "end": 198,
+      "frames": 24,
+      "sec": [
+       5.8,
+       6.6
+      ]
+     },
+     {
+      "cut": "C05",
+      "start": 198,
+      "end": 288,
+      "frames": 90,
+      "sec": [
+       6.6,
+       9.6
+      ]
+     },
+     {
+      "cut": "C06",
+      "start": 288,
+      "end": 444,
+      "frames": 156,
+      "sec": [
+       9.6,
+       14.8
+      ]
+     },
+     {
+      "cut": "C07",
+      "start": 444,
+      "end": 546,
+      "frames": 102,
+      "sec": [
+       14.8,
+       18.2
+      ]
+     },
+     {
+      "cut": "C08",
+      "start": 546,
+      "end": 570,
+      "frames": 24,
+      "sec": [
+       18.2,
+       19.0
+      ]
+     },
+     {
+      "cut": "C09",
+      "start": 570,
+      "end": 702,
+      "frames": 132,
+      "sec": [
+       19.0,
+       23.4
+      ]
+     },
+     {
+      "cut": "C10",
+      "start": 702,
+      "end": 780,
+      "frames": 78,
+      "sec": [
+       23.4,
+       26.0
+      ]
+     },
+     {
+      "cut": "C11",
+      "start": 780,
+      "end": 900,
+      "frames": 120,
+      "sec": [
+       26.0,
+       30.0
+      ]
+     }
+    ]
+   },
+   "copy_timing": [
+    {
+     "cut": "C01",
+     "frames": {
+      "in": 6,
+      "hold": 75,
+      "out": 3
+     },
+     "seconds": {
+      "in": 0.2,
+      "hold": 2.5,
+      "out": 0.1
+     },
+     "ok": true
+    },
+    {
+     "cut": "C02",
+     "frames": "새 문구 없음",
+     "ok": true
+    },
+    {
+     "cut": "C03",
+     "frames": {
+      "in": 6,
+      "hold": 57,
+      "out": 3
+     },
+     "seconds": {
+      "in": 0.2,
+      "hold": 1.9,
+      "out": 0.1
+     },
+     "ok": true
+    },
+    {
+     "cut": "C04",
+     "frames": "새 문구 없음",
+     "ok": true
+    },
+    {
+     "cut": "C05",
+     "frames": {
+      "in": 6,
+      "hold": 81,
+      "out": 3
+     },
+     "seconds": {
+      "in": 0.2,
+      "hold": 2.7,
+      "out": 0.1
+     },
+     "ok": true
+    },
+    {
+     "cut": "C06",
+     "frames": {
+      "in": 6,
+      "hold": 147,
+      "out": 3
+     },
+     "seconds": {
+      "in": 0.2,
+      "hold": 4.9,
+      "out": 0.1
+     },
+     "ok": true
+    },
+    {
+     "cut": "C07",
+     "frames": {
+      "in": 6,
+      "hold": 93,
+      "out": 3
+     },
+     "seconds": {
+      "in": 0.2,
+      "hold": 3.1,
+      "out": 0.1
+     },
+     "ok": true
+    },
+    {
+     "cut": "C08",
+     "frames": "새 문구 없음",
+     "ok": true
+    },
+    {
+     "cut": "C09",
+     "frames": {
+      "in": 6,
+      "hold": 123,
+      "out": 3
+     },
+     "seconds": {
+      "in": 0.2,
+      "hold": 4.1,
+      "out": 0.1
+     },
+     "ok": true
+    },
+    {
+     "cut": "C10",
+     "frames": {
+      "in": 6,
+      "hold": 69,
+      "out": 3
+     },
+     "seconds": {
+      "in": 0.2,
+      "hold": 2.3,
+      "out": 0.1
+     },
+     "ok": true
+    },
+    {
+     "cut": "C11",
+     "frames": {
+      "in": 0,
+      "hold": 120,
+      "out": 0
+     },
+     "seconds": {
+      "in": 0.0,
+      "hold": 4.0,
+      "out": 0.0
+     },
+     "ok": true
+    }
+   ],
+   "text_checks": [
+    {
+     "cut": "C01",
+     "frame": 0,
+     "at": "start",
+     "visible_text": [
+      "공부 끝",
+      "공부는 끝났는데,",
+      "오늘 남은 영어는?"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "C01",
+     "frame": 42,
+     "at": "mid",
+     "visible_text": [
+      "공부 끝",
+      "공부는 끝났는데,",
+      "오늘 남은 영어는?"
+     ],
+     "issues": [],
+     "copy_size_px": 80,
+     "copy_size_at_360px": 26.7,
+     "copy_max_line_width": 583.5
+    },
+    {
+     "cut": "C01",
+     "frame": 83,
+     "at": "last",
+     "visible_text": [
+      "공부 끝",
+      "공부는 끝났는데,",
+      "오늘 남은 영어는?"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "C02",
+     "frame": 84,
+     "at": "start",
+     "visible_text": [
+      "공부 끝"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "C02",
+     "frame": 96,
+     "at": "mid",
+     "visible_text": [],
+     "issues": []
+    },
+    {
+     "cut": "C02",
+     "frame": 107,
+     "at": "last",
+     "visible_text": [],
+     "issues": []
+    },
+    {
+     "cut": "C03",
+     "frame": 108,
+     "at": "start",
+     "visible_text": [
+      "말한 내용은?",
+      "오늘 써보고"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "C03",
+     "frame": 141,
+     "at": "mid",
+     "visible_text": [
+      "말한 내용은?",
+      "오늘 써보고"
+     ],
+     "issues": [],
+     "copy_size_px": 80,
+     "copy_size_at_360px": 26.7,
+     "copy_max_line_width": 418.6
+    },
+    {
+     "cut": "C03",
+     "frame": 173,
+     "at": "last",
+     "visible_text": [
+      "말한 내용은?",
+      "오늘 써보고"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "C04",
+     "frame": 174,
+     "at": "start",
+     "visible_text": [],
+     "issues": []
+    },
+    {
+     "cut": "C04",
+     "frame": 186,
+     "at": "mid",
+     "visible_text": [],
+     "issues": []
+    },
+    {
+     "cut": "C04",
+     "frame": 197,
+     "at": "last",
+     "visible_text": [],
+     "issues": []
+    },
+    {
+     "cut": "C05",
+     "frame": 198,
+     "at": "start",
+     "visible_text": [
+      "리얼 아카데미",
+      "학습 리포트"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "C05",
+     "frame": 243,
+     "at": "mid",
+     "visible_text": [
+      "리얼 아카데미",
+      "리포트 확인 경로",
+      "학습 리포트"
+     ],
+     "issues": [],
+     "copy_size_px": 80,
+     "copy_size_at_360px": 26.7,
+     "copy_max_line_width": 452.8
+    },
+    {
+     "cut": "C05",
+     "frame": 287,
+     "at": "last",
+     "visible_text": [
+      "리얼 아카데미",
+      "리포트 확인 경로",
+      "학습 리포트"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "C06",
+     "frame": 288,
+     "at": "start",
+     "visible_text": [
+      "결과를 확인해요",
+      "리포트 확인 경로",
+      "아이의 쓰기·말하기"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "C06",
+     "frame": 366,
+     "at": "mid",
+     "visible_text": [
+      "결과 확인 예시",
+      "결과를 확인해요",
+      "라이팅 결과",
+      "스피킹 결과",
+      "아이의 쓰기·말하기"
+     ],
+     "issues": [],
+     "copy_size_px": 80,
+     "copy_size_at_360px": 26.7,
+     "copy_max_line_width": 619.1
+    },
+    {
+     "cut": "C06",
+     "frame": 443,
+     "at": "last",
+     "visible_text": [
+      "결과 확인 예시",
+      "결과를 확인해요",
+      "라이팅 결과",
+      "스피킹 결과",
+      "아이의 쓰기·말하기"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "C07",
+     "frame": 444,
+     "at": "start",
+     "visible_text": [
+      "결과 확인 예시",
+      "라이팅 결과",
+      "무엇을 연습했는지",
+      "스피킹 결과",
+      "얼마나 했는지,"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "C07",
+     "frame": 495,
+     "at": "mid",
+     "visible_text": [
+      "결과 확인 예시",
+      "라이팅 결과",
+      "무엇을 연습했는지",
+      "스피킹 결과",
+      "얼마나 했는지,"
+     ],
+     "issues": [],
+     "copy_size_px": 80,
+     "copy_size_at_360px": 26.7,
+     "copy_max_line_width": 596.8
+    },
+    {
+     "cut": "C07",
+     "frame": 545,
+     "at": "last",
+     "visible_text": [
+      "결과 확인 예시",
+      "라이팅 결과",
+      "무엇을 연습했는지",
+      "스피킹 결과",
+      "얼마나 했는지,"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "C08",
+     "frame": 546,
+     "at": "start",
+     "visible_text": [
+      "결과 확인 예시",
+      "라이팅 결과",
+      "스피킹 결과"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "C08",
+     "frame": 558,
+     "at": "mid",
+     "visible_text": [
+      "결과 확인 예시",
+      "라이팅 결과",
+      "스피킹 결과"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "C08",
+     "frame": 569,
+     "at": "last",
+     "visible_text": [
+      "결과 확인 예시",
+      "라이팅 결과",
+      "스피킹 결과"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "C09",
+     "frame": 570,
+     "at": "start",
+     "visible_text": [
+      "결과 확인 예시",
+      "라이팅 결과",
+      "스피킹 결과",
+      "오늘의 영어를",
+      "확인하는 방법"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "C09",
+     "frame": 636,
+     "at": "mid",
+     "visible_text": [
+      "결과 확인 예시",
+      "라이팅 결과",
+      "스피킹 결과",
+      "오늘의 영어를",
+      "확인하는 방법"
+     ],
+     "issues": [],
+     "copy_size_px": 80,
+     "copy_size_at_360px": 26.7,
+     "copy_max_line_width": 452.8
+    },
+    {
+     "cut": "C09",
+     "frame": 701,
+     "at": "last",
+     "visible_text": [
+      "결과 확인 예시",
+      "라이팅 결과",
+      "스피킹 결과",
+      "오늘의 영어를",
+      "확인하는 방법"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "C10",
+     "frame": 702,
+     "at": "start",
+     "visible_text": [
+      "결과 확인 예시",
+      "라이팅 결과",
+      "리얼 아카데미로",
+      "스피킹 결과",
+      "함께 시작해요"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "C10",
+     "frame": 741,
+     "at": "mid",
+     "visible_text": [
+      "결과 확인 예시",
+      "리얼 아카데미로",
+      "함께 시작해요"
+     ],
+     "issues": [],
+     "copy_size_px": 80,
+     "copy_size_at_360px": 26.7,
+     "copy_max_line_width": 524.8
+    },
+    {
+     "cut": "C10",
+     "frame": 779,
+     "at": "last",
+     "visible_text": [
+      "결과 확인 예시",
+      "리얼 아카데미로",
+      "함께 시작해요"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "C11",
+     "frame": 780,
+     "at": "start",
+     "visible_text": [
+      "리얼 아카데미 무료체험",
+      "프로필 링크에서 신청"
+     ],
+     "issues": []
+    },
+    {
+     "cut": "C11",
+     "frame": 840,
+     "at": "mid",
+     "visible_text": [
+      "리얼 아카데미 무료체험",
+      "프로필 링크에서 신청"
+     ],
+     "issues": [],
+     "copy_size_px": 80,
+     "copy_size_at_360px": 26.7,
+     "copy_max_line_width": 761.6
+    },
+    {
+     "cut": "C11",
+     "frame": 899,
+     "at": "last",
+     "visible_text": [
+      "리얼 아카데미 무료체험",
+      "프로필 링크에서 신청"
+     ],
+     "issues": []
+    }
+   ],
+   "glyph_missing": [],
+   "source_holds": [
+    {
+     "cut": "C06",
+     "what": "두 결과 카드",
+     "frames": "300..440",
+     "count": 141,
+     "seconds": 4.7,
+     "identical": true,
+     "decoded_distinct_md5": 1,
+     "decoded_last_psnr": 47.88
+    },
+    {
+     "cut": "C11",
+     "what": "CTA 전체 화면",
+     "frames": "780..899",
+     "count": 120,
+     "seconds": 4.0,
+     "identical": true,
+     "decoded_distinct_md5": 1,
+     "decoded_last_psnr": 46.02
+    }
+   ],
+   "decoded_frames": 900,
+   "decoded_cta_still": {
+    "frames": "780..899",
+    "count": 120,
+    "distinct_decoded_md5": 1
+   },
+   "decoded_alignment": [
+    {
+     "frame": 42,
+     "psnr_vs_source": 48.4
+    },
+    {
+     "frame": 141,
+     "psnr_vs_source": 45.92
+    },
+    {
+     "frame": 243,
+     "psnr_vs_source": 44.94
+    },
+    {
+     "frame": 495,
+     "psnr_vs_source": 45.1
+    },
+    {
+     "frame": 636,
+     "psnr_vs_source": 48.18
+    },
+    {
+     "frame": 840,
+     "psnr_vs_source": 46.02
+    }
+   ],
+   "audio": {
+    "loudness": {
+     "raw_I_LUFS": -23.8,
+     "raw_peak_dBFS": -9.9,
+     "gain_dB": 7.8,
+     "final_I_LUFS": -16.0,
+     "final_true_peak_dBTP": -2.1
+    },
+    "duck": [
+     {
+      "window_s": [
+       9.6,
+       14.8
+      ],
+      "target_dB": -6.0,
+      "measured_dB": -6.0
+     }
+    ],
+    "fade_last_50ms_vs_29.0-29.4s_dB": -27.0,
+    "sfx_cues": [
+     {
+      "cut": "C01",
+      "t": 0,
+      "frame": 0,
+      "id": "check_short",
+      "cue": "짧은 체크음"
+     },
+     {
+      "cut": "C02",
+      "t": 2.8,
+      "frame": 84,
+      "id": "unfold",
+      "cue": "펼침음"
+     },
+     {
+      "cut": "C03",
+      "t": 3.6,
+      "frame": 108,
+      "id": "pen_light",
+      "cue": "펜 소리"
+     },
+     {
+      "cut": "C04",
+      "t": 5.8,
+      "frame": 174,
+      "id": "zoom_short",
+      "cue": "확대음"
+     },
+     {
+      "cut": "C05",
+      "t": 6.6,
+      "frame": 198,
+      "id": "tap_small",
+      "cue": "작은 탭음"
+     },
+     {
+      "cut": "C07",
+      "t": 14.8,
+      "frame": 444,
+      "id": "focus_low",
+      "cue": "낮은 포커스음"
+     },
+     {
+      "cut": "C08",
+      "t": 18.2,
+      "frame": 546,
+      "id": "paper_move",
+      "cue": "종이 이동음"
+     },
+     {
+      "cut": "C10",
+      "t": 23.4,
+      "frame": 702,
+      "id": "accent_soft",
+      "cue": "부드러운 강조음"
+     },
+     {
+      "cut": "C11",
+      "t": 26,
+      "frame": 780,
+      "id": "confirm",
+      "cue": "확인음 1회"
+     }
+    ],
+    "sfx_starting_after_26s": [],
+    "bpm": 84
+   }
+  }
+ },
+ "fails": [],
+ "notes": [],
+ "A06_states": [
+  {
+   "frame": 257,
+   "sec": 8.567,
+   "sentence": "I like apple.",
+   "rect": {
+    "x": 134,
+    "y": 1030.1,
+    "w": 442.5,
+    "h": 104
+   },
+   "label_visible": true
+  },
+  {
+   "frame": 258,
+   "sec": 8.6,
+   "sentence": "I like apple.",
+   "rect": {
+    "x": 134,
+    "y": 1030,
+    "w": 442.5,
+    "h": 104
+   },
+   "label_visible": true
+  },
+  {
+   "frame": 323,
+   "sec": 10.767,
+   "sentence": "I like apple.",
+   "rect": {
+    "x": 134,
+    "y": 1030,
+    "w": 442.5,
+    "h": 104
+   },
+   "label_visible": true
+  },
+  {
+   "frame": 324,
+   "sec": 10.8,
+   "sentence": "I like apples.",
+   "rect": {
+    "x": 134,
+    "y": 1030,
+    "w": 480.7,
+    "h": 104
+   },
+   "label_visible": true
+  },
+  {
+   "frame": 329,
+   "sec": 10.967,
+   "sentence": "I like apples.",
+   "rect": {
+    "x": 134,
+    "y": 1030,
+    "w": 480.7,
+    "h": 104
+   },
+   "label_visible": true
+  },
+  {
+   "frame": 330,
+   "sec": 11.0,
+   "sentence": "I like apples.",
+   "rect": {
+    "x": 134,
+    "y": 1030,
+    "w": 480.7,
+    "h": 104
+   },
+   "label_visible": true
+  },
+  {
+   "frame": 404,
+   "sec": 13.467,
+   "sentence": "I like apples.",
+   "rect": {
+    "x": 134,
+    "y": 1030,
+    "w": 480.7,
+    "h": 104
+   },
+   "label_visible": true
+  },
+  {
+   "frame": 405,
+   "sec": 13.5,
+   "sentence": "I like apples.",
+   "rect": {
+    "x": 134,
+    "y": 1030,
+    "w": 480.7,
+    "h": 104
+   },
+   "label_visible": true
+  }
+ ],
+ "A06_position_fixed": {
+  "x_258": 134,
+  "x_330": 134,
+  "y_258": 1030,
+  "y_330": 1030,
+  "width_258": 442.5,
+  "width_330": 480.7
+ }
+}

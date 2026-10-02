@@ -1,0 +1,19 @@
+{
+  "name": "real-academy-reels-abc",
+  "private": true,
+  "type": "module",
+  "description": "리얼 아카데미 릴스 A/B/C 텍스트 모션그래픽 — 프레임 결정적 HTML 렌더 + ffmpeg",
+  "scripts": {
+    "assets": "python3 scripts/prepare_ui_assets.py",
+    "render": "node scripts/render.mjs --ep A,B,C",
+    "covers": "node scripts/render.mjs --cover A,B,C",
+    "inspect": "node scripts/render.mjs --inspect A,B,C",
+    "audio": "node scripts/audio.mjs",
+    "mux": "python3 scripts/mux.py",
+    "validate": "python3 scripts/validate.py",
+    "all": "npm run assets && npm run render && npm run covers && npm run inspect && npm run audio && npm run mux && npm run validate"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1"
+  }
+}

@@ -1,0 +1,126 @@
+/* 임시 스타일 (TEMPORARY STYLE) — 브랜드 규정 미제공.
+   흰 배경 / 짙은 글자 / 강조색 1개의 중립 검토본. 브랜드 가이드 수령 시 아래 토큰만 교체. */
+@font-face {
+  font-family: "Noto Sans KR VF";
+  src: url("../../fonts/NotoSansKR-VF.ttf") format("truetype");
+  font-weight: 100 900;
+  font-display: block;
+}
+
+:root {
+  --bg: #ffffff;
+  --ink: #15181d;        /* 본문 */
+  --ink2: #565e69;       /* 보조 */
+  --line: #d6dce3;       /* 얇은 선 */
+  --line2: #aeb7c2;      /* 점선/빈 칸 */
+  --paper: #f3f5f7;      /* 카드 면 */
+  --accent: #0a8a58;     /* 강조색 1개 (앱 캡처의 초록 계열에서 명도만 낮춤) */
+  --accent-soft: #e3f4eb;
+  --copy-size: 80px;
+  --sub-size: 48px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--bg); }
+body { width: 1080px; height: 1920px; overflow: hidden; }
+
+#stage {
+  position: relative;
+  width: 1080px;
+  height: 1920px;
+  overflow: hidden;
+  background: var(--bg);
+  font-family: "Noto Sans KR VF", sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  font-kerning: normal;
+}
+
+.abs { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+.layer { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+svg.layer { overflow: visible; }
+
+/* ---------- brand mark (fixed from frame 0) ---------- */
+#brand {
+  position: absolute; left: 90px; top: 250px;
+  height: 72px; padding: 0 30px;
+  display: flex; align-items: center;
+  background: var(--ink); border-radius: 36px;
+  z-index: 50;
+}
+#brand img { height: 42px; width: auto; display: block; }
+
+/* ---------- main copy ---------- */
+.copy { position: absolute; z-index: 40; white-space: nowrap; }
+.copy .line {
+  position: absolute; left: 0; white-space: nowrap;
+  font-size: var(--copy-size); line-height: 1.3; font-weight: 500;
+  letter-spacing: -0.02em; color: var(--ink);
+}
+.copy .em, .cover .em { font-weight: 800; color: var(--accent); }
+
+/* ---------- 보조/장면 문자열 ---------- */
+.sub {
+  position: absolute; white-space: nowrap;
+  font-size: var(--sub-size); line-height: 1.25; font-weight: 600;
+  letter-spacing: -0.01em; color: var(--ink2);
+}
+.tag {
+  position: absolute; white-space: nowrap;
+  height: 76px; padding: 0 28px; border-radius: 38px;
+  display: flex; align-items: center;
+  font-size: var(--sub-size); font-weight: 600; letter-spacing: -0.01em;
+  color: var(--ink2); background: var(--paper); border: 3px solid var(--line);
+}
+.tag.accent { color: var(--accent); background: var(--accent-soft); border-color: transparent; font-weight: 700; }
+
+/* ---------- shapes ---------- */
+.card {
+  position: absolute; background: var(--paper);
+  border: 3px solid var(--line); border-radius: 32px;
+}
+.slot {
+  position: absolute; background: #fff;
+  border: 5px dashed var(--line2); border-radius: 28px;
+}
+.slot.filled { border-style: solid; border-color: var(--accent); }
+.block {
+  position: absolute; background: var(--accent); border-radius: 28px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: 700; letter-spacing: -0.01em;
+}
+.cursor { position: absolute; width: 7px; background: var(--accent); border-radius: 3px; }
+
+.tablet {
+  position: absolute; background: var(--ink); overflow: hidden;
+}
+.tablet .screen { position: absolute; overflow: hidden; background: #fff; }
+.tablet .screen img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: block; }
+.silhouette {
+  position: absolute; border: 6px solid var(--ink2); background: transparent;
+}
+
+.crop {
+  position: absolute; background: #fff; overflow: hidden;
+  border-radius: 28px; border: 3px solid var(--line);
+  box-shadow: 0 18px 40px rgba(21, 24, 29, 0.12);
+}
+.crop img { position: absolute; display: block; }
+.ring {
+  position: absolute; border: 5px solid var(--accent); border-radius: 14px;
+}
+
+/* ---------- example sentence (A) ---------- */
+.sentence {
+  position: absolute; white-space: nowrap;
+  font-size: 72px; line-height: 1.3; font-weight: 600; letter-spacing: -0.01em; color: var(--ink);
+}
+.sentence .u { position: relative; display: inline-block; }
+.sentence .uline {
+  position: absolute; left: 0; bottom: 4px; height: 7px; border-radius: 4px;
+  background: var(--accent); transform-origin: 0 50%;
+}
+
+/* ---------- cover ---------- */
+.cover { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+#stage div, #stage svg, #stage img { will-change: opacity; }
