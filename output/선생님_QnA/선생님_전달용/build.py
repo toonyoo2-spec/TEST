@@ -121,7 +121,7 @@ body{font-family:P,sans-serif;color:var(--ink);background:var(--paper);font-size
 .eyebrow{font-size:9pt;font-weight:700;letter-spacing:.08em;color:#8a5a12}
 .hero h1{font-size:25pt;font-weight:800;line-height:1.25;margin-top:4mm;position:relative;z-index:1}
 .hero p{margin-top:4mm;font-size:10.5pt;max-width:120mm;position:relative;z-index:1;color:#4a4336}
-h2{font-size:14pt;font-weight:800;margin:9mm 0 3.5mm;display:flex;align-items:center;gap:2.5mm}
+h2{font-size:14pt;font-weight:800;margin:7mm 0 3mm;display:flex;align-items:center;gap:2.5mm}
 h2 .num{display:inline-flex;width:7mm;height:7mm;border-radius:50%;background:var(--orange);color:#fff;font-size:9.5pt;align-items:center;justify-content:center}
 .cards{display:grid;grid-template-columns:1fr 1fr;gap:3.5mm}
 .card{border:1px solid var(--line);border-radius:10px;padding:4mm 4.5mm;background:#fff}
@@ -235,7 +235,7 @@ def build(name, t):
   <div class="cards">
     <div class="card"><div class="k">날짜</div><div class="v">{SHOOT['date']}</div></div>
     <div class="card"><div class="k">장소</div><div class="v">{SHOOT['place']}</div><div class="s">{SHOOT['address']}<br>{SHOOT['parking']}</div></div>
-    <div class="card wide"><div class="k">타임테이블 · {name} 선생님 촬영 시간</div><div class="sched">{sched}</div></div>
+    <div class="card wide"><div class="k">타임테이블 · {name} 선생님 촬영 시간</div><div class="sched">{sched}</div><div class="s" style="margin-top:2mm">※ 이 문서는 Q&amp;A 촬영 안내예요. 마케팅 촬영 내용은 별도로 정리해 전달드릴게요.</div></div>
   </div>
 
   <h2><span class="num">2</span>어떤 영상인가요?</h2>
