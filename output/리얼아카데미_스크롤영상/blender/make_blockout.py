@@ -33,7 +33,7 @@ RES = (1280, 720)
 
 # 카메라 경로: (각도°, 피벗까지 거리, 높이, 바라보는 지점)
 CAM_START = dict(theta=30.0, radius=1.70, height=0.92)
-CAM_END = dict(theta=145.0, radius=0.43, height=1.18)  # 오른쪽 귀 옆, 어깨 위
+CAM_END = dict(theta=153.0, radius=0.67, height=1.05)  # 오른쪽 어깨 뒤, 눈높이 바로 위(오버더숄더)
 PIVOT_START = Vector((0.0, 0.25, 0.0))
 PIVOT_END = Vector((0.0, 0.30, 0.0))
 LOOK_START = Vector((0.0, 0.12, 0.93))  # 아이 얼굴과 태블릿 뒷면 사이

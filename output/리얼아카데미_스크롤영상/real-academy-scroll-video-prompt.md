@@ -67,6 +67,7 @@ AI로 만든 시작·끝 이미지를 검토한 결과, 이미지 모델이 방�
 | 30 | 마지막 카메라를 "어깨 뒤"에서 "오른쪽 귀 옆, 어깨 위"로 조정 | 어깨 뒤에서는 머리가 화면의 40% 가까이 가림(블록아웃으로 확인) |
 | 31 | 태블릿 기울기를 아이 눈높이를 향하도록(22°) 지정 | 화면이 카메라가 아니라 아이를 향하면서도 마지막 구도에서 잘 보이게 |
 | 32 | 실사 시작 이미지는 블록아웃 시작 프레임을 구도 참조로 생성 | 참조 영상과 시작 이미지의 구도가 맞아야 함 |
+| 33 | 마지막 카메라를 "귀 옆 1.18m"에서 "오른쪽 어깨 뒤, 눈높이 바로 위 1.05m"로 낮춤(오버더숄더) | 사용자 요청. 카메라가 너무 올라가 내려다보는 구도 대신, 어깨·뒷머리가 걸리는 정통 오버더숄더. 태블릿은 화면 가로 약 35%, 화면이 거의 정면 |
 
 ## 1. 어떤 방식으로 작성된 프롬프트인가
 
@@ -98,7 +99,7 @@ AI로 만든 시작·끝 이미지를 검토한 결과, 이미지 모델이 방�
 | 화면 합성 | 추후 실제 리얼아카데미 화면으로 교체 | 사용자 지정 |
 | 추적 기준 | 회색 화면, 네 모서리 안쪽 십자 4개와 중앙 십자 1개 | 마커 필요성은 사용자 요청, 배치·색상은 제안 |
 | 길이 | 약 8초 | 임시 제안 |
-| 카메라 | 책상 건너편 낮은 앵글(정면에서 오른쪽 약 30°) → 오른쪽 옆 → 오른쪽 어깨 뒤 조금 위, 약 120° 회전 | 레퍼런스 앵글 반영 |
+| 카메라 | 책상 건너편 낮은 앵글(정면에서 오른쪽 약 30°) → 오른쪽 옆 → 오른쪽 어깨 뒤 눈높이 오버더숄더, 약 120° 회전 | 레퍼런스 앵글 반영 |
 | 앵글 레퍼런스 | 타사 광고 이미지 2장. 카메라 위치·각도만 참고, 연기·상표·교재·의상 반영 금지, 생성 도구에 업로드 금지 | 사용자 지정 |
 | 기기 색상 | 그레이 | 임시 제안 |
 | 생성 모델 | Higgsfield · Seedance 2.5 | 사용자 지정 |
@@ -138,8 +139,8 @@ Higgsfield 공식 페이지는 이 작업 환경에서 접속이 막혀 직접 �
 | 구간 | 화면과 연기 | 제작 의도 |
 |---|---|---|
 | 0–2초 | 책상 건너편 낮은 앵글에서 아이 정면 오른쪽 약 30°. 태블릿은 뒷면만 보임. 0–0.5초 입 다물고 집중 → 0.5–1.5초 짧은 대사 → 1.5–2초 작은 미소 후 들음 | 공부에 집중하는 모습으로 시작. 발화가 분명히 보이게 하고, 첫 프레임을 스크롤 대표 화면으로 쓸 수 있게 함 |
-| 2–7초 | 위에서 볼 때 시계 방향으로 약 120° 회전, 책상 높이에서 어깨 위 높이로 상승. 오른쪽 옆을 지나 어깨 뒤로 이동. 아이는 듣는 표정. 태블릿 화면이 드러남 | 같은 공간 안에서 활동의 정체를 공개 |
-| 7–8초 | 태블릿이 화면 가로의 약 40%, 거의 정면. 네 모서리와 마커가 모두 보임. 머리·어깨는 왼쪽 가장자리에만. 약 1초 안정화 | 실제 앱 화면 합성과 스크롤 종료 구간 확보 |
+| 2–7초 | 위에서 볼 때 시계 방향으로 약 120° 회전, 책상 높이(0.92m)에서 눈높이 바로 위(1.05m)로 완만하게 상승. 오른쪽 옆을 지나 어깨 뒤로 이동. 아이는 듣는 표정. 태블릿 화면이 드러남 | 같은 공간 안에서 활동의 정체를 공개 |
+| 7–8초 | 오른쪽 어깨 뒤 눈높이 오버더숄더. 태블릿이 화면 가로의 약 35%, 거의 정면. 네 모서리와 마커가 모두 보임. 뒷머리·어깨는 왼쪽과 아래에 걸리되 화면은 가리지 않음. 약 1초 안정화 | 실제 앱 화면 합성과 스크롤 종료 구간 확보 |
 
 짧은 대답은 화면이 보이기 전부터 자연스럽게 수업 중이라는 인상을 준다. 화면 공개 후에도 명확한 발화가 필요하면 두 번째 짧은 대답을 넣을 수 있지만, 현재 초안은 입 움직임과 연기 오류를 줄이기 위해 한 번만 요청한다.
 
@@ -199,21 +200,21 @@ Everything is unbranded: no logos, brand names, or readable text on the tablet, 
 
 | 항목 | 지시 | 이유 |
 |---|---|---|
-| 카메라 | 오른쪽 귀 옆, 어깨 위에서 내려다봄, 50mm | 두 번째 레퍼런스의 앵글감. 렌즈는 시작과 같아야 영상이 한 번에 이어짐 |
-| 화면 크기 | 화면 가로의 약 40% | 레퍼런스보다 태블릿을 훨씬 크게 |
+| 카메라 | 오른쪽 어깨 뒤, 아이 눈높이 바로 위(오버더숄더), 50mm | 두 번째 레퍼런스의 앵글감. 렌즈는 시작과 같아야 영상이 한 번에 이어짐 |
+| 화면 크기 | 화면 가로의 약 35% | 레퍼런스보다 태블릿을 훨씬 크게 |
 | 화면 각도 | 거의 정면, 살짝만 비스듬히 | 화면이 잘 보이고 합성이 쉬움 |
-| 아이 | 어깨·귀·안경다리·뒷머리 일부만 왼쪽 끝에, 흐리게 | 화면을 가리지 않게 |
+| 아이 | 뒷머리·오른쪽 어깨가 왼쪽과 아래에 흐리게 걸림, 화면은 가리지 않음 | 화면을 가리지 않게 |
 | 화면 | 중간 회색 + 검은 십자 5개 | 합성용 추적 기준 |
 | 반사 | 없게 | 합성 방해 방지 |
 
 ```text
 Photorealistic 16:9 film still from the same commercial: the same boy, same room, same evening lighting.
 
-Camera: close, just above the boy's right shoulder beside his right ear, looking down at the tablet. 50mm lens.
+Camera: over-the-shoulder, just behind the boy's right shoulder at about his eye level, looking past his shoulder and the back of his head at the tablet. 50mm lens. The camera is not high above him.
 
-The tablet is the hero of the frame: it fills about 40 percent of the frame width, placed at center to slightly right of center, with its screen facing the camera nearly straight on, only a slight angle, in sharp focus.
+The tablet is the hero of the frame: it fills about 35 percent of the frame width, placed at center, with its screen facing the camera nearly straight on, only a slight angle, in sharp focus.
 
-Only a small part of the boy's right shoulder, his right ear, the arm of his glasses and the back of his head appear at the left edge of the frame, softly out of focus, never overlapping the tablet. He is calmly looking at the screen. Nothing is in front of the screen.
+The back of the boy's head and his right shoulder fill the left side and lower left of the frame, softly out of focus, never overlapping the tablet. He is calmly looking at the screen. Nothing is in front of the screen.
 
 The tablet: a compact 8.7-inch tablet with thin, even black bezels, softly rounded corners and a 5:3 screen, standing horizontally on a plain gray stand on the light wood desk. All four corners and the full bezel are visible, with some desk around the tablet.
 
@@ -239,7 +240,7 @@ The screen is a flat, evenly lit medium gray, completely blank, with nothing on 
 ```text
 One continuous 8-second shot connecting the first frame to the last frame.
 
-The camera makes a slow, smooth clockwise arc around the boy's right side, as seen from above: from the low view across the desk, slightly to his right, past his right profile, to just behind and slightly above his right shoulder, rising gently from just above desk height to just above shoulder height. About a 120-degree partial arc, ending with a gentle push-in until the tablet fills about 40 percent of the frame width. Only the camera moves; the boy, desk, and tablet stay in place.
+The camera makes a slow, smooth clockwise arc around the boy's right side, as seen from above: from the low view across the desk, slightly to his right, past his right profile, to just behind and slightly above his right shoulder, rising gently from just above desk height to just above his eye level, never high above him. About a 120-degree partial arc, ending in a classic over-the-shoulder view with the tablet filling about 35 percent of the frame width. Only the camera moves; the boy, desk, and tablet stay in place.
 
 [0-0.5s] Static. The boy leans slightly forward, quietly focused on the tablet, mouth closed.
 [0.5-1.5s] He says one short line with clear, natural lip movement: "Yes, I like pizza!"
@@ -278,8 +279,8 @@ TIMELINE
 [0-0.5s] Low view from across the desk, just above desk height, slightly to his right (about 30 degrees from straight on), 50mm lens, with soft out-of-focus desk items in the foreground. He leans slightly forward, quietly focused on the tablet, mouth closed. His eyes are clearly visible through his glasses. Only the back or edge of the tablet is visible; the screen is hidden.
 [0.5-1.5s] He says one short line with clear, natural lip movement: "Yes, I like pizza!"
 [1.5-2s] He closes his mouth, gives a small, natural smile, and listens attentively.
-[2-7s] The camera makes a slow, smooth clockwise arc around his right side, as seen from above, through the open floor space: past his right profile to just behind and slightly above his right shoulder, rising gently from desk height to above shoulder height, about a 120-degree partial arc, then a gentle push-in. Only the camera moves; he keeps facing the tablet with his head and body still. The screen is gradually revealed. Focus shifts smoothly from his eyes to the screen.
-[7-8s] The camera settles and holds still. Over-the-shoulder view looking down at the tablet. Only a small, softly focused part of his right shoulder, ear, and the back of his head appears at the left edge of the frame, beside the screen, never in front of it. The tablet fills about 40 percent of the frame width, its screen facing the camera nearly straight on. All four screen corners and all five crosses are sharp and fully visible, with a margin around the tablet.
+[2-7s] The camera makes a slow, smooth clockwise arc around his right side, as seen from above, through the open floor space: past his right profile to just behind and slightly above his right shoulder, rising gently from desk height to just above his eye level, about a 120-degree partial arc, ending in a classic over-the-shoulder view. Only the camera moves; he keeps facing the tablet with his head and body still. The screen is gradually revealed. Focus shifts smoothly from his eyes to the screen.
+[7-8s] The camera settles and holds still. Classic over-the-shoulder view at about his eye level. The softly focused back of his head and right shoulder fill the left side and lower left of the frame, beside the screen, never in front of it. The tablet fills about 35 percent of the frame width, its screen facing the camera nearly straight on. All four screen corners and all five crosses are sharp and fully visible, with a margin around the tablet.
 
 PERFORMANCE
 His hands rest on the desk beside the tablet the whole time. Subtle blinking and breathing. Restrained, natural acting; his gaze stays on the tablet.
@@ -303,8 +304,8 @@ On the desk, a compact 8.7-inch gray tablet with thin black bezels and a 5:3 scr
 [0-0.5s] Low view from across the desk, slightly to his right; he leans slightly forward, quietly focused on the tablet; only its back is visible; mouth closed.
 [0.5-1.5s] He says, with clear natural lip movement: "Yes, I like pizza!"
 [1.5-2s] Small natural smile, then he listens.
-[2-7s] The camera slowly arcs clockwise around his right side, past his profile, rising to just behind and above his right shoulder (about 120 degrees), revealing the screen, then gently pushes in. Only the camera moves; he stays still, facing the tablet.
-[7-8s] Steady over-the-shoulder hold; the tablet fills about 40 percent of the frame width, screen nearly straight on; his shoulder and head stay at the left edge, beside the screen; all four screen corners and five crosses sharp and fully visible.
+[2-7s] The camera slowly arcs clockwise around his right side, past his profile, rising slightly to just behind his right shoulder at about his eye level (about 120 degrees), revealing the screen, then gently pushes in. Only the camera moves; he stays still, facing the tablet.
+[7-8s] Steady over-the-shoulder hold at his eye level; the tablet fills about 35 percent of the frame width, screen nearly straight on; the back of his head and shoulder stay at the left side, beside the screen; all four screen corners and five crosses sharp and fully visible.
 
 Hands rest on the desk beside the tablet. Level horizon, steady focus, consistent exposure, high-end Korean TV commercial look, natural skin texture.
 Audio: his one line and quiet room tone, no music. No subtitles, captions, or on-screen text.
@@ -326,12 +327,12 @@ AI 이미지 두 장을 시작·끝으로 쓰면 이미지 모델이 방을 입�
 |---|---|
 | `blender/render/blockout_previs_8s_24fps.mp4` | Seedance에 넣을 참조 영상(8초, 24fps, 192프레임, 1280×720, 모든 프레임 키프레임) |
 | `blender/render/frame_000_start.png` | 시작 구도. 실사 시작 이미지를 만들 때 구도 참조 |
-| `blender/render/frame_192_end.png` | 마지막 구도(태블릿이 화면 가로 약 45%, 십자 5개·네 모서리 모두 보임) |
+| `blender/render/frame_192_end.png` | 마지막 구도(오버더숄더, 태블릿이 화면 가로 약 35%, 십자 5개·네 모서리 모두 보임) |
 | `blender/render/top_view_camera_path.png` | 위에서 본 배치와 카메라 경로(초록 = 시작, 파랑 = 끝) |
 | `blender/render/contact_sheet_every16f.jpg` | 16프레임 간격 미리보기 |
 | `blender/make_blockout.py`, `blender/blockout.blend` | 수정·재렌더용 원본 |
 
-**블록아웃 기준값:** 50mm 고정, 0–2초 정지, 2–7초 위에서 볼 때 시계 방향 약 115° 회전(가감속), 7–8초 정지. 시작 카메라는 책상 건너편 약 30° 오른쪽·높이 0.92m, 끝 카메라는 아이 오른쪽 귀 옆·어깨 위 높이 1.18m. 책상은 벽에서 떨어져 방 쪽을 향하고, 아이 등 뒤 벽에는 그림·책장·문, 왼쪽 벽에 창문, 책상 너머에는 침대·옷장이 있다.
+**블록아웃 기준값:** 50mm 고정, 0–2초 정지, 2–7초 위에서 볼 때 시계 방향 약 123° 회전(가감속), 7–8초 정지. 시작 카메라는 책상 건너편 약 30° 오른쪽·높이 0.92m, 끝 카메라는 아이 오른쪽 어깨 뒤·높이 1.05m(눈높이 바로 위)의 오버더숄더. 책상은 벽에서 떨어져 방 쪽을 향하고, 아이 등 뒤 벽에는 그림·책장·문, 왼쪽 벽에 창문, 책상 너머에는 침대·옷장이 있다.
 
 **진행 순서**
 1. **실사 시작 이미지:** `frame_000_start.png`를 구도 참조(이미지 투 이미지, 구도 유지)로 넣고 §4-0 시작 이미지 프롬프트로 만든다. 블록아웃과 구도가 같아야 영상과 맞는다.
@@ -346,7 +347,7 @@ Use the reference image for the boy's appearance, clothing, room style, and even
 
 Turn the blockout into a photorealistic 8-second live-action shot, one continuous take, with the finish of a high-end Korean TV commercial. A 9-year-old Korean boy with short black hair, round thin-framed glasses and a plain cream sweatshirt studies at a light wood desk in his bedroom, around 8 PM. Warm ceiling light and a desk lamp on his left, a dark window with distant apartment lights, natural skin tones.
 
-Follow the reference camera move exactly: still for 2 seconds, then a smooth clockwise arc around his right side, ending close beside his right ear, looking down at the tablet, then hold.
+Follow the reference camera move exactly: still for 2 seconds, then a smooth clockwise arc around his right side at nearly the same height, ending in a classic over-the-shoulder view from behind his right shoulder at about his eye level, then hold.
 
 [0-0.5s] He leans slightly forward, quietly focused on the tablet, mouth closed.
 [0.5-1.5s] He says one short line with clear, natural lip movement: "Yes, I like pizza!"
