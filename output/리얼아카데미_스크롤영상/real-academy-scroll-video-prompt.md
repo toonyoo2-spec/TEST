@@ -68,6 +68,7 @@ AI로 만든 시작·끝 이미지를 검토한 결과, 이미지 모델이 방�
 | 31 | 태블릿 기울기를 아이 눈높이를 향하도록(22°) 지정 | 화면이 카메라가 아니라 아이를 향하면서도 마지막 구도에서 잘 보이게 |
 | 32 | 실사 시작 이미지는 블록아웃 시작 프레임을 구도 참조로 생성 | 참조 영상과 시작 이미지의 구도가 맞아야 함 |
 | 33 | 마지막 카메라를 "귀 옆 1.18m"에서 "오른쪽 어깨 뒤, 눈높이 바로 위 1.05m"로 낮춤(오버더숄더) | 사용자 요청. 카메라가 너무 올라가 내려다보는 구도 대신, 어깨·뒷머리가 걸리는 정통 오버더숄더. 태블릿은 화면 가로 약 35%, 화면이 거의 정면 |
+| 34 | 아이 모형을 9세 남아 실측 비율로 다시 만들고 모든 프롬프트에 태블릿 크기 비교 문장 추가 | 사용자 요청. 태블릿(가로 21.1cm)이 아이 몸과 실제 비율로 보이게. 키 135cm·어깨너비 29cm·앞품 26cm는 사이즈코리아 기반 자료, 머리 크기(너비 15cm)·앉은키 71cm·팔 길이는 추정. 책상 0.62m·의자 0.38m 아동용 높이. AI는 태블릿을 크게 그리는 경향이 있어 "팔뚝 길이만 한, 머리 폭의 약 1.5배, 어깨보다 확실히 좁은" 비교 기준을 문장으로 명시 |
 
 ## 1. 어떤 방식으로 작성된 프롬프트인가
 
@@ -102,6 +103,7 @@ AI로 만든 시작·끝 이미지를 검토한 결과, 이미지 모델이 방�
 | 카메라 | 책상 건너편 낮은 앵글(정면에서 오른쪽 약 30°) → 오른쪽 옆 → 오른쪽 어깨 뒤 눈높이 오버더숄더, 약 120° 회전 | 레퍼런스 앵글 반영 |
 | 앵글 레퍼런스 | 타사 광고 이미지 2장. 카메라 위치·각도만 참고, 연기·상표·교재·의상 반영 금지, 생성 도구에 업로드 금지 | 사용자 지정 |
 | 기기 색상 | 그레이 | 임시 제안 |
+| 크기 비율 | 태블릿 가로 21.1cm ≈ 아이 아래팔 길이, 머리 폭(15cm)의 약 1.4배, 어깨너비(29cm)의 약 70% | 사용자 요청. 블록아웃과 모든 프롬프트에 반영 |
 | 생성 모델 | Higgsfield · Seedance 2.5 | 사용자 지정 |
 | 프레임률 | 24fps 고정(8초 = 192프레임) | 2차 자료 기준, 생성 화면에서 확인 |
 | 비율·해상도 | 비율 미정. 해상도는 가능한 최고 옵션(1080p 있으면 1080p) | 생성 전 결정 필요 |
@@ -139,7 +141,7 @@ Higgsfield 공식 페이지는 이 작업 환경에서 접속이 막혀 직접 �
 | 구간 | 화면과 연기 | 제작 의도 |
 |---|---|---|
 | 0–2초 | 책상 건너편 낮은 앵글에서 아이 정면 오른쪽 약 30°. 태블릿은 뒷면만 보임. 0–0.5초 입 다물고 집중 → 0.5–1.5초 짧은 대사 → 1.5–2초 작은 미소 후 들음 | 공부에 집중하는 모습으로 시작. 발화가 분명히 보이게 하고, 첫 프레임을 스크롤 대표 화면으로 쓸 수 있게 함 |
-| 2–7초 | 위에서 볼 때 시계 방향으로 약 120° 회전, 책상 높이(0.92m)에서 눈높이 바로 위(1.05m)로 완만하게 상승. 오른쪽 옆을 지나 어깨 뒤로 이동. 아이는 듣는 표정. 태블릿 화면이 드러남 | 같은 공간 안에서 활동의 정체를 공개 |
+| 2–7초 | 위에서 볼 때 시계 방향으로 약 120° 회전, 책상보다 약 22cm 위(0.84m)에서 눈높이 바로 위(1.03m)로 완만하게 상승. 오른쪽 옆을 지나 어깨 뒤로 이동. 아이는 듣는 표정. 태블릿 화면이 드러남 | 같은 공간 안에서 활동의 정체를 공개 |
 | 7–8초 | 오른쪽 어깨 뒤 눈높이 오버더숄더. 태블릿이 화면 가로의 약 35%, 거의 정면. 네 모서리와 마커가 모두 보임. 뒷머리·어깨는 왼쪽과 아래에 걸리되 화면은 가리지 않음. 약 1초 안정화 | 실제 앱 화면 합성과 스크롤 종료 구간 확보 |
 
 짧은 대답은 화면이 보이기 전부터 자연스럽게 수업 중이라는 인상을 준다. 화면 공개 후에도 명확한 발화가 필요하면 두 번째 짧은 대답을 넣을 수 있지만, 현재 초안은 입 움직임과 연기 오류를 줄이기 위해 한 번만 요청한다.
@@ -189,7 +191,7 @@ Camera: low, just above desk height, on the far side of the desk facing the boy,
 
 The boy, about 9 years old, with short black hair, round thin-framed glasses and a plain cream sweatshirt, sits upright at a light wood study desk that faces into the room. He is quietly concentrating on a speaking lesson on a tablet: leaning slightly forward, eyes on the screen, mouth closed, calm and focused expression. Both hands rest on the desk beside the tablet. He is slightly left of center in the frame.
 
-A compact gray tablet stands horizontally on a plain stand in front of him, facing him. From this angle only its plain gray back is visible, just right of center in the frame.
+A compact gray tablet stands horizontally on a plain stand in front of him, facing him. Keep the tablet true to scale next to a 9-year-old: it is about as wide as his forearm is long, roughly one and a half times the width of his head, and clearly narrower than his shoulders. It is a small tablet, not a large one. From this angle only its plain gray back is visible, just right of center in the frame.
 
 Behind him: a softly lit wall with a few children's drawings, a light wood bookshelf, and a dark window with distant apartment lights. Warm ceiling light and a desk lamp on the boy's left side of the desk. Natural skin tones, soft contrast, cozy evening mood.
 
@@ -216,7 +218,7 @@ The tablet is the hero of the frame: it fills about 35 percent of the frame widt
 
 The back of the boy's head and his right shoulder fill the left side and lower left of the frame, softly out of focus, never overlapping the tablet. He is calmly looking at the screen. Nothing is in front of the screen.
 
-The tablet: a compact 8.7-inch tablet with thin, even black bezels, softly rounded corners and a 5:3 screen, standing horizontally on a plain gray stand on the light wood desk. All four corners and the full bezel are visible, with some desk around the tablet.
+The tablet: a compact 8.7-inch tablet with thin, even black bezels, softly rounded corners and a 5:3 screen, standing horizontally on a plain gray stand on the light wood desk. Keep the tablet true to scale next to a 9-year-old: it is about as wide as his forearm is long, roughly one and a half times the width of his head, and clearly narrower than his shoulders. It is a small tablet, not a large one. All four corners and the full bezel are visible, with some desk around the tablet.
 
 The screen is a flat, evenly lit medium gray with exactly five small, crisp black plus-shaped crosses: one slightly inset from each of the four screen corners, and a smaller one in the exact center. Nothing else is on the screen: no interface, icons, or text.
 
@@ -248,7 +250,9 @@ The camera makes a slow, smooth clockwise arc around the boy's right side, as se
 [2-7s] The camera arcs around his right side. He keeps facing the tablet, head and body still. The gray tablet screen with five black crosses is gradually revealed.
 [7-8s] The camera settles and holds still on the over-the-shoulder view of the last frame.
 
-His hands rest on the desk beside the tablet. Level horizon, steady focus, constant focal length, consistent exposure and white balance. Photorealistic, high-end Korean TV commercial look with natural skin texture.
+His hands rest on the desk beside the tablet. Keep the tablet true to scale next to a 9-year-old: it is about as wide as his forearm is long, roughly one and a half times the width of his head, and clearly narrower than his shoulders. It is a small tablet, not a large one.
+
+Level horizon, steady focus, constant focal length, consistent exposure and white balance. Photorealistic, high-end Korean TV commercial look with natural skin texture.
 
 Audio: only his one spoken line and quiet room tone, no music.
 No subtitles, captions, or on-screen text.
@@ -270,7 +274,7 @@ The desk stands away from the walls, facing into the room, with clear floor spac
 The window is dark, with faint distant apartment lights. Soft warm ceiling light and a desk lamp on the left side of the desk make the room comfortably bright, with natural skin tones. Every object is unbranded and free of readable text.
 
 TABLET
-A compact 8.7-inch Android tablet, about 21 cm wide and 12.5 cm tall, thin and flat, with a matte gray metal back, softly rounded corners, and thin, even black bezels around a 5:3 display. It stands horizontally on a plain desk stand, angled toward him. Completely plain, with no logos or markings. It stays rigid and stationary.
+A compact 8.7-inch Android tablet, about 21 cm wide and 12.5 cm tall, thin and flat, with a matte gray metal back, softly rounded corners, and thin, even black bezels around a 5:3 display. It stands horizontally on a plain desk stand, angled toward him. Completely plain, with no logos or markings. It stays rigid and stationary. Keep the tablet true to scale next to a 9-year-old: it is about as wide as his forearm is long, roughly one and a half times the width of his head, and clearly narrower than his shoulders. It is a small tablet, not a large one.
 
 SCREEN
 The whole display is a flat medium-gray field with exactly five static black crosses: four slightly inset from the display corners and a smaller one in the center. The crosses stay fixed to the screen surface and follow its perspective. This static pattern stays on the screen for the whole shot. Soft, subtle reflections leave the crosses and display edges clear.
@@ -299,7 +303,7 @@ No subtitles, captions, or on-screen text.
 
 A 9-year-old Korean boy with short black hair, round thin-framed glasses and a plain cream sweatshirt sits at a light wood study desk in his tidy bedroom in a Korean apartment, around 8 PM. Dark window with distant apartment lights; soft warm ceiling light and a desk lamp on the left; natural skin tones. The desk stands away from the walls, facing into the room, with open floor space around it.
 
-On the desk, a compact 8.7-inch gray tablet with thin black bezels and a 5:3 screen stands horizontally on a plain stand, facing him. Everything is unbranded. The screen shows only flat medium gray with five fixed black crosses: one near each corner and a smaller one in the center.
+On the desk, a compact 8.7-inch gray tablet with thin black bezels and a 5:3 screen stands horizontally on a plain stand, facing him. True to scale: about as wide as his forearm is long, clearly narrower than his shoulders. Everything is unbranded. The screen shows only flat medium gray with five fixed black crosses: one near each corner and a smaller one in the center.
 
 [0-0.5s] Low view from across the desk, slightly to his right; he leans slightly forward, quietly focused on the tablet; only its back is visible; mouth closed.
 [0.5-1.5s] He says, with clear natural lip movement: "Yes, I like pizza!"
@@ -332,7 +336,7 @@ AI 이미지 두 장을 시작·끝으로 쓰면 이미지 모델이 방을 입�
 | `blender/render/contact_sheet_every16f.jpg` | 16프레임 간격 미리보기 |
 | `blender/make_blockout.py`, `blender/blockout.blend` | 수정·재렌더용 원본 |
 
-**블록아웃 기준값:** 50mm 고정, 0–2초 정지, 2–7초 위에서 볼 때 시계 방향 약 123° 회전(가감속), 7–8초 정지. 시작 카메라는 책상 건너편 약 30° 오른쪽·높이 0.92m, 끝 카메라는 아이 오른쪽 어깨 뒤·높이 1.05m(눈높이 바로 위)의 오버더숄더. 책상은 벽에서 떨어져 방 쪽을 향하고, 아이 등 뒤 벽에는 그림·책장·문, 왼쪽 벽에 창문, 책상 너머에는 침대·옷장이 있다.
+**블록아웃 기준값:** 50mm 고정, 0–2초 정지, 2–7초 위에서 볼 때 시계 방향 약 123° 회전(가감속), 7–8초 정지. 시작 카메라는 책상 건너편 약 30° 오른쪽·높이 0.84m, 끝 카메라는 아이 오른쪽 어깨 뒤·높이 1.03m(눈높이 0.985m 바로 위)의 오버더숄더. 아이는 9세 남아 실측 비율(키 135cm, 어깨너비 29cm, 머리 너비 15cm, 앉은키 71cm)이고 책상 0.62m·의자 0.38m라, 태블릿과 아이의 크기 관계가 실제와 같다. 책상은 벽에서 떨어져 방 쪽을 향하고, 아이 등 뒤 벽에는 그림·책장·문, 왼쪽 벽에 창문, 책상 너머에는 침대·옷장이 있다.
 
 **진행 순서**
 1. **실사 시작 이미지:** `frame_000_start.png`를 구도 참조(이미지 투 이미지, 구도 유지)로 넣고 §4-0 시작 이미지 프롬프트로 만든다. 블록아웃과 구도가 같아야 영상과 맞는다.
@@ -354,7 +358,7 @@ Follow the reference camera move exactly: still for 2 seconds, then a smooth clo
 [1.5-2s] A small natural smile, then he listens.
 [2-8s] He stays still, facing the tablet; only the camera moves.
 
-The tablet is a compact gray tablet with thin black bezels on a plain stand, facing him. Its screen stays a flat medium gray with the same five black crosses as in the reference video, fixed in place. His hands rest on the desk beside the tablet.
+The tablet is a compact gray tablet with thin black bezels on a plain stand, facing him, matching its size in the reference video. Keep the tablet true to scale next to a 9-year-old: it is about as wide as his forearm is long, roughly one and a half times the width of his head, and clearly narrower than his shoulders. It is a small tablet, not a large one. Its screen stays a flat medium gray with the same five black crosses as in the reference video, fixed in place. His hands rest on the desk beside the tablet.
 
 Everything is unbranded. Audio: only his one spoken line and quiet room tone, no music. No subtitles, captions, or on-screen text.
 ```

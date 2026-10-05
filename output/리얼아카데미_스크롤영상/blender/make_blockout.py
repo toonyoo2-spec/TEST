@@ -32,14 +32,25 @@ LENS_MM = 50  # 영상 전체에서 고정
 RES = (1280, 720)
 
 # 카메라 경로: (각도°, 피벗까지 거리, 높이, 바라보는 지점)
-CAM_START = dict(theta=30.0, radius=1.70, height=0.92)
-CAM_END = dict(theta=153.0, radius=0.67, height=1.05)  # 오른쪽 어깨 뒤, 눈높이 바로 위(오버더숄더)
+CAM_START = dict(theta=30.0, radius=1.70, height=0.84)  # 책상보다 약 22cm 위
+CAM_END = dict(theta=153.0, radius=0.67, height=1.03)  # 오른쪽 어깨 뒤, 눈높이(0.985m) 바로 위(오버더숄더)
 PIVOT_START = Vector((0.0, 0.25, 0.0))
 PIVOT_END = Vector((0.0, 0.30, 0.0))
-LOOK_START = Vector((0.0, 0.12, 0.93))  # 아이 얼굴과 태블릿 뒷면 사이
-LOOK_END = Vector((0.0, 0.42, 0.80))  # 태블릿 화면 중앙
+LOOK_START = Vector((0.0, 0.12, 0.86))  # 아이 얼굴과 태블릿 뒷면 사이
+LOOK_END = Vector((0.0, 0.42, 0.71))  # 태블릿 화면 중앙
 
-DESK_H = 0.70
+# 아이 체격(9세 남아). 키·어깨너비·앞품은 사이즈코리아 기반 자료,
+# 나머지는 키 135cm 기준 일반 비율로 추정한 값이다. 태블릿과의 크기 비교가 정확하도록 실측 비율로 만든다.
+BOY = dict(
+    height=1.35,  # 키
+    shoulder_w=0.29,  # 어깨너비
+    chest_w=0.26,  # 앞품
+    sitting_h=0.71,  # 앉은키(좌면~정수리), 키의 약 53%로 추정
+    head_w=0.15, head_d=0.18, head_h=0.21,  # 머리 너비·앞뒤 길이·정수리~턱, 추정
+    upper_arm=0.24, forearm=0.20, hand=0.14,  # 위팔·아래팔·손 길이, 추정
+)
+SEAT_H = 0.38  # 아동용 의자 좌면
+DESK_H = 0.62  # 아동용 책상(앉은 팔꿈치보다 약간 위)
 TABLET_POS = Vector((0.0, 0.40, DESK_H))
 TABLET_TILT_DEG = -22.0  # 윗부분이 뒤(+Y)로 기울어 화면이 아이 눈높이를 향함
 
@@ -141,9 +152,9 @@ def build_desk():
     for i, (x, y) in enumerate([(-0.57, 0.18), (0.57, 0.18), (-0.57, 0.72), (0.57, 0.72)]):
         box(f"DeskLeg_{i}", (0.04, 0.04, DESK_H - 0.03), (x, y, (DESK_H - 0.03) / 2), WOOD)
     # 의자
-    box("ChairSeat", (0.42, 0.40, 0.05), (0.0, -0.12, 0.42), (0.35, 0.36, 0.40))
-    box("ChairBack", (0.40, 0.04, 0.40), (0.0, -0.34, 0.68), (0.35, 0.36, 0.40))
-    box("ChairPost", (0.06, 0.06, 0.40), (0.0, -0.12, 0.20), DARK)
+    box("ChairSeat", (0.40, 0.38, 0.05), (0.0, -0.12, SEAT_H - 0.025), (0.35, 0.36, 0.40))
+    box("ChairBack", (0.38, 0.04, 0.34), (0.0, -0.32, SEAT_H + 0.25), (0.35, 0.36, 0.40))
+    box("ChairPost", (0.06, 0.06, SEAT_H - 0.05), (0.0, -0.12, (SEAT_H - 0.05) / 2), DARK)
     # 스탠드 조명(아이 왼쪽)
     cyl_between("LampBase", (-0.45, 0.62, DESK_H), (-0.45, 0.62, DESK_H + 0.02), 0.07, (0.9, 0.9, 0.9))
     cyl_between("LampArm", (-0.45, 0.62, DESK_H + 0.02), (-0.38, 0.55, DESK_H + 0.42), 0.012, (0.9, 0.9, 0.9))
@@ -189,29 +200,50 @@ def build_tablet():
 
 # ---------------------------------------------------------------- 아이(9세, 앉은 자세, 화면을 바라봄)
 def build_boy():
-    box("Torso", (0.30, 0.17, 0.42), (0.0, -0.04, 0.66), CREAM, rot=(math.radians(8), 0, 0))
-    box("Hips", (0.30, 0.30, 0.12), (0.0, -0.08, 0.50), (0.3, 0.35, 0.45))
+    b = BOY
+    top = SEAT_H + b["sitting_h"]  # 정수리 1.09m
+    head_c = Vector((0.0, 0.04, top - b["head_h"] / 2))  # 머리 중심 = 눈높이 약 0.985m
+    sh_z = SEAT_H + 0.47  # 앉은 어깨높이(추정)
+    hip_z = SEAT_H + 0.06
+    pants = (0.3, 0.35, 0.45)
+
+    box("Torso", (b["chest_w"] - 0.02, 0.15, sh_z - hip_z), (0.0, -0.03, (sh_z + hip_z) / 2), CREAM,
+        rot=(math.radians(8), 0, 0))
+    box("Hips", (0.26, 0.28, 0.12), (0.0, -0.06, hip_z), pants)
     for s in (-1, 1):
-        cyl_between(f"Thigh_{s}", (0.09 * s, -0.05, 0.48), (0.10 * s, 0.25, 0.47), 0.055, (0.3, 0.35, 0.45))
-        cyl_between(f"Shin_{s}", (0.10 * s, 0.25, 0.47), (0.10 * s, 0.28, 0.05), 0.045, (0.3, 0.35, 0.45))
-        sh = (0.17 * s, -0.01, 0.84)
-        el = (0.21 * s, 0.10, 0.73)
-        hd = (0.15 * s, 0.30, DESK_H + 0.03)  # 손은 태블릿 옆 책상 위
-        cyl_between(f"UpperArm_{s}", sh, el, 0.045, CREAM)
-        cyl_between(f"Forearm_{s}", el, hd, 0.038, CREAM)
-        sphere(f"Hand_{s}", 0.035, hd, SKIN, scale=(1, 1.3, 0.6))
-    cyl_between("Neck", (0, 0.0, 0.86), (0, 0.02, 0.94), 0.045, SKIN)
-    head = sphere("Head", 0.095, (0.0, 0.03, 1.01), SKIN, scale=(0.95, 1.0, 1.08))
-    head.rotation_euler = (math.radians(-25), 0, 0)  # 화면을 내려다봄
-    sphere("Hair", 0.098, (0.0, -0.005, 1.035), HAIR, scale=(0.98, 1.0, 0.98))
-    # 안경(얼굴 방향 표시)
-    for s in (-1, 1):
-        bpy.ops.mesh.primitive_torus_add(major_radius=0.022, minor_radius=0.003,
-                                         location=(0.035 * s, 0.115, 0.975),
-                                         rotation=(math.radians(90 - 25), 0, 0))
+        knee = (0.09 * s, 0.28, SEAT_H + 0.07)
+        cyl_between(f"Thigh_{s}", (0.08 * s, -0.05, hip_z), knee, 0.05, pants)
+        cyl_between(f"Shin_{s}", knee, (0.09 * s, 0.31, 0.04), 0.04, pants)
+        sh = Vector(((b["shoulder_w"] / 2 - 0.03) * s, -0.01, sh_z - 0.03))
+        el = Vector((0.17 * s, 0.09, DESK_H - 0.02))
+        el = sh + (el - sh).normalized() * b["upper_arm"]
+        wr = Vector((0.17 * s, 0.0, DESK_H + 0.025))
+        wr.y = el.y + math.sqrt(max(b["forearm"] ** 2 - (wr.x - el.x) ** 2 - (wr.z - el.z) ** 2, 0.0))
+        cyl_between(f"UpperArm_{s}", sh, el, 0.035, CREAM)
+        cyl_between(f"Forearm_{s}", el, wr, 0.03, CREAM)
+        # 손은 태블릿 옆 책상 위(화면을 가리지 않음)
+        sphere(f"Hand_{s}", 1.0, wr + Vector((0, b["hand"] * 0.4, -0.005)), SKIN,
+               scale=(0.033, b["hand"] / 2, 0.013))
+    cyl_between("Neck", (0, 0.0, sh_z - 0.02), (0, 0.025, head_c.z - 0.08), 0.035, SKIN)
+
+    # 머리: 너비 15cm, 앞뒤 18cm, 정수리~턱 21cm. 화면을 보려고 20° 숙임.
+    bpy.ops.object.empty_add(location=head_c)
+    rig = bpy.context.active_object
+    rig.name = "HeadRig"
+    rig.rotation_euler = (math.radians(-20), 0, 0)
+    hw, hd, hh = b["head_w"] / 2, b["head_d"] / 2, b["head_h"] / 2
+    head = sphere("Head", 1.0, (0, 0, 0), SKIN, scale=(hw, hd, hh))
+    head.parent = rig
+    hair = sphere("Hair", 1.0, (0, -0.012, 0.014), HAIR, scale=(hw * 1.05, hd * 1.03, hh * 0.97))
+    hair.parent = rig
+    for s in (-1, 1):  # 안경(얼굴 방향 표시)
+        bpy.ops.mesh.primitive_torus_add(major_radius=0.021, minor_radius=0.003,
+                                         location=(0.032 * s, hd + 0.004, 0.005),
+                                         rotation=(math.radians(90), 0, 0))
         g = bpy.context.active_object
         g.name = f"Glasses_{s}"
         g.data.materials.append(mat("Glasses_m", DARK))
+        g.parent = rig
 
 
 # ---------------------------------------------------------------- 조명·월드
