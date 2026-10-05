@@ -56,6 +56,18 @@
 | 26 | 마지막 구도: 태블릿이 화면 가로의 약 40%, 거의 정면 | 사용자 요청. 레퍼런스보다 화면이 잘 보이게 |
 | 27 | 마커를 이미지 생성 단계에서 요청하고, 틀리면 편집으로 보정 | AI가 개수·모양을 틀릴 수 있어 확인 기준과 대체 문장을 함께 둠 |
 
+### 4차 수정 — Blender 블록아웃
+
+AI로 만든 시작·끝 이미지를 검토한 결과, 이미지 모델이 방을 입체로 이해하지 못해 시작과 끝의 배경이 서로 맞지 않았다. 태블릿도 아이가 아니라 카메라를 향하도록 그려졌다("화면을 크게, 거의 정면으로" 지시 때문). 그래서 공간을 3D로 먼저 고정하는 방식으로 바꿨다.
+
+| # | 변경 | 이유 |
+|---|---|---|
+| 28 | Blender 회색 블록아웃과 8초 참조 영상 제작(§4-5, `blender/`) | 방 구조·카메라 경로·태블릿 각도를 3D로 고정. Seedance 2.5는 블록아웃 영상을 공간·카메라 참조로 받는 방식을 지원한다고 알려짐 |
+| 29 | 렌즈를 35mm에서 50mm로 변경 | 35mm로 마지막에 태블릿을 크게 담으려면 카메라가 머리에 너무 붙어야 함. 50mm면 귀 옆 위치에서 태블릿이 화면 가로 약 45% |
+| 30 | 마지막 카메라를 "어깨 뒤"에서 "오른쪽 귀 옆, 어깨 위"로 조정 | 어깨 뒤에서는 머리가 화면의 40% 가까이 가림(블록아웃으로 확인) |
+| 31 | 태블릿 기울기를 아이 눈높이를 향하도록(22°) 지정 | 화면이 카메라가 아니라 아이를 향하면서도 마지막 구도에서 잘 보이게 |
+| 32 | 실사 시작 이미지는 블록아웃 시작 프레임을 구도 참조로 생성 | 참조 영상과 시작 이미지의 구도가 맞아야 함 |
+
 ## 1. 어떤 방식으로 작성된 프롬프트인가
 
 이 프롬프트는 **구조화된 자연어 촬영 지시서**다. 특정 영상 모델의 전용 문법이나 API 명세가 아니다. 인물·공간·조명·소품·연기·카메라 이동·시간 구간·합성 조건을 나누어, 모델이 한 장면의 의도를 이해하도록 작성했다.
@@ -64,7 +76,7 @@
 
 특히 **합성 작업을 먼저 고려한 촬영 설계**를 적용했다. 아이와 방은 생성하고, 태블릿의 실제 앱 화면은 후반 작업으로 교체한다. 원본 화면에는 중간 회색 배경과 고정 마커만 둔다. AI가 정확한 브랜드명이나 앱 UI를 그리도록 요구하지 않는다.
 
-생성 모델은 Higgsfield의 Seedance 2.5다. Seedance 2.5에는 시작·마지막 프레임 방식과 다중 참조 이미지 방식이 있는 것으로 확인되어, 시작·마지막 이미지를 먼저 만들고 움직임만 프롬프트로 지시하는 방식(4-1)을 1순위로 둔다. 다만 Higgsfield 화면에서 이 기능이 어떻게 노출되는지는 직접 확인하지 못했다(§2-1).
+생성 모델은 Higgsfield의 Seedance 2.5다. Seedance 2.5에는 시작·마지막 프레임 방식과 다중 참조 이미지 방식이 있는 것으로 확인되어, 처음에는 시작·마지막 이미지를 넣는 방식(4-1)을 1순위로 뒀다. 그러나 AI 이미지 두 장의 방 구조가 서로 맞지 않아, 현재는 Blender 블록아웃 영상으로 공간·카메라를 고정하는 방식(4-5)을 1순위로 둔다. Higgsfield 화면에서 이 기능들이 어떻게 노출되는지는 직접 확인하지 못했다(§2-1).
 
 ### 토스 참조의 확인 범위
 
@@ -111,7 +123,7 @@ Higgsfield 공식 페이지는 이 작업 환경에서 접속이 막혀 직접 �
 | 해상도 | 자료마다 다름: 480p·720p만 지원 / Higgsfield 1080p 업데이트 / 4K 언급 | 720p뿐이면 마지막 구도에서 태블릿 화면이 작아 마커 식별과 합성 품질이 떨어질 수 있음. 업스케일 시 새 결함 점검 |
 | 오디오 | 영상과 함께 소리를 생성. Higgsfield에서는 오디오가 비용에 영향을 주지 않는다는 자료가 있음 | 소리는 편집에서 제거 |
 | 대사 | 따옴표 안 대사로 립싱크 생성 | 대사 한 줄 추가(§4) |
-| 시작·마지막 프레임 | First & Last Frame 방식 지원 | 4-1을 1순위로 사용 |
+| 시작·마지막 프레임 | First & Last Frame 방식 지원 | 4-1에서 사용. 다만 AI 이미지 두 장의 공간이 맞지 않아 현재는 4-5 블록아웃 방식이 1순위 |
 | 참조 이미지 | 다중 참조(최대 50개로 소개됨), 참조마다 역할을 지정하라는 권장 | 인물·방·태블릿 일관성 보완용 |
 | 네거티브 | 별도 입력란을 소개하는 자료와, 입력란 없이 본문에 써야 한다는 자료가 엇갈림. 시각적 요소의 부정 표현은 효과가 약하고 자막·오디오 금지는 효과가 있다는 권장 | 자막 금지만 본문에, 나머지는 입력란이 있을 때만(4-4) |
 | 프롬프트 길이 | 영문 약 1,000단어 이하 권장 | 상세본 약 610단어로 범위 안 |
@@ -138,9 +150,10 @@ Higgsfield 공식 페이지는 이 작업 환경에서 접속이 막혀 직접 �
 | 블록 | 용도 | 권장 |
 |---|---|---|
 | 4-0 시작·마지막 이미지 | 4-1에 넣을 이미지 두 장 생성용 | 4-1보다 먼저 |
-| 4-1 시작·마지막 프레임용 | Seedance 2.5의 First & Last Frame 방식. 시작 이미지와 마지막 이미지를 넣고, 프롬프트는 움직임·연기만 지시 | **1순위.** 마커·화면·마지막 구도를 이미지로 고정할 수 있음 |
+| 4-1 시작·마지막 프레임용 | Seedance 2.5의 First & Last Frame 방식. 시작 이미지와 마지막 이미지를 넣고, 프롬프트는 움직임·연기만 지시 | 블록아웃을 쓰지 않을 때. 시작·끝 이미지의 공간이 서로 맞아야 함 |
 | 4-2 텍스트 전용 상세본 | 참조 이미지 없이 텍스트만으로 생성 | 2순위. 약 610단어로 권장 상한(영문 약 1,000단어) 안이지만, 짧은 지시가 더 잘 지켜지는 경향이 있음 |
 | 4-3 텍스트 전용 간결본 | 상세본에서 뒷부분 지시가 무시될 때 | 상세본 대안 |
+| **4-5 Blender 블록아웃 참조** | 회색 3D 블록아웃 영상으로 공간·카메라를 고정하고 실사화 | **현재 1순위.** 시작·끝 이미지 방식에서 공간이 맞지 않는 문제를 해결 |
 | 4-4 네거티브 | Higgsfield 화면에 별도 Negative Prompt 입력란이 있을 때만 | 입력란이 없으면 본문에 붙이지 않음 |
 
 **대사 처리:** Seedance 2.5는 따옴표 안의 대사로 입 모양(립싱크)을 만든다. 대사 없이 "짧게 대답한다"고만 쓰면 입 움직임이 거의 없거나 불규칙해질 수 있어서, 짧은 영어 대사 한 줄을 넣었다. 소리는 생성되지만 편집에서 제거하므로 최종 영상은 무음이다. 대사 `"Yes, I like pizza!"`는 임시 예시이며, 실제 리얼아카데미 수업 문장(3~5단어, 약 1초)으로 바꿔도 된다.
@@ -152,7 +165,7 @@ Higgsfield 공식 페이지는 이 작업 환경에서 접속이 막혀 직접 �
 타사 광고 이미지 2장에서 **카메라 위치와 각도만** 참고했다. 레퍼런스 속 연기(팔을 든 신난 동작·표정), 의상, 소품, 상표, 교재명은 반영하지 않는다. 레퍼런스 이미지 파일은 생성 도구에 참조로 올리지 않는다. 상표·교재 디자인·포즈가 결과에 섞일 수 있기 때문이다.
 
 **만드는 순서**
-1. 시작 이미지를 먼저 만들고 하나를 고른다.
+1. 시작 이미지를 먼저 만들고 하나를 고른다. §4-5 블록아웃 방식을 쓰면 `blender/render/frame_000_start.png`를 구도 참조로 넣어 같은 구도로 만든다.
 2. 마지막 이미지는 시작 이미지를 참조로 넣고 만든다(같은 아이·안경·옷·방·조명 유지).
 3. 마지막 이미지의 마커 개수·모양을 확인한다. 틀리면 아래 "마커 없는 대체 문장"으로 다시 만든 뒤 포토샵·피그마로 십자 5개를 넣거나, 틀린 부분만 편집으로 고친다.
 4. 두 이미지를 확대해 글자·로고가 숨어 있지 않은지 확인한다.
@@ -161,7 +174,7 @@ Higgsfield 공식 페이지는 이 작업 환경에서 접속이 막혀 직접 �
 
 | 항목 | 지시 | 이유 |
 |---|---|---|
-| 카메라 | 책상 건너편, 책상보다 조금 높은 낮은 위치, 아이 정면에서 오른쪽으로 약 30°, 35mm | 첫 번째 레퍼런스의 앵글감 |
+| 카메라 | 책상 건너편, 책상보다 조금 높은 낮은 위치, 아이 정면에서 오른쪽으로 약 30°, 50mm | 첫 번째 레퍼런스의 앵글감 |
 | 앞쪽 흐림 | 가까운 책상 소품을 흐리게 | 깊이감 있는 광고 느낌 |
 | 연기 | 몸을 살짝 앞으로 기울이고 눈은 화면에, 입은 다물고 차분하게 집중 | 공부에 집중하는 모습. 영상에서 0.5초 뒤 대사를 시작하므로 입은 다문 상태로 시작 |
 | 손 | 태블릿 옆 책상 위 | 영상에서 손이 화면을 가리지 않게 |
@@ -171,7 +184,7 @@ Higgsfield 공식 페이지는 이 작업 환경에서 접속이 막혀 직접 �
 ```text
 Photorealistic 16:9 film still from a high-end Korean TV commercial. Around 8 PM in a 9-year-old Korean boy's bedroom in a contemporary Korean apartment.
 
-Camera: low, just above desk height, on the far side of the desk facing the boy, slightly to his right, about 30 degrees from straight on. 35mm lens, shallow depth of field, soft out-of-focus desk items in the near foreground.
+Camera: low, just above desk height, on the far side of the desk facing the boy, slightly to his right, about 30 degrees from straight on. 50mm lens, shallow depth of field, soft out-of-focus desk items in the near foreground.
 
 The boy, about 9 years old, with short black hair, round thin-framed glasses and a plain cream sweatshirt, sits upright at a light wood study desk that faces into the room. He is quietly concentrating on a speaking lesson on a tablet: leaning slightly forward, eyes on the screen, mouth closed, calm and focused expression. Both hands rest on the desk beside the tablet. He is slightly left of center in the frame.
 
@@ -186,7 +199,7 @@ Everything is unbranded: no logos, brand names, or readable text on the tablet, 
 
 | 항목 | 지시 | 이유 |
 |---|---|---|
-| 카메라 | 오른쪽 어깨 바로 뒤, 조금 위에서 내려다봄, 35mm | 두 번째 레퍼런스의 앵글감. 렌즈는 시작과 같아야 영상이 한 번에 이어짐 |
+| 카메라 | 오른쪽 귀 옆, 어깨 위에서 내려다봄, 50mm | 두 번째 레퍼런스의 앵글감. 렌즈는 시작과 같아야 영상이 한 번에 이어짐 |
 | 화면 크기 | 화면 가로의 약 40% | 레퍼런스보다 태블릿을 훨씬 크게 |
 | 화면 각도 | 거의 정면, 살짝만 비스듬히 | 화면이 잘 보이고 합성이 쉬움 |
 | 아이 | 어깨·귀·안경다리·뒷머리 일부만 왼쪽 끝에, 흐리게 | 화면을 가리지 않게 |
@@ -196,7 +209,7 @@ Everything is unbranded: no logos, brand names, or readable text on the tablet, 
 ```text
 Photorealistic 16:9 film still from the same commercial: the same boy, same room, same evening lighting.
 
-Camera: close, just behind and slightly above the boy's right shoulder, looking down past his shoulder at the tablet. 35mm lens.
+Camera: close, just above the boy's right shoulder beside his right ear, looking down at the tablet. 50mm lens.
 
 The tablet is the hero of the frame: it fills about 40 percent of the frame width, placed at center to slightly right of center, with its screen facing the camera nearly straight on, only a slight angle, in sharp focus.
 
@@ -219,7 +232,7 @@ The screen is a flat, evenly lit medium gray, completely blank, with nothing on 
 
 **마커 확인 기준:** 개수가 정확히 5개인지, 네 개는 모서리 안쪽에 있고 하나는 가운데에 있는지, 십자의 선이 곧고 선명한지, 화면에 다른 글자·아이콘이 없는지 본다. 위치가 완벽한 대칭일 필요는 없다. 영상에서 화면과 함께 고정되어 움직이기만 하면 된다.
 
-### 4-1. 시작·마지막 프레임용 (1순위)
+### 4-1. 시작·마지막 프레임용 (블록아웃을 쓰지 않을 때)
 
 시작 이미지와 마지막 이미지가 인물·방·태블릿·마커를 결정하므로, 프롬프트는 움직임과 연기만 다룬다. 두 이미지의 요구 조건은 §7 체크리스트에 정리했다.
 
@@ -262,7 +275,7 @@ SCREEN
 The whole display is a flat medium-gray field with exactly five static black crosses: four slightly inset from the display corners and a smaller one in the center. The crosses stay fixed to the screen surface and follow its perspective. This static pattern stays on the screen for the whole shot. Soft, subtle reflections leave the crosses and display edges clear.
 
 TIMELINE
-[0-0.5s] Low view from across the desk, just above desk height, slightly to his right (about 30 degrees from straight on), 35mm lens, with soft out-of-focus desk items in the foreground. He leans slightly forward, quietly focused on the tablet, mouth closed. His eyes are clearly visible through his glasses. Only the back or edge of the tablet is visible; the screen is hidden.
+[0-0.5s] Low view from across the desk, just above desk height, slightly to his right (about 30 degrees from straight on), 50mm lens, with soft out-of-focus desk items in the foreground. He leans slightly forward, quietly focused on the tablet, mouth closed. His eyes are clearly visible through his glasses. Only the back or edge of the tablet is visible; the screen is hidden.
 [0.5-1.5s] He says one short line with clear, natural lip movement: "Yes, I like pizza!"
 [1.5-2s] He closes his mouth, gives a small, natural smile, and listens attentively.
 [2-7s] The camera makes a slow, smooth clockwise arc around his right side, as seen from above, through the open floor space: past his right profile to just behind and slightly above his right shoulder, rising gently from desk height to above shoulder height, about a 120-degree partial arc, then a gentle push-in. Only the camera moves; he keeps facing the tablet with his head and body still. The screen is gradually revealed. Focus shifts smoothly from his eyes to the screen.
@@ -302,6 +315,50 @@ Audio: his one line and quiet room tone, no music. No subtitles, captions, or on
 ```text
 subtitles, captions, text, logo, watermark, app interface, cut, transition, zoom, camera shake, focus hunting, heavy motion blur, morphing, warped tablet, bent screen, moving or extra markers, distorted glasses, extra fingers, floating objects, waxy skin, beauty filter, oversharpening, HDR look, heavy grain, lens flare, orange color cast, looking at camera, turning head, head covering screen, music
 ```
+
+### 4-5. Blender 블록아웃 참조 방식 (권장)
+
+AI 이미지 두 장을 시작·끝으로 쓰면 이미지 모델이 방을 입체로 이해하지 못해, 시작과 끝 배경이 서로 맞지 않는 문제가 생겼다(시작 이미지에서 아이 뒤에 있던 벽·책장·창문이, 반대 방향을 보는 마지막 이미지에도 태블릿 뒤에 다시 나옴). 그래서 Blender로 회색 블록아웃을 만들어 **공간과 카메라 경로를 먼저 고정**하고, Seedance 2.5에는 이 영상을 참조로 넣어 실사화한다.
+
+**블록아웃 파일** (`blender/` 폴더, 사용법은 `blender/README.md`)
+
+| 파일 | 용도 |
+|---|---|
+| `blender/render/blockout_previs_8s_24fps.mp4` | Seedance에 넣을 참조 영상(8초, 24fps, 192프레임, 1280×720, 모든 프레임 키프레임) |
+| `blender/render/frame_000_start.png` | 시작 구도. 실사 시작 이미지를 만들 때 구도 참조 |
+| `blender/render/frame_192_end.png` | 마지막 구도(태블릿이 화면 가로 약 45%, 십자 5개·네 모서리 모두 보임) |
+| `blender/render/top_view_camera_path.png` | 위에서 본 배치와 카메라 경로(초록 = 시작, 파랑 = 끝) |
+| `blender/render/contact_sheet_every16f.jpg` | 16프레임 간격 미리보기 |
+| `blender/make_blockout.py`, `blender/blockout.blend` | 수정·재렌더용 원본 |
+
+**블록아웃 기준값:** 50mm 고정, 0–2초 정지, 2–7초 위에서 볼 때 시계 방향 약 115° 회전(가감속), 7–8초 정지. 시작 카메라는 책상 건너편 약 30° 오른쪽·높이 0.92m, 끝 카메라는 아이 오른쪽 귀 옆·어깨 위 높이 1.18m. 책상은 벽에서 떨어져 방 쪽을 향하고, 아이 등 뒤 벽에는 그림·책장·문, 왼쪽 벽에 창문, 책상 너머에는 침대·옷장이 있다.
+
+**진행 순서**
+1. **실사 시작 이미지:** `frame_000_start.png`를 구도 참조(이미지 투 이미지, 구도 유지)로 넣고 §4-0 시작 이미지 프롬프트로 만든다. 블록아웃과 구도가 같아야 영상과 맞는다.
+2. **Seedance 2.5 생성:** 시작 프레임 = 1의 실사 이미지, 참조 영상 = `blockout_previs_8s_24fps.mp4`, 프롬프트 = 아래. 시작 프레임과 참조 영상을 함께 넣을 수 없으면 실사 이미지를 참조 이미지로 넣는다.
+3. 길이 8초, 해상도는 가능한 최고, 비율 16:9.
+
+참조 지정 문법(`@video1`, `@image1` 등)은 Higgsfield 화면 표기에 맞춘다. 아래 프롬프트는 "reference video / reference image"로 썼다.
+
+```text
+Use the reference video only for the camera path, timing, room layout, and the positions of the boy, desk, chair, lamp, and tablet. Do not copy its gray, untextured 3D look.
+Use the reference image for the boy's appearance, clothing, room style, and evening lighting.
+
+Turn the blockout into a photorealistic 8-second live-action shot, one continuous take, with the finish of a high-end Korean TV commercial. A 9-year-old Korean boy with short black hair, round thin-framed glasses and a plain cream sweatshirt studies at a light wood desk in his bedroom, around 8 PM. Warm ceiling light and a desk lamp on his left, a dark window with distant apartment lights, natural skin tones.
+
+Follow the reference camera move exactly: still for 2 seconds, then a smooth clockwise arc around his right side, ending close beside his right ear, looking down at the tablet, then hold.
+
+[0-0.5s] He leans slightly forward, quietly focused on the tablet, mouth closed.
+[0.5-1.5s] He says one short line with clear, natural lip movement: "Yes, I like pizza!"
+[1.5-2s] A small natural smile, then he listens.
+[2-8s] He stays still, facing the tablet; only the camera moves.
+
+The tablet is a compact gray tablet with thin black bezels on a plain stand, facing him. Its screen stays a flat medium gray with the same five black crosses as in the reference video, fixed in place. His hands rest on the desk beside the tablet.
+
+Everything is unbranded. Audio: only his one spoken line and quiet room tone, no music. No subtitles, captions, or on-screen text.
+```
+
+**확인할 것:** 결과가 블록아웃의 회색 질감을 따라 하지 않는지, 카메라 경로와 마지막 구도가 블록아웃과 같은지, 회전 중간(약 4.5–5.5초)에 카메라가 아이 머리 가까이 지날 때 얼굴·머리가 일그러지지 않는지 본다.
 
 ## 5. 검증 결과와 한계
 
@@ -388,6 +445,8 @@ subtitles, captions, text, logo, watermark, app interface, cut, transition, zoom
 - [ ] 시작 이미지(§4-0): 책상 건너편 낮은 앵글, 공부에 집중하는 모습, 입 다묾, 태블릿 뒷면만 보임, 글자·로고 없음, AI 생성 인물.
 - [ ] 마지막 이미지(§4-0): 오른쪽 어깨 뒤 조금 위, 태블릿이 화면 가로의 약 40%·거의 정면, 머리·어깨는 왼쪽 끝, 십자 정확히 5개와 네 모서리 선명. 틀리면 편집으로 보정.
 - [ ] 타사 레퍼런스 이미지를 생성 도구에 올리지 않았는지, 결과에 레퍼런스의 상표·교재·포즈가 섞이지 않았는지 확인.
+- [ ] 블록아웃 참조 영상(§4-5)의 카메라 경로·마지막 구도가 원하는 앵글인지 확인. 바꿀 점이 있으면 `blender/make_blockout.py` 상수를 고쳐 다시 렌더.
+- [ ] Higgsfield에서 참조 영상 입력란이 있는지, 시작 프레임과 함께 쓸 수 있는지 확인.
 - [ ] 두 이미지의 인물·옷·방·조명·태블릿이 같은지 확인.
 - [ ] 생성 시도 수와 비용 상한을 사용자와 결정. 현재 생성 실행 승인 없음.
 - [ ] 시작·중간·마지막 구도를 정지 이미지 또는 스토리보드로 검토.
