@@ -8,11 +8,30 @@
 - 품질 목표: 실제 TV 상업광고에 어울리는 고품질 실사 영상. 단순한 AI 데모 수준은 통과시키지 않는다.
 - 비용 원칙: 제작 직전까지 반복 수정·검토하여 실패 가능성을 낮춘다. 유료 영상 생성은 최종 브리프와 실행 설정, 회당 비용을 검토하고 사용자가 승인한 뒤 진행한다.
 
+## 0. 검토 수정 이력 (2026-10-05)
+
+초안을 다시 검토해 실제 생성 단계에서 실패로 이어질 수 있는 지시를 수정했다.
+
+| # | 발견한 문제 | 영향 | 수정 |
+|---|---|---|---|
+| 1 | 마지막 어깨 너머 구도에서 "small, natural smile" 요구 | 뒤에서는 얼굴이 거의 보이지 않으므로, 모델이 미소를 보여주려고 아이 고개를 카메라 쪽으로 돌리거나 얼굴을 화면 앞으로 끌어올 수 있음 → 화면 가림·인물 회전 | 미소 지시 삭제. 고개는 태블릿을 향해 고정, 머리·어깨는 프레임 왼쪽 가장자리에만 두고 화면과 겹치지 않도록 명시 |
+| 2 | 마지막 구도에서 머리 위치 미지정 | 오른쪽 어깨 뒤에서 보면 머리가 화면을 가리기 쉬움 | 카메라를 아이 머리보다 약간 높은 위치에서 어깨 너머로 내려다보도록 지정 |
+| 3 | 0초부터 발화 시작 | 스크롤 영상의 첫 프레임은 페이지 진입 시 멈춰 보이는 대표 화면인데, 입이 벌어진 프레임이 될 수 있음 | 시작은 입을 다문 상태 → 짧은 발화 → 카메라 이동 전에 입을 다물도록 순서 지정 |
+| 4 | "아이 앞쪽에서 시작"과 일반적인 벽붙이 책상 배치의 충돌 | 한국 아이 방 책상은 대개 벽에 붙어 있어 '정면 앞'은 벽 속이 됨. 모델이 책상을 방 한가운데로 옮기거나 카메라가 벽을 통과할 수 있음 | 책상 뒷면은 벽, 오른쪽 끝은 방 쪽으로 열린 배치로 지정하고 시작점을 "책상 오른쪽 앞 모서리"로 명시 |
+| 5 | 프롬프트에 "Samsung Galaxy Tab A11" 제품명 기재 | 영상 모델이 특정 저가 모델의 외형을 정확히 알 가능성이 낮고, 제조사명이 오히려 로고 생성을 유도함("로고 제거" 지시와 충돌) | 프롬프트에서는 제품명을 빼고 공식 치수·화면 비율·외형으로 묘사. 제품명은 한국어 브리프에만 유지 |
+| 6 | "No … extra fingers, distorted glasses, floating objects" 등 부정어 나열 | 많은 영상 모델이 부정 표현을 잘 따르지 못하고, 언급된 단어가 오히려 결과를 유도할 수 있음 | 본 프롬프트는 긍정 표현으로 바꾸고, 금지 요소는 네거티브 입력란 전용 블록으로 분리 |
+| 7 | 프롬프트 약 5,300자(초안 기준) | 일부 모델은 입력 길이 제한이 있어 뒷부분(마지막 구도·화면 조건)이 잘리거나 약해질 수 있음 | 핵심만 남긴 약 1,550자 간결 실행본 추가 (§4-3). 상세본은 오히려 약 5,700자로 늘었으므로 모델 제한 확인 후 선택 |
+| 8 | 책상 스탠드 위치 미지정 | 카메라 경로(오른쪽)에 스탠드가 있으면 이동 경로를 막고 화면 반사를 만듦 | 스탠드를 책상 왼쪽에 배치 |
+| 9 | "The footage remains silent"가 발화 직후에 위치 | '무음'이 입 움직임 금지로 해석될 수 있음 | "오디오는 필요 없고 편집에서 제거"로 바꿔 시각적 발화와 출력 무음을 분리 |
+| 10 | 화면 비율 미기재 | 합성용 앱 녹화 비율을 정할 수 없음 | 갤럭시 탭 A11 화면 1340×800(5:3)을 확인해 프롬프트와 합성 항목에 반영 |
+| 11 | §1의 구조 설명이 실제 프롬프트 순서와 다름 | 문서 내부 불일치 | 실제 블록 순서로 수정 |
+| 12 | 비디오 시킹 방식의 인코딩 조건 누락 | 일반 인코딩(긴 키프레임 간격)은 스크롤 시킹 시 끊김·지연 발생 | §6 문제 목록에 키프레임 간격 항목 추가 |
+
 ## 1. 어떤 방식으로 작성된 프롬프트인가
 
 이 프롬프트는 **구조화된 자연어 촬영 지시서**다. 특정 영상 모델의 전용 문법이나 API 명세가 아니다. 인물·공간·조명·소품·연기·카메라 이동·시간 구간·합성 조건을 나누어, 모델이 한 장면의 의도를 이해하도록 작성했다.
 
-기본 구조는 `Subject → Setting → Prop → Screen → Performance → Camera → Final composition → Constraints`다. 여기에 8초의 임시 시간 배분을 붙인 원테이크 구성이다. 소제목과 시간 표기는 설명용이며, 모델이 이를 정확한 타임라인 명령으로 실행한다는 보장은 없다.
+기본 구조는 `Subject → Room & Time → Tablet → Screen → Opening → Camera travel → Final view → Hands & Performance → Visual style`이며, 금지 요소는 별도의 네거티브 블록으로 분리했다. 여기에 8초의 임시 시간 배분을 붙인 원테이크 구성이다. 소제목과 시간 표기는 설명용이며, 모델이 이를 정확한 타임라인 명령으로 실행한다는 보장은 없다.
 
 특히 **합성 작업을 먼저 고려한 촬영 설계**를 적용했다. 아이와 방은 생성하고, 태블릿의 실제 앱 화면은 후반 작업으로 교체한다. 원본 화면에는 중간 회색 배경과 고정 마커만 둔다. AI가 정확한 브랜드명이나 앱 UI를 그리도록 요구하지 않는다.
 
@@ -44,23 +63,34 @@
 
 삼성 공식 제품에 [갤럭시 탭 A11](https://www.samsung.com/sec/tablets/galaxy-tab-a11-wifi-x135n/SM-X133NZAAKOO/)이 있으며, [8.7인치 모델](https://www.samsung.com/uk/tablets/galaxy-tab-a/galaxy-tab-a11-grey-64gb-lte-sm-x135fzaaeub/)을 기준으로 작성했다. 사용자 표현인 ‘갤럭시 에이11’을 태블릿 문맥에 따라 해석한 것이므로, 실제 보유 기기와 다르면 생성 전에 수정한다.
 
+확인한 사양([GSMArena](https://m.gsmarena.com/samsung_galaxy_tab_a11-14141.php) 기준): 8.7인치 TFT LCD, 1340×800(5:3), 본체 211 × 124.7 × 8mm, 색상 그레이·실버. SM-X133은 Wi-Fi, SM-X135는 LTE 모델이며 외형은 같다. 위 두 삼성 링크는 각각 국내 Wi-Fi(SM-X133N)와 영국 LTE(SM-X135F) 페이지다.
+
+영상 모델은 이 기기의 정확한 외형을 알 가능성이 낮고, 제조사명이 로고 생성을 유도할 수 있다. 따라서 **영문 프롬프트에는 제품명을 쓰지 않고 치수·비율·외형으로 묘사**한다. 실제 외형 일치가 중요하면 참조 이미지(로고 제거본)로 보완한다.
+
 ## 3. 장면 구성
 
 | 구간 | 화면과 연기 | 제작 의도 |
 |---|---|---|
-| 0–2초 | 오른쪽 앞에서 얼굴·상체 클로즈업. 태블릿 화면은 가려짐. 아이가 짧게 답함 | 인물과 감정에 먼저 집중 |
+| 0–2초 | 책상 오른쪽 앞 모서리에서 얼굴·상체 클로즈업. 태블릿 화면은 가려짐. 입을 다문 상태로 시작 → 짧게 답함 → 다시 입을 다물고 들음 | 인물과 감정에 먼저 집중. 첫 프레임을 스크롤 대표 화면으로 쓸 수 있게 함 |
 | 2–7초 | 오른쪽 옆을 지나 어깨 뒤로 이동. 아이는 듣는 표정. 태블릿 화면이 드러남 | 같은 공간 안에서 활동의 정체를 공개 |
-| 7–8초 | 화면 네 모서리와 마커가 보이는 어깨 너머 구도. 약 1초 안정화 | 실제 앱 화면 합성과 스크롤 종료 구간 확보 |
+| 7–8초 | 화면 네 모서리와 마커가 보이는 어깨 너머 구도. 머리·어깨는 왼쪽 가장자리에만. 약 1초 안정화 | 실제 앱 화면 합성과 스크롤 종료 구간 확보 |
 
 짧은 대답은 화면이 보이기 전부터 자연스럽게 수업 중이라는 인상을 준다. 화면 공개 후에도 명확한 발화가 필요하면 두 번째 짧은 대답을 넣을 수 있지만, 현재 초안은 입 움직임과 연기 오류를 줄이기 위해 한 번만 요청한다.
 
 ## 4. 통합 영문 프롬프트
 
-아래 프롬프트는 이전의 ‘앱 UI가 보이는 화면’ 지시를 대체한다. 두 버전을 함께 사용하지 않는다.
+아래 프롬프트는 이전의 ‘앱 UI가 보이는 화면’ 지시와 이 문서의 첫 초안 프롬프트를 대체한다. 이전 버전과 함께 사용하지 않는다.
+
+- **4-1 상세본:** 입력 제한이 넉넉한 모델용.
+- **4-2 네거티브:** 모델에 별도 네거티브 입력란이 있을 때만 사용. 없으면 넣지 않는다(본문에 붙이면 오히려 해당 요소를 유도할 수 있음).
+- **4-3 간결 실행본:** 입력 제한이 짧거나, 상세본에서 뒷부분 지시가 무시될 때 사용.
+
+### 4-1. 상세본
 
 ```text
-Create an approximately 8-second silent, photorealistic
-live-action commercial shot in one continuous take.
+Create an approximately 8-second photorealistic live-action
+commercial shot in one continuous take. Audio is not needed;
+any generated sound will be removed in editing.
 
 SUBJECT
 A cute Korean elementary school boy, approximately 9 years old,
@@ -79,26 +109,28 @@ The room is tidy but genuinely lived-in: a light wood study desk,
 an ergonomic study chair, children's books and school workbooks,
 a pencil cup, a small bed, and a few modest personal belongings.
 
-Place the desk and chair so there is clear camera travel space
-along the boy's right-hand side. Keep the camera path free of
-walls, furniture, and other obstacles.
+The back edge of the desk is against the wall in front of him,
+and the right end of the desk is open to the room. There is clear
+floor space along the boy's right-hand side, from the right front
+corner of the desk to behind his chair. This camera path stays
+open, with no walls, furniture, or objects in the way.
 
 The window is dark, with faint distant apartment lights outside.
-Soft warm overhead lighting and a desk lamp create a comfortably
-bright evening atmosphere. Keep skin tones natural and avoid
-an excessive orange tint.
+Soft warm overhead lighting and a desk lamp on the left side of
+the desk create a comfortably bright evening atmosphere, with
+natural skin tones rather than a strong orange cast.
 
-No visible brand logos or prominent readable lettering anywhere.
+Every object in the room is unbranded and free of readable text.
 
 TABLET
-Use the physical proportions and exterior design of an
-8.7-inch Samsung Galaxy Tab A11, in a plain gray finish,
-positioned horizontally on a simple, stable desk stand.
+A compact 8.7-inch Android tablet, about 21 cm wide and 12.5 cm
+tall, thin and flat, with a matte gray metal back, softly rounded
+corners, and thin, even black bezels around a 5:3 display.
+It sits horizontally on a simple, unbranded desk stand, angled
+toward the boy. The tablet and stand are completely plain,
+with no logos, names, or markings.
 
-Remove all visible manufacturer logos, product names,
-printed markings, and branding from the tablet and stand.
-
-Keep the tablet stationary, with a rigid rectangular shape,
+The tablet stays stationary, with a rigid rectangular shape,
 consistent proportions, and straight bezel edges.
 
 SCREEN FOR LATER COMPOSITING
@@ -107,66 +139,71 @@ with exactly five static black cross-shaped tracking markers:
 four slightly inset from the display corners, and one smaller
 cross at the center.
 
-The markers remain fixed to the display surface and follow
-its perspective naturally. Their positions relative to the
-screen never change.
+The markers stay fixed to the display surface and follow its
+perspective naturally. Their positions relative to the screen
+never change.
 
-No application interface, instructor video, text, icons,
-logos, buttons, or screen animations in the generated footage.
-The speaking application will be added in post-production.
+The display shows only this static gray tracking pattern for the
+whole shot. The speaking application will be added in
+post-production.
 
-Keep the screen moderately illuminated with subtle reflections.
-Avoid glare that obscures the markers or display edges.
+The screen is moderately illuminated with subtle, soft
+reflections that leave the markers and display edges clear.
 
 OPENING — APPROXIMATELY 0 TO 2 SECONDS
-Begin with a close three-quarter view from in front of the boy,
-slightly to his right, showing his face and upper torso.
+Begin with a close three-quarter view from beside the right front
+corner of the desk, showing the boy's face and upper torso.
 
 He looks down toward the tablet. His eyes are visible through
-his glasses. Only part of the tablet's back or edge is visible;
+his glasses. Only the back or edge of the tablet is visible;
 the display content is hidden from the camera.
 
-He gives one brief, natural spoken response with subtle lip
-movement, then settles into an attentive listening expression.
-The footage remains silent.
+The shot begins with his mouth gently closed. After a brief moment,
+he gives one short, natural spoken response with subtle lip
+movement, then closes his mouth and settles into an attentive
+listening expression before the camera starts to move.
 
 CAMERA TRAVEL — APPROXIMATELY 2 TO 7 SECONDS
 Move the camera smoothly along the boy's right-hand side,
 from the front-right view, past his right-side profile,
-to a position just behind his right shoulder.
+to a position just behind and slightly above his right shoulder.
 
-The camera physically travels through the clear space beside
-the desk. It does not pass through the boy, furniture,
-or the tablet.
+The camera travels through the open floor space beside the desk
+and chair, staying clear of the boy, the furniture, and the tablet.
 
-The boy remains seated and focused on the display.
-He does not turn his body to follow the camera.
+The boy stays seated and keeps facing the tablet. Only the camera
+moves; his head and body stay in place.
 
 Gradually reveal the tablet display, then gently move closer.
 Use restrained, continuous movement with a level horizon
-and minimal motion blur.
+and crisp detail.
 
-This is a partial orbit, not a full 360-degree rotation.
+This is a partial orbit of about 135 degrees, not a full rotation.
 
 FINAL VIEW — APPROXIMATELY 7 TO 8 SECONDS
-Settle into a stable over-the-right-shoulder composition.
+Settle into a stable view from just behind and slightly above his
+right shoulder, looking down past it at the tablet.
 
-Include only a small portion of the boy's shoulder in the
-foreground. Make the tablet display the main visual focus.
+Only a small, softly focused part of his right shoulder, ear, and
+the back of his head appears at the left edge of the frame.
+His head stays beside the display, never in front of it.
+The tablet display is the main visual focus.
 
-Keep all four display corners and all five tracking markers
-clearly visible. View the screen from a mild angle, avoiding
-extreme perspective compression.
+All four display corners and all five tracking markers are clearly
+visible, with a comfortable margin around the tablet. The screen
+is seen from a mild angle with natural perspective.
 
 Hold this final composition for approximately one second.
-The boy remains attentive, with a small, natural smile.
+The boy keeps facing the tablet, calmly listening, with his head
+still.
 
 HANDS AND PERFORMANCE
-His hands rest comfortably on the desk outside the active
-display area. No tapping, swiping, or gestures across the screen.
+His hands rest comfortably on the desk beside the tablet, away
+from the display, and stay there.
 
-Use subtle blinking and breathing. Avoid exaggerated acting,
-continuous mouth movement, or looking into the camera.
+Use subtle blinking and breathing. Restrained, natural acting:
+his mouth stays closed except for the one short response, and his
+gaze stays on the tablet.
 
 VISUAL STYLE
 Photorealistic footage with the visual finish of a high-end
@@ -178,20 +215,42 @@ gentle shadow detail, natural skin tones, and realistic skin
 texture. Preserve fine hair detail, believable fabric texture,
 and natural reflections on the glasses and tablet.
 
-Use a smooth, precisely controlled camera move and intentional
-framing. Keep the boy's eyes clear in the opening shot, then
-transition focus smoothly to the tablet display as it is revealed.
+One uninterrupted shot with a smooth, precisely controlled
+camera move, a constant focal length, and intentional framing.
+Keep the boy's eyes in sharp focus in the opening, then shift
+focus smoothly to the tablet display as it is revealed.
 Keep the display edges and tracking markers sharp in the final view.
 
 Maintain consistent exposure and white balance throughout.
-Use restrained commercial color grading, without waxy skin,
-excessive beauty smoothing, artificial HDR, oversharpening,
-heavy grain, exaggerated lens effects, or synthetic-looking lighting.
+Use restrained commercial color grading with natural, textured
+skin, clean highlights, and true-to-life contrast and detail.
+```
 
-No cuts, transitions, sudden zooms, camera shake,
-focus hunting, heavy motion blur, geometry changes,
-distorted glasses, extra fingers, changing marker positions,
-floating objects, captions, watermarks, or visible branding.
+### 4-2. 네거티브 (별도 입력란 전용)
+
+```text
+cut, transition, zoom, camera shake, focus hunting, heavy motion
+blur, morphing, warped tablet, bent screen, moving or extra markers,
+app interface, text, logo, watermark, caption, distorted glasses,
+extra fingers, floating objects, waxy skin, beauty filter,
+oversharpening, HDR look, heavy grain, lens flare, orange color cast,
+looking at camera, turning head, head covering screen
+```
+
+### 4-3. 간결 실행본 (약 1,550자)
+
+```text
+8-second photorealistic live-action commercial, one continuous take, no audio needed.
+
+A 9-year-old Korean boy with short black hair, round thin-framed glasses and a plain cream sweatshirt sits at a light wood study desk in his tidy bedroom in a Korean apartment, around 8 PM. Dark window with distant apartment lights; soft warm ceiling light and a desk lamp on the left; natural skin tones. The desk is against the wall in front of him; its right end and the floor along his right side are open.
+
+On the desk, a compact 8.7-inch gray tablet with thin black bezels and a 5:3 screen stands horizontally on a plain stand, facing him. Everything is unbranded, with no text anywhere. The screen shows only flat medium gray with five fixed black crosses: one near each corner and a smaller one in the center.
+
+0-2s: close three-quarter view from the right front corner of the desk on his face; the screen is hidden. Mouth closed at first, then one short natural spoken reply, then he quietly listens.
+2-7s: the camera glides smoothly around his right side, past his profile, to just behind and above his right shoulder, revealing the screen and moving slightly closer. He stays still, facing the tablet; only the camera moves.
+7-8s: steady over-the-shoulder view; his shoulder and head stay at the left edge, beside the screen; all four screen corners and five crosses sharp and fully visible; hold.
+
+Hands rest on the desk beside the tablet. Level horizon, steady focus, consistent exposure, high-end Korean TV commercial look with natural skin texture.
 ```
 
 ## 5. 검증 결과와 한계
@@ -200,7 +259,10 @@ floating objects, captions, watermarks, or visible branding.
 
 - 사용자 요청과 인물·장소·시간·무음·로고 제거 조건의 일관성.
 - 앱 UI 생성 지시와 합성용 마커 지시의 충돌 해소.
-- 카메라 방향과 책상 옆 이동 공간 명시.
+- 카메라 방향과 책상 옆 이동 공간 명시. 벽붙이 책상과 시작 위치의 충돌 해소(오른쪽 끝이 열린 배치).
+- 마지막 구도에서 미소 지시 삭제, 머리가 화면을 가리지 않는 위치 지정.
+- 첫 프레임 입 다문 상태 지정.
+- 갤럭시 탭 A11 사양(8.7인치, 1340×800, 5:3, 211×124.7×8mm) 확인 및 프롬프트에서 제품명 제거.
 - 화면을 손으로 가리지 않는 연기와 마지막 안정 구간 확보.
 - 모델명에 대한 삼성 공식 제품 정보 확인.
 
@@ -229,7 +291,9 @@ floating objects, captions, watermarks, or visible branding.
 | 카메라가 책상·아이를 통과함 | 현실적인 공간 이동을 지키지 못함 | 옆 통로 확보, 회전 폭 축소. 필요시 장면을 짧게 하거나 실제 3D·촬영 방식 검토 |
 | 작은 A11 화면이 부족함 | 8.7인치 기기는 넓은 구도에서 앱 내용이 잘 안 보일 수 있음 | 마지막에 가까이 접근. 임의로 태블릿을 대형 모델처럼 키우지 않기 |
 | 정확한 제품 디자인 재현 실패 | 모델명만으로 치수·카메라·베젤이 정확히 구현되지 않음 | 실제 기기 참조 이미지 활용. 제품 정확도가 필수인지 사전 결정 |
-| 로고가 다시 생김 | 제조사 이름이 브랜드 표시 생성으로 연결될 수 있음 | 참조 이미지에서 로고 제거. 생성 후 뒷면·베젤·옷·소품 점검 및 리터치 |
+| 로고가 다시 생김 | 제조사 이름이 브랜드 표시 생성으로 연결될 수 있음 | 프롬프트에서 제품명 제외(반영). 참조 이미지에서 로고 제거. 생성 후 뒷면·베젤·옷·소품 점검 및 리터치 |
+| 부정어 나열이 오히려 유도됨 | 'extra fingers' 같은 금지 단어가 본문에 있으면 모델이 해당 요소를 떠올릴 수 있음 | 본문은 긍정 표현, 금지 요소는 네거티브 입력란 전용(반영). 입력란이 없으면 생략 |
+| 마지막 구도에서 아이가 고개를 돌림 | 뒤에서 보이지 않는 표정(미소 등)을 요구하면 모델이 얼굴을 보여주려 함 | 마지막 구도에 표정 요구를 넣지 않고 고개 고정 명시(반영) |
 | 얼굴·안경·손 변형 | 회전 구간의 가림과 입 움직임이 시간적 일관성을 깨뜨릴 수 있음 | 절제된 연기와 단순한 손 자세. 주요 구간 프레임 점검 |
 | 말하는 표정이 과장됨 | 무음 조건이 입 움직임 중단으로, 발화 조건이 과한 움직임으로 해석될 수 있음 | ‘시각적 짧은 발화, 최종 출력 무음’을 구분. 오디오가 생기면 편집에서 제거 |
 | 마커 위치·개수가 변함 | AI가 그래픽을 고정된 평면 정보로 유지하지 못함 | 마커를 참조 이미지에 포함. 생성 후 개수·상대 위치 점검. 실패하면 화면 테두리 추적·수동 보정 또는 재생성 판단 |
@@ -241,16 +305,18 @@ floating objects, captions, watermarks, or visible branding.
 | 회색 화면이 실제 UI와 밝기가 다름 | 얼굴·손·안경에 반사된 빛이 최종 UI 색과 불일치 | 실제 앱의 밝기를 기준으로 트래킹 화면 톤 결정. 합성 때 색·밝기 조정 |
 | 화면에 손·머리카락이 겹침 | 앱 화면만 덮으면 앞쪽 물체까지 가려짐 | 가림 마스크 작업 필요. 현재는 손을 화면 밖에 둬 작업을 줄임 |
 | 합성이 스티커처럼 보임 | 원근만 맞고 밝기·블러·반사·초점이 맞지 않음 | 원본의 노출·초점·움직임에 맞춰 화면 처리. 화면 전체 교체로 마커도 함께 덮기 |
-| 태블릿 비율과 앱 녹화 비율 불일치 | 녹화물을 늘리면 UI가 왜곡됨 | 활성 화면 비율에 맞는 가로 앱 자료 준비. 필요한 경우 여백 또는 크롭 설계 |
+| 태블릿 비율과 앱 녹화 비율 불일치 | 녹화물을 늘리면 UI가 왜곡됨. 갤럭시 탭 A11 화면은 1340×800(5:3)으로 일반 16:9 녹화와 다름 | 실제 기기에서 가로로 녹화하거나 5:3 비율로 앱 자료 준비. 16:9 자료만 있으면 여백 또는 크롭 설계 |
 | 스피킹 행동과 앱 반응 불일치 | 입은 움직이는데 UI가 듣기 상태거나 상대가 동시에 말함 | 짧은 발화 타이밍에 맞춰 앱 상태·상대 반응 편집 |
 | 조명이 너무 어둡거나 주황색 | ‘저녁’과 ‘따뜻함’을 과하게 해석 | 실내는 밝게, 창밖만 어둡게. 피부색과 안경 너머 눈 확인 |
 | 한국 방이 지나치게 일반화됨 | 문화권 표기만으로 현실적인 방을 보장하지 못함 | 실제 한국 아파트 아이 방의 레이아웃·소품 참조. 불필요한 장식 최소화 |
 | 스크롤 정지 때 이상한 표정이 보임 | 영상 재생 때 지나가는 입·눈 프레임이 오래 고정됨 | 중간 프레임도 검토. 중요 메시지 구간은 안정된 표정·화면을 선택 |
+| 첫 프레임이 어색함 | 스크롤 전 페이지 진입 시 첫 프레임이 대표 화면처럼 멈춰 보임 | 입을 다문 상태로 시작하도록 지정(반영). 필요하면 첫 프레임을 별도 포스터 이미지로 보정 |
 | 역스크롤에서 행동이 역재생됨 | 스크롤 진행률과 프레임 번호를 직접 연결하는 구조 | 입 움직임·손동작을 최소화. 자연스러운 왕복 경험은 구현 단계에서 검토 |
 | 8초를 긴 스크롤에 늘려 부자연스러움 | 사람의 미세 움직임이 지나치게 느려 보임 | 실제 스크롤 거리와 영상 길이를 함께 조정 |
 | 모바일 크롭 문제 | 얼굴 중심 시작과 태블릿 중심 끝을 한 비율로 담기 어려움 | 데스크톱·모바일 주요 영역 설계. 필요시 별도 크롭 또는 별도 영상 |
 | 이미지 시퀀스 용량·메모리 증가 | 프레임 수와 해상도가 커질수록 로딩 부담 증가 | 최종 합성 후 추출. 해상도·프레임 수·이미지 압축·선로딩을 실제 기기에서 확인 |
 | 스크롤 구현이 매끄럽지 않음 | 프레임 누락, 로딩 지연, 과한 보간, 시킹 지연 | 이미지 시퀀스 또는 비디오 방식의 실제 성능 비교 후 선택 |
+| 비디오 시킹이 끊김 | 일반 웹 인코딩은 키프레임 간격이 길어, 임의 시점으로 이동할 때마다 디코딩 지연 발생 | 비디오 방식이면 키프레임 간격을 매우 짧게(전 프레임 키프레임 포함) 인코딩해 시험. 용량 증가와 함께 비교 |
 | 생성 비용이 예상보다 커짐 | 카메라·인물·마커 오류로 재시도 누적 | 모델별 실제 비용 확인, 참조 이미지 검토 먼저 수행, 시도 횟수와 비용 상한은 사용자와 결정 |
 | 재현성 부족 | 같은 프롬프트라도 매번 결과가 달라질 수 있음 | 모델·설정·지원 시 시드·참조 이미지·버전을 기록 |
 
