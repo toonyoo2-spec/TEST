@@ -15,6 +15,7 @@
 //  ROUTINE_BLOG_URL       Claude 앱에서 복사한 fire URL (https://api.anthropic.com/v1/claude_code/routines/<id>/fire)
 //  ROUTINE_BLOG_TOKEN     같은 화면의 API 토큰 (sk-ant-oat01-...)
 //  ROUTINE_CARD_URL / ROUTINE_CARD_TOKEN   카드뉴스용
+//  ROUTINE_RELAY_URL / ROUTINE_RELAY_TOKEN 공용 중계 자동화(route별 값이 없을 때 사용). 지금 구성은 이것 하나만 있으면 된다
 //  DEBOUNCE_SECONDS       기본 180
 //  SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY  Supabase가 자동 주입
 
@@ -100,8 +101,10 @@ Deno.serve(async (req: Request) => {
   const route = (url.searchParams.get("route") ?? "").toLowerCase();
   if (!/^[a-z0-9_-]{1,32}$/.test(route)) return new Response("bad route", { status: 400 });
 
-  const fireUrl = Deno.env.get(`ROUTINE_${route.toUpperCase()}_URL`) ?? "";
-  const token = Deno.env.get(`ROUTINE_${route.toUpperCase()}_TOKEN`) ?? "";
+  // route별 시크릿이 없으면 공용 중계 자동화(ROUTINE_RELAY_*)로 보낸다.
+  // 로컬(Mac) 자동화는 API 트리거를 못 붙이므로, 클라우드 "[자동화 웹훅중계]"가 받아서 fire_trigger로 로컬 자동화를 실행한다.
+  const fireUrl = Deno.env.get(`ROUTINE_${route.toUpperCase()}_URL`) || Deno.env.get("ROUTINE_RELAY_URL") || "";
+  const token = Deno.env.get(`ROUTINE_${route.toUpperCase()}_TOKEN`) || Deno.env.get("ROUTINE_RELAY_TOKEN") || "";
   const debounce = Number(Deno.env.get("DEBOUNCE_SECONDS") ?? "180");
 
   let body: Json = {};
