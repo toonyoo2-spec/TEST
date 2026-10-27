@@ -15,7 +15,7 @@
 //  ROUTINE_BLOG_URL       Claude 앱에서 복사한 fire URL (https://api.anthropic.com/v1/claude_code/routines/<id>/fire)
 //  ROUTINE_BLOG_TOKEN     같은 화면의 API 토큰 (sk-ant-oat01-...)
 //  ROUTINE_CARD_URL / ROUTINE_CARD_TOKEN   카드뉴스용
-//  ROUTINE_RELAY_URL / ROUTINE_RELAY_TOKEN 공용 중계 자동화(route별 값이 없을 때 사용). 지금 구성은 이것 하나만 있으면 된다
+//  ROUTINE_RELAY_URL / ROUTINE_RELAY_TOKEN 공용 중계 자동화(선택). 지금 구성에서는 설정하지 않는다 → 큐 모드
 //  DEBOUNCE_SECONDS       기본 180
 //  SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY  Supabase가 자동 주입
 
@@ -124,11 +124,30 @@ Deno.serve(async (req: Request) => {
   const ok = (payload: Json) =>
     new Response(JSON.stringify(payload), { status: 200, headers: { "content-type": "application/json" } });
 
+  // 큐 모드(기본): fire URL/토큰이 없으면 Claude를 직접 호출하지 않고 'pending' 행으로 쌓는다.
+  // 클라우드 자동화 [자동화 체크·디스패처](Haiku)가 2시간마다 pending 행을 읽어 fire_trigger로 로컬 자동화를 실행한다.
   if (!fireUrl || !token) {
+    let status = "pending";
+    let detail = "큐 대기 (디스패처가 처리)";
+    if (pageId) {
+      const since = new Date(Date.now() - debounce * 1000).toISOString();
+      const { data: recent } = await supabase
+        .from("claude_relay_events")
+        .select("id")
+        .eq("route", route)
+        .eq("page_id", pageId)
+        .in("status", ["pending", "fired"])
+        .gte("fired_at", since)
+        .limit(1);
+      if (recent && recent.length > 0) {
+        status = "deduped";
+        detail = `${debounce}s 안에 이미 접수`;
+      }
+    }
     await supabase.from("claude_relay_events").insert({
-      route, page_id: pageId, title, notion_event_id: notionEventId, status: "skipped_no_routine", detail: "ROUTINE_*_URL/TOKEN 미설정",
+      route, page_id: pageId, title, notion_event_id: notionEventId, status, detail, text,
     });
-    return ok({ ok: false, reason: "routine not configured" });
+    return ok({ ok: true, status });
   }
 
   // 중복 방지: 같은 Notion 이벤트 ID, 또는 같은 페이지·경로가 debounce 안에 이미 실행됨
